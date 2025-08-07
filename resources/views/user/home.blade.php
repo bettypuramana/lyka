@@ -1,0 +1,555 @@
+@extends('layouts.user.user_layout')
+@section('title', 'Lyka | Explore The Unseen')
+@section('content')
+ <section class="banner-area">
+            <div class="container">
+                <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                </div>
+                
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <img src="{{asset('assets/images/slider-img1.jpg')}}" alt="" class="d-block" style="width:100%">
+                    <div class="carousel-caption">
+                        <h1>TRAVELLING AROUND THE WORLD</h1>
+                        <p>Smart Travel Solutions for Dream Destinations.</p>
+                        <a href="packages.html">Know More</a>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                    <img src="{{asset('assets/images/slider-img2.jpg')}}" alt="" class="d-block" style="width:100%">
+                    <div class="carousel-caption">
+                        <h1>TRAVELLING AROUND THE WORLD</h1>
+                        <p>Turn Your Bucket List into Bookings.</p>
+                        <a href="packages.html">Know More</a>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                    <img src="{{asset('assets/images/slider-img3.jpg')}}" alt="" class="d-block" style="width:100%">
+                    <div class="carousel-caption">
+                        <h1>TRAVELLING AROUND THE WORLD</h1>
+                        <p>Smart Travel Solutions for Dream Destinations.</p>
+                        <a href="packages.html">Know More</a>
+                    </div> 
+                    </div>
+                </div>
+                
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+                </div>
+            </div>
+        </section>
+        <section class="form-sec" data-aos="fade-up" data-aos-duration="1000">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="form-box">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <select name="" id="" class="form-control destinations1">
+                                        <option selected disabled value="">Destinations</option>
+                                        <option value="">Abu Dhabi</option>
+                                        <option value="">Mexico</option>
+                                        <option value="">France</option>
+                                        <option value="">Italy</option>
+                                        <option value="">Spain</option>
+                                        <option value="">Germany</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <!-- <select name="" id="" class="form-control passenger">
+                                        <option selected disabled value="">Passenger</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4</option>
+                                        <option value="">5</option>
+                                    </select> -->
+                                    <div class="input-group plus-minus-input form-control passenger">
+                                        <div>Passenger</div>
+                                        <div class="count">
+                                            <div class="input-group-button">
+                                            <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity">
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        <input class="input-group-field " type="number" name="quantity" value="0">
+                                        <div class="input-group-button">
+                                            <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <input type="text" class="form-control date" id="datepicker" placeholder="Travel Date">
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <input type="text" class="form-control user" id="" placeholder="Name">
+                                </div>
+                                <div class="col-lg-4 col-md-6 mb-3">
+                                    <input type="text" class="form-control phone" id="" placeholder="Phone Number">
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                    <button class="form-control form-btn">SEND Enquiry <img src="{{asset('assets/images/button-arrow.svg')}}" alt=""></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</section>
+
+<section class="destination-sec p60" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 title-head">
+                <h2>From Dream to Destination</h2>
+                <p>Travel with Lyka Holidays</p>
+            </div>
+            <div class="col-lg-12 mb-3 owl-carousel destinations owl-theme">
+                <!-- loop section -->
+                 <div class="item">
+                    <div class="box">
+                        <div class="destination-img">
+                            <a href="package-details.html"><img src="{{asset('assets/images/destination-img1.jpg')}}" alt=""></a>
+                        </div>
+                        <div class="content-box">
+                            <h3>Borobudur Heritage Trail</h3>
+                            <p><span>Budapest, Hungary</span></p>
+                            <div class="travel-count">2 Days, 1 Night</div>
+                            <div class="btm-box">
+                                <div class="price">
+                                    <p>Start From</p>
+                                    <div class="amount">4,999.00</div>
+                                </div>
+                                <div class="more">
+                                    <a href="package-details.html">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- loop section close-->
+                 <!-- loop section -->
+                 <div class="item">
+                    <div class="box">
+                        <div class="destination-img">
+                            <a href="package-details.html"><img src="{{asset('assets/images/destination-img2.jpg')}}" alt=""></a>
+                        </div>
+                        <div class="content-box">
+                            <h3>Borobudur Heritage Trail</h3>
+                            <p><span>Budapest, Hungary</span></p>
+                            <div class="travel-count">2 Days, 1 Night</div>
+                            <div class="btm-box">
+                                <div class="price">
+                                    <p>Start From</p>
+                                    <div class="amount">4,999.00</div>
+                                </div>
+                                <div class="more">
+                                    <a href="package-details.html">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- loop section close-->
+                 <!-- loop section -->
+                 <div class="item">
+                    <div class="box">
+                        <div class="destination-img">
+                            <a href="package-details.html"><img src="{{asset('assets/images/destination-img3.jpg')}}" alt=""></a>
+                        </div>
+                        <div class="content-box">
+                            <h3>Borobudur Heritage Trail</h3>
+                            <p><span>Budapest, Hungary</span></p>
+                            <div class="travel-count">2 Days, 1 Night</div>
+                            <div class="btm-box">
+                                <div class="price">
+                                    <p>Start From</p>
+                                    <div class="amount">4,999.00</div>
+                                </div>
+                                <div class="more">
+                                    <a href="package-details.html">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- loop section close-->
+            </div>
+            <div class="col-lg-12 d-flex justify-content-center">
+                <a class="link" href="packages.html">Explore More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="visa-sec p60" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 title-head">
+                <h2>Visa Services</h2>
+                <p>From Paperwork to Passport - We've Got It Covered.</p>
+            </div>
+            <div class="col-lg-12 mb-3 owl-carousel visa-scroll owl-theme">
+                <!-- loop area -->
+                <div class="item">
+                    <div class="box">
+                        <a href="visa-details.html">
+                            <div class="visa-location">
+                            <img src="assets/images/usa-visa.jpg')}}" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="map">
+                                    <img src="{{asset('assets/images/flag-img1.jpg')}}" alt="">
+                                </div>
+                                <h4>USA Visa</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- loop area close -->
+                <!-- loop area -->
+                <div class="item">
+                    <div class="box">
+                        <a href="visa-details.html">
+                            <div class="visa-location">
+                            <img src="{{asset('assets/images/uk-visa.jpg')}}" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="map">
+                                    <img src="{{asset('assets/images/flag-img2.jpg')}}" alt="">
+                                </div>
+                                <h4>UK Visa</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- loop area close -->
+                <!-- loop area -->
+                <div class="item">
+                    <div class="box">
+                        <a href="visa-details.html">
+                            <div class="visa-location">
+                            <img src="{{asset('assets/images/canada-visa.jpg')}}" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="map">
+                                    <img src="{{asset('assets/images/flag-img3.jpg')}}" alt="">
+                                </div>
+                                <h4>Canada Visa</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- loop area close -->
+                <!-- loop area -->
+                <div class="item">
+                    <div class="box">
+                        <a href="visa-details.html">
+                            <div class="visa-location">
+                            <img src="{{asset('assets/images/australia-visa.jpg')}}" alt="">
+                            </div>
+                            <div class="content">
+                                <div class="map">
+                                    <img src="{{asset('assets/images/flag-img4.jpg')}}" alt="">
+                                </div>
+                                <h4>Australia Visa</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- loop area close -->
+            </div>
+            <div class="col-lg-12 d-flex justify-content-center">
+                <a class="link" href="visa.html">View all visa services</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-choose-area p60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="content">
+                    <h4>Why Choose Us?</h4>
+                    <h5>Dare to live the lift you've always wanted</h5>
+                    <p>Discover how you can offset your adventure's carbon emissions and support the sustainable initiatives practiced by our operators worldwide.</p>
+                    <div class="count-box">
+                        <div class="box" data-aos="fade-up" data-aos-duration="800">
+                            <div class="number">20+</div>
+                            <div class="txt">Years Experience</div>
+                        </div>
+                        <div class="box" data-aos="fade-up" data-aos-duration="900">
+                            <div class="number">460+</div>
+                            <div class="txt">Destination Collabration</div>
+                        </div>
+                        <div class="box" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="number">50K</div>
+                            <div class="txt">Happy Customers</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="why-choose-img-area">
+                    <img src="{{asset('assets/images/why-choose-us.png')}}" alt="" data-aos="fade-left" data-aos-duration="2000">
+                    <div class="emoji-sec">
+                        <h6>How Your Experience?</h6>
+                        <div class="emoji">
+                            <img src="{{asset('assets/images/emoji-img1.svg')}}" alt="">
+                            <img src="{{asset('assets/images/emoji-img2.svg')}}" alt="">
+                            <img src="{{asset('assets/images/emoji-img3.svg')}}" alt="">
+                            <img src="{{asset('assets/images/emoji-img4.svg')}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-sec p60">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-3 title-head" data-aos="fade-up" data-aos-duration="2000">
+                <h2>Journey to the Most Beautiful Places on Earth</h2>
+                <p>From hidden gems To global icons</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="box">
+                    <div class="sm-ht" data-aos="fade-up" data-aos-duration="1000">
+                        <a href="{{asset('assets/images/gallery-img1.jpg')}}" data-fancybox="gallery" data-caption="Thailand">
+                            <img src="{{asset('assets/images/gallery-img1.jpg')}}" alt="">
+                            <div class="title">
+                                <h5>Thailand</h5>
+                                <p>08 Jul 2025</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="sm-ht" data-aos="fade-up" data-aos-duration="1100">
+                        <a href="{{asset('assets/images/gallery-img2.jpg')}}" data-fancybox="gallery" data-caption="Bora Bora island">
+                            <img src="{{asset('assets/images/gallery-img2.jpg')}}" alt="">
+                            <div class="title">
+                                <h5>Bora Bora island</h5>
+                                <p>08 Jul 2025</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="box">
+                    <div class="lg-ht" data-aos="fade-up" data-aos-duration="1200">
+                        <a href="{{asset('assets/images/gallery-img3.jpg')}}" data-fancybox="gallery" data-caption="Greece">
+                            <img src="{{asset('assets/images/gallery-img3.jpg')}}" alt="">
+                            <div class="title">
+                                <h5>Greece</h5>
+                                <p>08 Jul 2025</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="box">
+                    <div class="sm-ht" data-aos="fade-up" data-aos-duration="1300">
+                        <a href="{{asset('assets/images/gallery-img4.jpg')}}" data-fancybox="gallery" data-caption="Bordeaux">
+                            <img src="{{asset('assets/images/gallery-img4.jpg')}}" alt="">
+                            <div class="title">
+                                <h5>Bordeaux</h5>
+                                <p>08 Jul 2025</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="sm-ht" data-aos="fade-up" data-aos-duration="1400">
+                        <a href="{{asset('assets/images/gallery-img5.jpg')}}" data-fancybox="gallery" data-caption="Turkey">
+                            <img src="{{asset('assets/images/gallery-img5.jpg')}}" alt="">
+                            <div class="title">
+                                <h5>Turkey</h5>
+                                <p>08 Jul 2025</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mt-3 d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
+                <a class="link" href="gallery.html">View Gallery</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials-sec p60" data-aos="fade-up" data-aos-duration="1500">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-3 title-head" data-aos="fade-up" data-aos-duration="1500">
+                <h2>What Our Travelers Say</h2>
+                <p>Real Stories From Happy Adventurers</p>
+            </div>
+            <div class="col-lg-12 owl-carousel testimonial-scroll owl-theme">
+                <!-- loop area -->
+                 <div class="item">
+                    <div class="box">
+                        <div class="item-box">
+                            <div class="pic"><img src="{{asset('assets/images/test-img1.png')}}" alt=""></div>
+                            <div class="content">
+                                <h5>Brian A. Barnes</h5>
+                                <h6>CEO & Founder</h6>
+                                <p>Sit amet consectetur adipiscing congue pose  habit ante dignissim faucibus tincidunt vulputate ullamcorper mattis quisque esta sidiculus.</p>
+                            </div>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#testimonials-pop1" class="btn-nav"><img src="{{asset('assets/images/link-arrow.svg')}}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- loop area close-->
+                  <!-- loop area -->
+                 <div class="item">
+                    <div class="box">
+                        <div class="item-box">
+                            <div class="pic"><img src="{{asset('assets/images/test-img2.png')}}" alt=""></div>
+                            <div class="content">
+                                <h5>Brian A. Barnes</h5>
+                                <h6>CEO & Founder</h6>
+                                <p>Sit amet consectetur adipiscing congue pose  habit ante dignissim faucibus tincidunt vulputate ullamcorper mattis quisque esta sidiculus.</p>
+                            </div>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#testimonials-pop1" class="btn-nav"><img src="{{asset('assets/images/link-arrow.svg')}}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- loop area close-->
+                  <!-- loop area -->
+                 <div class="item">
+                    <div class="box">
+                        <div class="item-box">
+                            <div class="pic"><img src="{{asset('assets/images/test-img3.png')}}" alt=""></div>
+                            <div class="content">
+                                <h5>Brian A. Barnes</h5>
+                                <h6>CEO & Founder</h6>
+                                <p>Sit amet consectetur adipiscing congue pose  habit ante dignissim faucibus tincidunt vulputate ullamcorper mattis quisque esta sidiculus.</p>
+                            </div>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#testimonials-pop1" class="btn-nav"><img src="{{asset('assets/images/link-arrow.svg')}}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- loop area close-->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- popup area -->
+            <div class="modal fade" id="testimonials-pop1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <div class="first">
+                            <div class="pic"><img src="{{asset('assets/images/test-img3.png')}}" alt=""></div>
+                            <div class="content">
+                                <h5>Brian A. Barnes</h5>
+                                <h6>CEO & Founder</h6>
+                            </div>
+                        </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="box-testi">
+                        <div class="content-box">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>Sit amet consectetur adipiscing congue pose  habit ante dignissim faucibus tincidunt vulputate ullamcorper mattis quisque esta sidiculus.</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+    <!-- popup area close-->
+<section class="newsletter-sec" style="background-image: url(assets/images/newsletter-bg.jpg);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h5 data-aos="fade-up" data-aos-duration="1000">Book Early. Save More.</h5>
+                <h6 data-aos="fade-up" data-aos-duration="1500">Unlock limited-time AED savings with our exclusive pre-booking offers.</h6>
+                <div class="input-sec" data-aos="fade-up" data-aos-duration="1700">
+                    <input type="text" class="form-control" placeholder="Enter your email">
+                    <button class="btn">Subscribe Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="blog-sec p60">
+    <div class="container">
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1000">
+            <div class="col-lg-6 mb-3 title-head">
+                <h5>Your Ultimate Travel Guide</h5>
+                <h6>Discover Travel Insights, and Must-visit Destinations</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 owl-carousel blog-scroll owl-theme" data-aos="fade-up" data-aos-duration="1500">
+                <!-- loop area -->
+                 <div class="item">
+                    <div class="box">
+                        <div class="blog-img"><a href="blog-details.html"><img src="{{asset('assets/images/blog-1.jpg')}}" alt=""></a></div>
+                        <div class="content">
+                            <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
+                            <div class="title">
+                                <h6><a href="blog-details.html">It’s That Time Of (December 2022) Desktop Edition</a></h6>
+                            </div>
+                            <a class="b-link" href="blog-details.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- loop area close-->
+                 <!-- loop area -->
+                 <div class="item">
+                    <div class="box">
+                        <div class="blog-img"><a href="blog-details.html"><img src="{{asset('assets/images/blog-2.jpg')}}" alt=""></a></div>
+                        <div class="content">
+                            <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
+                            <div class="title">
+                                <h6><a href="blog-details.html">It’s That Time Of (December 2022) Desktop Edition</a></h6>
+                            </div>
+                            <a class="b-link" href="blog-details.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- loop area close-->
+                 <!-- loop area -->
+                 <div class="item">
+                    <div class="box">
+                        <div class="blog-img"><a href="blog-details.html"><img src="{{asset('assets/images/blog-3.jpg')}}" alt=""></a></div>
+                        <div class="content">
+                            <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
+                            <div class="title">
+                                <h6><a href="blog-details.html">It’s That Time Of (December 2022) Desktop Edition</a></h6>
+                            </div>
+                            <a class="b-link" href="blog-details.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- loop area close-->
+            </div>
+        </div>
+    </div>
+</section>
+	@endsection
