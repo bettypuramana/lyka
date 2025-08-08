@@ -18,7 +18,7 @@
                     <div class="carousel-caption">
                         <h1>TRAVELLING AROUND THE WORLD</h1>
                         <p>Smart Travel Solutions for Dream Destinations.</p>
-                        <a href="packages.html">Know More</a>
+                        <a href="{{ route('user.packages') }}">Know More</a>
                     </div>
                     </div>
                     <div class="carousel-item">
@@ -26,7 +26,7 @@
                     <div class="carousel-caption">
                         <h1>TRAVELLING AROUND THE WORLD</h1>
                         <p>Turn Your Bucket List into Bookings.</p>
-                        <a href="packages.html">Know More</a>
+                        <a href="{{ route('user.packages') }}">Know More</a>
                     </div>
                     </div>
                     <div class="carousel-item">
@@ -34,7 +34,7 @@
                     <div class="carousel-caption">
                         <h1>TRAVELLING AROUND THE WORLD</h1>
                         <p>Smart Travel Solutions for Dream Destinations.</p>
-                        <a href="packages.html">Know More</a>
+                        <a href="{{ route('user.packages') }}">Know More</a>
                     </div> 
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                  <div class="item">
                     <div class="box">
                         <div class="destination-img">
-                            <a href="package-details.html"><img src="{{asset('assets/images/destination-img1.jpg')}}" alt=""></a>
+                            <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img1.jpg')}}" alt=""></a>
                         </div>
                         <div class="content-box">
                             <h3>Borobudur Heritage Trail</h3>
@@ -136,7 +136,7 @@
                                     <div class="amount">4,999.00</div>
                                 </div>
                                 <div class="more">
-                                    <a href="package-details.html">View More</a>
+                                    <a href="{{ route('user.package_details') }}">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +147,7 @@
                  <div class="item">
                     <div class="box">
                         <div class="destination-img">
-                            <a href="package-details.html"><img src="{{asset('assets/images/destination-img2.jpg')}}" alt=""></a>
+                            <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img2.jpg')}}" alt=""></a>
                         </div>
                         <div class="content-box">
                             <h3>Borobudur Heritage Trail</h3>
@@ -159,7 +159,7 @@
                                     <div class="amount">4,999.00</div>
                                 </div>
                                 <div class="more">
-                                    <a href="package-details.html">View More</a>
+                                    <a href="{{ route('user.package_details') }}">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                  <div class="item">
                     <div class="box">
                         <div class="destination-img">
-                            <a href="package-details.html"><img src="{{asset('assets/images/destination-img3.jpg')}}" alt=""></a>
+                            <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img3.jpg')}}" alt=""></a>
                         </div>
                         <div class="content-box">
                             <h3>Borobudur Heritage Trail</h3>
@@ -182,7 +182,7 @@
                                     <div class="amount">4,999.00</div>
                                 </div>
                                 <div class="more">
-                                    <a href="package-details.html">View More</a>
+                                    <a href="{{ route('user.package_details') }}">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +191,7 @@
                 <!-- loop section close-->
             </div>
             <div class="col-lg-12 d-flex justify-content-center">
-                <a class="link" href="packages.html">Explore More</a>
+                <a class="link" href="{{ route('user.packages') }}">Explore More</a>
             </div>
         </div>
     </div>
@@ -208,7 +208,7 @@
                 <!-- loop area -->
                 <div class="item">
                     <div class="box">
-                        <a href="visa-details.html">
+                        <a href="{{ route('user.visa_details') }}">
                             <div class="visa-location">
                             <img src="assets/images/usa-visa.jpg')}}" alt="">
                             </div>
@@ -225,7 +225,7 @@
                 <!-- loop area -->
                 <div class="item">
                     <div class="box">
-                        <a href="visa-details.html">
+                        <a href="{{ route('user.visa_details') }}">
                             <div class="visa-location">
                             <img src="{{asset('assets/images/uk-visa.jpg')}}" alt="">
                             </div>
@@ -242,7 +242,7 @@
                 <!-- loop area -->
                 <div class="item">
                     <div class="box">
-                        <a href="visa-details.html">
+                        <a href="{{ route('user.visa_details') }}">
                             <div class="visa-location">
                             <img src="{{asset('assets/images/canada-visa.jpg')}}" alt="">
                             </div>
@@ -259,7 +259,7 @@
                 <!-- loop area -->
                 <div class="item">
                     <div class="box">
-                        <a href="visa-details.html">
+                        <a href="{{ route('user.visa_details') }}">
                             <div class="visa-location">
                             <img src="{{asset('assets/images/australia-visa.jpg')}}" alt="">
                             </div>
@@ -275,7 +275,7 @@
                 <!-- loop area close -->
             </div>
             <div class="col-lg-12 d-flex justify-content-center">
-                <a class="link" href="visa.html">View all visa services</a>
+                <a class="link" href="{{ route('user.visa') }}">View all visa services</a>
             </div>
         </div>
     </div>
@@ -392,7 +392,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 mt-3 d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
-                <a class="link" href="gallery.html">View Gallery</a>
+                <a class="link" href="{{ route('user.gallery') }}">View Gallery</a>
             </div>
         </div>
     </div>
@@ -509,13 +509,13 @@
                 <!-- loop area -->
                  <div class="item">
                     <div class="box">
-                        <div class="blog-img"><a href="blog-details.html"><img src="{{asset('assets/images/blog-1.jpg')}}" alt=""></a></div>
+                        <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-1.jpg')}}" alt=""></a></div>
                         <div class="content">
                             <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
                             <div class="title">
-                                <h6><a href="blog-details.html">It’s That Time Of (December 2022) Desktop Edition</a></h6>
+                                <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
                             </div>
-                            <a class="b-link" href="blog-details.html">Read More</a>
+                            <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -523,13 +523,13 @@
                  <!-- loop area -->
                  <div class="item">
                     <div class="box">
-                        <div class="blog-img"><a href="blog-details.html"><img src="{{asset('assets/images/blog-2.jpg')}}" alt=""></a></div>
+                        <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-2.jpg')}}" alt=""></a></div>
                         <div class="content">
                             <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
                             <div class="title">
-                                <h6><a href="blog-details.html">It’s That Time Of (December 2022) Desktop Edition</a></h6>
+                                <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
                             </div>
-                            <a class="b-link" href="blog-details.html">Read More</a>
+                            <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -537,13 +537,13 @@
                  <!-- loop area -->
                  <div class="item">
                     <div class="box">
-                        <div class="blog-img"><a href="blog-details.html"><img src="{{asset('assets/images/blog-3.jpg')}}" alt=""></a></div>
+                        <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-3.jpg')}}" alt=""></a></div>
                         <div class="content">
                             <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
                             <div class="title">
-                                <h6><a href="blog-details.html">It’s That Time Of (December 2022) Desktop Edition</a></h6>
+                                <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
                             </div>
-                            <a class="b-link" href="blog-details.html">Read More</a>
+                            <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
                         </div>
                     </div>
                 </div>

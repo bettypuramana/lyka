@@ -8,7 +8,7 @@
                         <h1>Visa</h1>
                         <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Visa</li>
                         </ol>
                     </div>
@@ -37,7 +37,7 @@
             <!-- loop area -->
             <div class="col-lg-3 col-md-4 mb-3">
                 <div class="box">
-                    <a href="visa-details.html">
+                    <a href="{{ route('user.visa_details') }}">
                         <div class="visa-location">
                             <img src="{{asset('assets/images/usa-visa.jpg')}}" alt="">
                         </div>
@@ -54,7 +54,7 @@
              <!-- loop area -->
             <div class="col-lg-3 col-md-4 mb-3">
                 <div class="box">
-                    <a href="visa-details.html">
+                    <a href="{{ route('user.visa_details') }}">
                         <div class="visa-location">
                             <img src="{{asset('assets/images/uk-visa.jpg')}}" alt="">
                         </div>
@@ -71,7 +71,7 @@
              <!-- loop area -->
             <div class="col-lg-3 col-md-4 mb-3">
                 <div class="box">
-                    <a href="visa-details.html">
+                    <a href="{{ route('user.visa_details') }}">
                         <div class="visa-location">
                             <img src="{{asset('assets/images/canada-visa.jpg')}}" alt="">
                         </div>
@@ -88,7 +88,7 @@
              <!-- loop area -->
             <div class="col-lg-3 col-md-4 mb-3">
                 <div class="box">
-                    <a href="visa-details.html">
+                    <a href="{{ route('user.visa_details') }}">
                         <div class="visa-location">
                             <img src="{{asset('assets/images/australia-visa.jpg')}}" alt="">
                         </div>
@@ -105,7 +105,7 @@
              <!-- loop area -->
             <div class="col-lg-3 col-md-4 mb-3">
                 <div class="box">
-                    <a href="visa-details.html">
+                    <a href="{{ route('user.visa_details') }}">
                         <div class="visa-location">
                             <img src="{{asset('assets/images/uae-visa.jpg')}}" alt="">
                         </div>
@@ -122,7 +122,7 @@
              <!-- loop area -->
             <div class="col-lg-3 col-md-4 mb-3">
                 <div class="box">
-                    <a href="visa-details.html">
+                    <a href="{{ route('user.visa_details') }}">
                         <div class="visa-location">
                             <img src="{{asset('assets/images/singapore-visa.jpg')}}" alt="">
                         </div>
@@ -139,7 +139,7 @@
               <!-- loop area -->
             <div class="col-lg-3 col-md-4 mb-3">
                 <div class="box">
-                    <a href="visa-details.html">
+                    <a href="{{ route('user.visa_details') }}">
                         <div class="visa-location">
                             <img src="{{asset('assets/images/turkey-visa.jpg')}}" alt="">
                         </div>
@@ -156,7 +156,7 @@
               <!-- loop area -->
             <div class="col-lg-3 col-md-4 mb-3">
                 <div class="box">
-                    <a href="visa-details.html">
+                    <a href="{{ route('user.visa_details') }}">
                         <div class="visa-location">
                             <img src="{{asset('assets/images/kenya-visa.jpg')}}" alt="">
                         </div>
