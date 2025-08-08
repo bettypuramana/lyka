@@ -8,7 +8,7 @@
                         <h1 data-aos="fade-up" data-aos-duration="1000">Gallery</h1>
                         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-duration="1500">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Gallery</li>
                         </ol>
                     </div>

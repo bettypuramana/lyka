@@ -8,7 +8,7 @@
                         <h1 data-aos="fade-up" data-aos-duration="1000">Packages</h1>
                         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-duration="1500">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Packages</li>
                         </ol>
                     </div>
@@ -51,7 +51,7 @@
              <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1000">
                 <div class="box">
                     <div class="destination-img">
-                        <a href="package-details.html"><img src="{{asset('assets/images/destination-img1.jpg')}}" alt=""></a>
+                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img1.jpg')}}" alt=""></a>
                     </div>
                     <div class="content-box">
                         <h3>Borobudur Heritage Trail</h3>
@@ -63,7 +63,7 @@
                                 <div class="amount">4,999.00</div>
                             </div>
                             <div class="more">
-                                <a href="package-details.html">View More</a>
+                                <a href="{{ route('user.package_details') }}">View More</a>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
              <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1500">
                 <div class="box">
                     <div class="destination-img">
-                        <a href="package-details.html"><img src="{{asset('assets/images/destination-img2.jpg')}}" alt=""></a>
+                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img2.jpg')}}" alt=""></a>
                     </div>
                     <div class="content-box">
                         <h3>Borobudur Heritage Trail</h3>
@@ -86,7 +86,7 @@
                                 <div class="amount">4,999.00</div>
                             </div>
                             <div class="more">
-                                <a href="package-details.html">View More</a>
+                                <a href="{{ route('user.package_details') }}">View More</a>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
              <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1800">
                 <div class="box">
                     <div class="destination-img">
-                        <a href="package-details.html"><img src="{{asset('assets/images/destination-img3.jpg')}}" alt=""></a>
+                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img3.jpg')}}" alt=""></a>
                     </div>
                     <div class="content-box">
                         <h3>Borobudur Heritage Trail</h3>
@@ -109,7 +109,7 @@
                                 <div class="amount">4,999.00</div>
                             </div>
                             <div class="more">
-                                <a href="package-details.html">View More</a>
+                                <a href="{{ route('user.package_details') }}">View More</a>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
              <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1000">
                 <div class="box">
                     <div class="destination-img">
-                        <a href="package-details.html"><img src="{{asset('assets/images/destination-img4.jpg')}}" alt=""></a>
+                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img4.jpg')}}" alt=""></a>
                     </div>
                     <div class="content-box">
                         <h3>Borobudur Heritage Trail</h3>
@@ -132,7 +132,7 @@
                                 <div class="amount">4,999.00</div>
                             </div>
                             <div class="more">
-                                <a href="package-details.html">View More</a>
+                                <a href="{{ route('user.package_details') }}">View More</a>
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
              <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1500">
                 <div class="box">
                     <div class="destination-img">
-                        <a href="package-details.html"><img src="{{asset('assets/images/destination-img5.jpg')}}" alt=""></a>
+                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img5.jpg')}}" alt=""></a>
                     </div>
                     <div class="content-box">
                         <h3>Borobudur Heritage Trail</h3>
@@ -155,7 +155,7 @@
                                 <div class="amount">4,999.00</div>
                             </div>
                             <div class="more">
-                                <a href="package-details.html">View More</a>
+                                <a href="{{ route('user.package_details') }}">View More</a>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
              <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1800">
                 <div class="box">
                     <div class="destination-img">
-                        <a href="package-details.html"><img src="{{asset('assets/images/destination-img6.jpg')}}" alt=""></a>
+                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img6.jpg')}}" alt=""></a>
                     </div>
                     <div class="content-box">
                         <h3>Borobudur Heritage Trail</h3>
@@ -178,7 +178,7 @@
                                 <div class="amount">4,999.00</div>
                             </div>
                             <div class="more">
-                                <a href="package-details.html">View More</a>
+                                <a href="{{ route('user.package_details') }}">View More</a>
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
              <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1000">
                 <div class="box">
                     <div class="destination-img">
-                        <a href="package-details.html"><img src="{{asset('assets/images/destination-img7.jpg')}}" alt=""></a>
+                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img7.jpg')}}" alt=""></a>
                     </div>
                     <div class="content-box">
                         <h3>Borobudur Heritage Trail</h3>
@@ -201,7 +201,7 @@
                                 <div class="amount">4,999.00</div>
                             </div>
                             <div class="more">
-                                <a href="package-details.html">View More</a>
+                                <a href="{{ route('user.package_details') }}">View More</a>
                             </div>
                         </div>
                     </div>
@@ -212,7 +212,7 @@
              <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1500">
                 <div class="box">
                     <div class="destination-img">
-                        <a href="package-details.html"><img src="{{asset('assets/images/destination-img8.jpg')}}" alt=""></a>
+                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img8.jpg')}}" alt=""></a>
                     </div>
                     <div class="content-box">
                         <h3>Borobudur Heritage Trail</h3>
@@ -224,7 +224,7 @@
                                 <div class="amount">4,999.00</div>
                             </div>
                             <div class="more">
-                                <a href="package-details.html">View More</a>
+                                <a href="{{ route('user.package_details') }}">View More</a>
                             </div>
                         </div>
                     </div>
@@ -235,7 +235,7 @@
              <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1800">
                 <div class="box">
                     <div class="destination-img">
-                        <a href="package-details.html"><img src="{{asset('assets/images/destination-img9.jpg')}}" alt=""></a>
+                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img9.jpg')}}" alt=""></a>
                     </div>
                     <div class="content-box">
                         <h3>Borobudur Heritage Trail</h3>
@@ -247,7 +247,7 @@
                                 <div class="amount">4,999.00</div>
                             </div>
                             <div class="more">
-                                <a href="package-details.html">View More</a>
+                                <a href="{{ route('user.package_details') }}">View More</a>
                             </div>
                         </div>
                     </div>
