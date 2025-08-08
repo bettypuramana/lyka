@@ -1,110 +1,104 @@
 @extends('layouts.user.user_layout')
 @section('title', 'Lyka | Explore The Unseen')
 @section('content')
- <section class="banner-area">
+        <section class="banner-area">
             <div class="container">
                 <div id="demo" class="carousel slide" data-bs-ride="carousel">
-                <!-- Indicators/dots -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-                </div>
-                
-                <!-- The slideshow/carousel -->
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="{{asset('assets/images/slider-img1.jpg')}}" alt="" class="d-block" style="width:100%">
-                    <div class="carousel-caption">
-                        <h1>TRAVELLING AROUND THE WORLD</h1>
-                        <p>Smart Travel Solutions for Dream Destinations.</p>
-                        <a href="{{ route('user.packages') }}">Know More</a>
+                    <!-- Indicators/dots -->
+                    <div class="carousel-indicators">
+                        @foreach ($banners as $index => $banner)
+                            <button type="button" data-bs-target="#demo" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></button>
+                        @endforeach
                     </div>
+
+                    <!-- The slideshow/carousel -->
+                    <div class="carousel-inner">
+                        @foreach ($banners as $index => $banner)
+                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                <img src="{{ asset('uploads/banners/' . $banner->image) }}" alt="{{ $banner->title }}" class="d-block" style="width:100%">
+                                <div class="carousel-caption">
+                                    <h1>{{ $banner->title }}</h1>
+                                    <p>{{ $banner->subtitle }}</p>
+                                    <a href="{{ route('user.packages') }}">Know More</a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="carousel-item">
-                    <img src="{{asset('assets/images/slider-img2.jpg')}}" alt="" class="d-block" style="width:100%">
-                    <div class="carousel-caption">
-                        <h1>TRAVELLING AROUND THE WORLD</h1>
-                        <p>Turn Your Bucket List into Bookings.</p>
-                        <a href="{{ route('user.packages') }}">Know More</a>
-                    </div>
-                    </div>
-                    <div class="carousel-item">
-                    <img src="{{asset('assets/images/slider-img3.jpg')}}" alt="" class="d-block" style="width:100%">
-                    <div class="carousel-caption">
-                        <h1>TRAVELLING AROUND THE WORLD</h1>
-                        <p>Smart Travel Solutions for Dream Destinations.</p>
-                        <a href="{{ route('user.packages') }}">Know More</a>
-                    </div> 
-                    </div>
-                </div>
-                
-                <!-- Left and right controls/icons -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
+
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
                 </div>
             </div>
         </section>
+
         <section class="form-sec" data-aos="fade-up" data-aos-duration="1000">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="form-box">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 mb-3">
-                                    <select name="" id="" class="form-control destinations1">
-                                        <option selected disabled value="">Destinations</option>
-                                        <option value="">Abu Dhabi</option>
-                                        <option value="">Mexico</option>
-                                        <option value="">France</option>
-                                        <option value="">Italy</option>
-                                        <option value="">Spain</option>
-                                        <option value="">Germany</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-4 col-md-6 mb-3">
-                                    <!-- <select name="" id="" class="form-control passenger">
-                                        <option selected disabled value="">Passenger</option>
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                        <option value="">4</option>
-                                        <option value="">5</option>
-                                    </select> -->
-                                    <div class="input-group plus-minus-input form-control passenger">
-                                        <div>Passenger</div>
-                                        <div class="count">
+                            <form action="{{ route('user.store_enquiry') }}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 mb-3">
+                                        <select name="destination" id="destination" class="form-control destinations1">
+                                            <option selected disabled value="">Destinations</option>
+                                            @foreach($countries as $country)
+                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('destination')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 mb-3">
+                                        <div class="input-group plus-minus-input form-control passenger">
+                                            <div>Passenger</div>
+                                            <div class="count">
+                                                <div class="input-group-button">
+                                                <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity">
+                                                <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            <input class="input-group-field " type="number" name="quantity" value="0">
                                             <div class="input-group-button">
-                                            <button type="button" class="button hollow circle" data-quantity="minus" data-field="quantity">
-                                            <i class="fa fa-minus" aria-hidden="true"></i>
-                                            </button>
+                                                <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                            </div>
                                         </div>
-                                        <input class="input-group-field " type="number" name="quantity" value="0">
-                                        <div class="input-group-button">
-                                            <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity">
-                                            <i class="fa fa-plus" aria-hidden="true"></i>
-                                            </button>
-                                        </div>
-                                        </div>
+                                        @error('quantity')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 mb-3">
+                                        <input type="text" class="form-control date"  name="travel_date" id="datepicker" placeholder="Travel Date">
+                                        @error('travel_date')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 mb-3">
+                                        <input type="text" class="form-control user" name="name" id="" placeholder="Name">
+                                        @error('name')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 mb-3">
+                                        <input type="text" class="form-control phone" name="phone" id="" placeholder="Phone Number">
+                                        @error('phone')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <button type="submit" class="form-control form-btn">SEND Enquiry <img src="{{asset('assets/images/button-arrow.svg')}}" alt=""></button>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 mb-3">
-                                    <input type="text" class="form-control date" id="datepicker" placeholder="Travel Date">
-                                </div>
-                                <div class="col-lg-4 col-md-6 mb-3">
-                                    <input type="text" class="form-control user" id="" placeholder="Name">
-                                </div>
-                                <div class="col-lg-4 col-md-6 mb-3">
-                                    <input type="text" class="form-control phone" id="" placeholder="Phone Number">
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <button class="form-control form-btn">SEND Enquiry <img src="{{asset('assets/images/button-arrow.svg')}}" alt=""></button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -488,15 +482,18 @@
                 <h5 data-aos="fade-up" data-aos-duration="1000">Book Early. Save More.</h5>
                 <h6 data-aos="fade-up" data-aos-duration="1500">Unlock limited-time AED savings with our exclusive pre-booking offers.</h6>
                 <div class="input-sec" data-aos="fade-up" data-aos-duration="1700">
-                    <input type="text" class="form-control" placeholder="Enter your email">
-                    <button class="btn">Subscribe Now</button>
+                    <form action="{{ route('user.subscribe') }}" method="POST">
+                        @csrf
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        <button  type="submit" class="btn">Subscribe Now</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="blog-sec p60">
+<section class="blog-sec p60"> 
     <div class="container">
         <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1000">
             <div class="col-lg-6 mb-3 title-head">
@@ -506,50 +503,48 @@
         </div>
         <div class="row">
             <div class="col-lg-12 owl-carousel blog-scroll owl-theme" data-aos="fade-up" data-aos-duration="1500">
-                <!-- loop area -->
-                 <div class="item">
+                @foreach($blogs as $blog)
+                <div class="item">
                     <div class="box">
-                        <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-1.jpg')}}" alt=""></a></div>
+                        <div class="blog-img">
+                            <a href="{{ route('user.blog_details', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
+                                <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt="">
+                            </a>
+                        </div>
                         <div class="content">
-                            <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
+                            <h4>
+                                <span>{{ \Carbon\Carbon::parse($blog->published_at)->format('d M Y') }}</span> |
+                                <span>{{ $blog->tags ?? '' }}</span>
+                            </h4>
                             <div class="title">
-                                <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
+                                <h6>
+                                    <a href="{{ route('user.blog_details', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
+                                        {{ $blog->short_description }}
+                                    </a>
+                                </h6>
                             </div>
-                            <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
+                            <a class="b-link" href="{{ route('user.blog_details', ['id' => $blog->id, 'slug' => $blog->slug]) }}">Read More</a>
                         </div>
                     </div>
                 </div>
-                <!-- loop area close-->
-                 <!-- loop area -->
-                 <div class="item">
-                    <div class="box">
-                        <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-2.jpg')}}" alt=""></a></div>
-                        <div class="content">
-                            <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
-                            <div class="title">
-                                <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
-                            </div>
-                            <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- loop area close-->
-                 <!-- loop area -->
-                 <div class="item">
-                    <div class="box">
-                        <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-3.jpg')}}" alt=""></a></div>
-                        <div class="content">
-                            <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
-                            <div class="title">
-                                <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
-                            </div>
-                            <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- loop area close-->
+                @endforeach
             </div>
         </div>
     </div>
 </section>
-	@endsection
+@endsection
+@section('js')
+    @if(session('enquiry_success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Submitted!',
+                    text: 'submitted successfully.',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
+    
+@endsection 
