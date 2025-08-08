@@ -3,7 +3,7 @@
 @section('content')
 <section class="inner-banner-area">
             <div class="container">
-                <div class="inner-banner" style="background-image: url(assets/images/visa-banner.png);">
+                <div class="inner-banner" style="background-image: url({{ asset('assets/images/visa-banner.png') }});">
                     <div class="inner-body">
                         <h1>Visa Details</h1>
                         <nav aria-label="breadcrumb">
