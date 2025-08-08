@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Banner; 
 use App\Models\Country;
+use App\Models\Subscription;
 use App\Models\Enquiry;
 use App\Models\Blog;
 use Illuminate\Http\Request;
@@ -97,5 +98,25 @@ class UserController extends Controller
             return redirect()->back()->with('fail', 'Looks like an error please try again later!');
         }
         
+    }
+    public function store_subscription(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => 'required|email|unique:subscriptions,email',
+        ], [
+            'email.required' => 'This field is required',
+            'email.email' => 'Please enter a valid email address',
+            'email.unique' => 'This email is already subscribed',
+        ]);
+
+        // Save email
+        $subscription = new Subscription;
+        $subscription->email = $request->email;
+
+        if ($subscription->save()) {
+            return redirect()->route('user.home')->with('enquiry_success', true);
+        } else {
+            return redirect()->back()->with('fail', 'Something went wrong, please try again later!');
+        }
     }
 }

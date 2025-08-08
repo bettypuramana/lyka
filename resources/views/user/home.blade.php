@@ -482,8 +482,11 @@
                 <h5 data-aos="fade-up" data-aos-duration="1000">Book Early. Save More.</h5>
                 <h6 data-aos="fade-up" data-aos-duration="1500">Unlock limited-time AED savings with our exclusive pre-booking offers.</h6>
                 <div class="input-sec" data-aos="fade-up" data-aos-duration="1700">
-                    <input type="text" class="form-control" placeholder="Enter your email">
-                    <button class="btn">Subscribe Now</button>
+                    <form action="{{ route('user.subscribe') }}" method="POST">
+                        @csrf
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        <button  type="submit" class="btn">Subscribe Now</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -536,8 +539,8 @@
             document.addEventListener('DOMContentLoaded', function () {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Enquiry Submitted!',
-                    text: 'Your enquiry has been submitted successfully.',
+                    title: 'Submitted!',
+                    text: 'submitted successfully.',
                     confirmButtonText: 'OK'
                 });
             });

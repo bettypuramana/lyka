@@ -32,6 +32,8 @@ Route::get('/visa', [App\Http\Controllers\UserController::class, 'visa'])->name(
 Route::get('/visa-details', [App\Http\Controllers\UserController::class, 'visa_details'])->name('user.visa_details');
 //Store Enquiry
 Route::post('/store_enquiry', [App\Http\Controllers\UserController::class, 'store_enquiry'])->name('user.store_enquiry');
+Route::post('/subscribe', [App\Http\Controllers\UserController::class, 'store_subscription'])->name('user.subscribe');
+
 
 // admin
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
