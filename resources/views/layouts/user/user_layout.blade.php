@@ -21,6 +21,12 @@
     <link rel="stylesheet" href="{{asset('assets/css/jquery-ui.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
     @yield('css')
+    <style>
+        .swal2-select{
+            display:none;
+        }
+    </style>
+    
 </head>
 <body>
 <!-- navigation menu -->
@@ -162,6 +168,7 @@
         <img src="{{asset('assets/images/whatsapp-icon.svg')}}" alt="">
         <div class="wave"></div>
     </a>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
