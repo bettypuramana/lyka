@@ -23,11 +23,11 @@
                       </div>
                       <div class="form-group col-3">
                         <label for="exampleSelectGender">Price</label>
-                        <input type="text" class="form-control" name="price">
+                        <input type="number" class="form-control" name="price">
                       </div>
                       <div class="form-group col-3">
                         <label for="exampleSelectGender">Group Size</label>
-                        <input type="text" class="form-control" name="group_size">
+                        <input type="number" class="form-control" name="group_size">
                       </div>
                       <div class="form-group col-4">
                         <label for="exampleInputName1">Continent</label>
@@ -235,6 +235,7 @@ function addInputColum(type) {
             <div class="row">
             <div class="form-group col-11">
                 <input type="text" class="form-control" name="${inputName}">
+                <input type="hidden" name="titile_type" value="${type}">
             </div>
             <div class="form-group col-1">
                 <a href="javascript:void(0)" onclick="removeInputColum(this);" class="text-danger p-4" title="Remove">
