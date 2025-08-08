@@ -199,74 +199,23 @@
                 <p>From Paperwork to Passport - We've Got It Covered.</p>
             </div>
             <div class="col-lg-12 mb-3 owl-carousel visa-scroll owl-theme">
-                <!-- loop area -->
-                <div class="item">
-                    <div class="box">
-                        <a href="{{ route('user.visa_details') }}">
-                            <div class="visa-location">
-                            <img src="assets/images/usa-visa.jpg')}}" alt="">
-                            </div>
-                            <div class="content">
-                                <div class="map">
-                                    <img src="{{asset('assets/images/flag-img1.jpg')}}" alt="">
+                @foreach ($visas as $visa)
+                    <div class="item">
+                        <div class="box">
+                            <a href="{{ route('user.visa_details', $visa->id) }}">
+                                <div class="visa-location">
+                                    <img src="{{ asset('uploads/visa/' . $visa->image) }}" alt="{{ $visa->title }}">
                                 </div>
-                                <h4>USA Visa</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- loop area close -->
-                <!-- loop area -->
-                <div class="item">
-                    <div class="box">
-                        <a href="{{ route('user.visa_details') }}">
-                            <div class="visa-location">
-                            <img src="{{asset('assets/images/uk-visa.jpg')}}" alt="">
-                            </div>
-                            <div class="content">
-                                <div class="map">
-                                    <img src="{{asset('assets/images/flag-img2.jpg')}}" alt="">
+                                <div class="content">
+                                    <div class="map">
+                                        <img src="{{ asset('uploads/visa/flags/' . $visa->flag) }}" alt="{{ $visa->title }} Flag">
+                                    </div>
+                                    <h4>{{ $visa->title }}</h4>
                                 </div>
-                                <h4>UK Visa</h4>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <!-- loop area close -->
-                <!-- loop area -->
-                <div class="item">
-                    <div class="box">
-                        <a href="{{ route('user.visa_details') }}">
-                            <div class="visa-location">
-                            <img src="{{asset('assets/images/canada-visa.jpg')}}" alt="">
-                            </div>
-                            <div class="content">
-                                <div class="map">
-                                    <img src="{{asset('assets/images/flag-img3.jpg')}}" alt="">
-                                </div>
-                                <h4>Canada Visa</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- loop area close -->
-                <!-- loop area -->
-                <div class="item">
-                    <div class="box">
-                        <a href="{{ route('user.visa_details') }}">
-                            <div class="visa-location">
-                            <img src="{{asset('assets/images/australia-visa.jpg')}}" alt="">
-                            </div>
-                            <div class="content">
-                                <div class="map">
-                                    <img src="{{asset('assets/images/flag-img4.jpg')}}" alt="">
-                                </div>
-                                <h4>Australia Visa</h4>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- loop area close -->
+                @endforeach
             </div>
             <div class="col-lg-12 d-flex justify-content-center">
                 <a class="link" href="{{ route('user.visa') }}">View all visa services</a>

@@ -7,6 +7,8 @@ use App\Models\Country;
 use App\Models\Subscription;
 use App\Models\Enquiry;
 use App\Models\Blog;
+use App\Models\Visa;
+use DB;
 use Illuminate\Http\Request;
 class UserController extends Controller
 {
@@ -15,7 +17,8 @@ class UserController extends Controller
         $banners = Banner::all(); // Fetch all banner records
         $countries = Country::where('status', 1)->get(); // Only active countries
         $blogs = Blog::latest()->take(6)->get(); 
-        return view('user.home', compact('banners','countries','blogs'));
+        $visas = Visa::latest()->get(); 
+        return view('user.home', compact('banners','countries','blogs','visas'));
     }
     public function about()
     {
@@ -57,9 +60,16 @@ class UserController extends Controller
     }
     public function visa()
     {
-        return view('user.visa');
+        $visas = Visa:: get(); // adjust based on your schema
+        $continents = DB::table('continents')
+                    ->join('visas', 'continents.code', '=', 'visas.continent')
+                    ->select('continents.code', 'continents.name')
+                    ->distinct()
+                    ->get();
+
+        return view('user.visa', compact('visas','continents'));
     }
-     public function visa_details()
+     public function visa_details($slug)
     {
         return view('user.visa_details');
     }
