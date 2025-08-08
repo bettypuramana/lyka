@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('user.home');
 Route::get('/about', [App\Http\Controllers\UserController::class, 'about'])->name('user.about');
-Route::get('/blog-details', [App\Http\Controllers\UserController::class, 'blog_details'])->name('user.blog_details');
+Route::get('/blog-details/{id}/{slug}', [App\Http\Controllers\UserController::class, 'blog_details'])->name('user.blog_details');
 Route::get('/blogs', [App\Http\Controllers\UserController::class, 'blogs'])->name('user.blogs');
 Route::get('/contact', [App\Http\Controllers\UserController::class, 'contact'])->name('user.contact');
 Route::get('/gallery', [App\Http\Controllers\UserController::class, 'gallery'])->name('user.gallery');
@@ -30,6 +30,8 @@ Route::get('/privacy-policy', [App\Http\Controllers\UserController::class, 'priv
 Route::get('/terms-and-conditions', [App\Http\Controllers\UserController::class, 'terms_and_conditions'])->name('user.terms_and_conditions');
 Route::get('/visa', [App\Http\Controllers\UserController::class, 'visa'])->name('user.visa');
 Route::get('/visa-details', [App\Http\Controllers\UserController::class, 'visa_details'])->name('user.visa_details');
+//Store Enquiry
+Route::post('/store_enquiry', [App\Http\Controllers\UserController::class, 'store_enquiry'])->name('user.store_enquiry');
 
 // admin
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
