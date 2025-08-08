@@ -27,150 +27,32 @@
                 </div>
                 <div class="filter mb-4">
                     <button class="btn active">All</button>
-                    <button class="btn">Asia</button>
-                    <button class="btn">Europe</button>
-                    <button class="btn">Middle East</button>
+                    @foreach($continents as $continent)
+                        <button class="btn">{{ $continent->name }}</button>
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="row">
-            <!-- loop area -->
-            <div class="col-lg-3 col-md-4 mb-3">
-                <div class="box">
-                    <a href="{{ route('user.visa_details') }}">
-                        <div class="visa-location">
-                            <img src="{{asset('assets/images/usa-visa.jpg')}}" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="map">
-                                <img src="{{asset('assets/images/flag-img1.jpg')}}" alt="">
+            @foreach($visas as $visa)
+                <div class="col-lg-3 col-md-4 mb-3">
+                    <div class="box">
+                        <a href="{{ route('user.visa_details', $visa->slug) }}">
+                            <div class="visa-location">
+                                <img src="{{ asset('uploads/visa/' . $visa->image) }}" alt="{{ $visa->title }}">
                             </div>
-                            <h4>USA Visa</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-            <div class="col-lg-3 col-md-4 mb-3">
-                <div class="box">
-                    <a href="{{ route('user.visa_details') }}">
-                        <div class="visa-location">
-                            <img src="{{asset('assets/images/uk-visa.jpg')}}" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="map">
-                                <img src="{{asset('assets/images/flag-img2.jpg')}}" alt="">
+                            <div class="content">
+                                <div class="map">
+                                    <img src="{{ asset('uploads/visa/flags/' . $visa->flag) }}" alt="{{ $visa->title }} Flag">
+                                </div>
+                                <h4>{{ $visa->title }}</h4>
                             </div>
-                            <h4>UK Visa</h4>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-            <div class="col-lg-3 col-md-4 mb-3">
-                <div class="box">
-                    <a href="{{ route('user.visa_details') }}">
-                        <div class="visa-location">
-                            <img src="{{asset('assets/images/canada-visa.jpg')}}" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="map">
-                                <img src="{{asset('assets/images/flag-img3.jpg')}}" alt="">
-                            </div>
-                            <h4>Canada Visa</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-            <div class="col-lg-3 col-md-4 mb-3">
-                <div class="box">
-                    <a href="{{ route('user.visa_details') }}">
-                        <div class="visa-location">
-                            <img src="{{asset('assets/images/australia-visa.jpg')}}" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="map">
-                                <img src="{{asset('assets/images/flag-img4.jpg')}}" alt="">
-                            </div>
-                            <h4>Australia Visa</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-            <div class="col-lg-3 col-md-4 mb-3">
-                <div class="box">
-                    <a href="{{ route('user.visa_details') }}">
-                        <div class="visa-location">
-                            <img src="{{asset('assets/images/uae-visa.jpg')}}" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="map">
-                                <img src="{{asset('assets/images/flag-img5.jpg')}}" alt="">
-                            </div>
-                            <h4>UAE Visa</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-            <div class="col-lg-3 col-md-4 mb-3">
-                <div class="box">
-                    <a href="{{ route('user.visa_details') }}">
-                        <div class="visa-location">
-                            <img src="{{asset('assets/images/singapore-visa.jpg')}}" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="map">
-                                <img src="{{asset('assets/images/flag-img6.jpg')}}" alt="">
-                            </div>
-                            <h4>Singapore Visa</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- loop area close-->
-              <!-- loop area -->
-            <div class="col-lg-3 col-md-4 mb-3">
-                <div class="box">
-                    <a href="{{ route('user.visa_details') }}">
-                        <div class="visa-location">
-                            <img src="{{asset('assets/images/turkey-visa.jpg')}}" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="map">
-                                <img src="{{asset('assets/images/flag-img7.jpg')}}" alt="">
-                            </div>
-                            <h4>Turkey Visa</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- loop area close-->
-              <!-- loop area -->
-            <div class="col-lg-3 col-md-4 mb-3">
-                <div class="box">
-                    <a href="{{ route('user.visa_details') }}">
-                        <div class="visa-location">
-                            <img src="{{asset('assets/images/kenya-visa.jpg')}}" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="map">
-                                <img src="{{asset('assets/images/flag-img8.jpg')}}" alt="">
-                            </div>
-                            <h4>Kenya Visa</h4>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- loop area close-->
+            @endforeach
         </div>
+
     </div>
 </section>
 
