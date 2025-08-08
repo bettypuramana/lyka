@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('theme/assets/css/vertical-light-layout/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('theme/assets/images/favicon.png')}}" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
   </head>
   <body>
     <div class="container-scroller">
@@ -175,7 +176,7 @@
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.continents')}}">Continents</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.countries')}}">countries</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.countries')}}">Countries</a></li>
                 </ul>
               </div>
             </li>
@@ -286,6 +287,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
     <script src="{{asset('theme/assets/vendors/js/vendor.bundle.base.js')}}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
@@ -308,6 +310,14 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{asset('theme/assets/js/dashboard.js')}}"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <!-- End custom js for this page -->
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    @yield('js')
   </body>
 </html>

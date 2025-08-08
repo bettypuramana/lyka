@@ -15,29 +15,114 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Basic form elements</h4>
-                    <p class="card-description"> Basic form elements </p>
-                    <form class="forms-sample">
-                      <div class="form-group">
-                        <label for="exampleInputName1">Name</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                    <h4 class="card-title">Package Add</h4>
+                    <form class="forms-sample row" action="{{route('admin.package_store')}}" method="post" enctype="multipart/form-data">
+                      <div class="form-group col-6">
+                        <label for="exampleInputName1">Package Title</label>
+                        <input type="text" class="form-control" name="package_title" id="exampleInputName1" placeholder="Package Name">
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail3">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                      <div class="form-group col-3">
+                        <label for="exampleSelectGender">Price</label>
+                        <input type="text" class="form-control" name="price">
                       </div>
-                      <div class="form-group">
-                        <label for="exampleInputPassword4">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
+                      <div class="form-group col-3">
+                        <label for="exampleSelectGender">Group Size</label>
+                        <input type="text" class="form-control" name="group_size">
                       </div>
-                      <div class="form-group">
-                        <label for="exampleSelectGender">Gender</label>
-                        <select class="form-select" id="exampleSelectGender">
-                          <option>Male</option>
-                          <option>Female</option>
+                      <div class="form-group col-4">
+                        <label for="exampleInputName1">Continent</label>
+                        <select class="form-select" name="continent" id="continent">
+                            <option value="">Select</option>
+                            @if ($continents)
+                                @foreach ($continents as $row)
+                                    <option value="{{$row->id}}">{{$row->name}}</option>
+                                @endforeach
+                            @endif
                         </select>
                       </div>
+                      <div class="form-group col-4">
+                        <label for="exampleInputName1">Country</label>
+                        <select class="form-select" name="country" id="country">
+                            <option value="">Select</option>
+                            @if ($countries)
+                                @foreach ($countries as $row)
+                                    <option value="{{$row->id}}">{{$row->name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                      </div>
+
+                      <div class="form-group col-4">
+                        <label for="exampleSelectGender">Tour Type</label>
+                        <select class="form-select" id="exampleSelectGender" name="tour_type">
+                            <option value="">Select</option>
+                             @if ($tour_types)
+                                @foreach ($tour_types as $row)
+                                    <option value="{{$row->id}}">{{$row->type}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                      </div>
+                      <div class="form-group col-4">
+                        <label for="exampleSelectGender">Duration ( Days )</label>
+                        <select class="form-select" id="Duration" name="duration" onchange="addTourPlan();">
+                            <option value="">Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-4">
+                        <label for="exampleSelectGender">Main Image</label>
+                        <input type="file" class="form-control" name="main_image">
+                      </div>
+                      <div class="form-group col-4">
+                        <label for="exampleSelectGender">Images</label>
+                        <input type="file" class="form-control" name="images[]" multiple >
+                      </div>
                       <div class="form-group">
+                        <label for="exampleTextarea1">About</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="about"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <b>Tour Plan</b>
+                      </div>
+                      <div id="tourPlanDiv" class="row">
+
+                      </div>
+
+                      <div class="form-group">
+                        <b>Trip Highlights</b>
+                        <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addInputColum('highlights');"></a>
+                      </div>
+                      <div id="tripHighlightsDiv" >
+
+                      </div>
+
+                      <div class="form-group">
+                        <b>Included</b>
+                        <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addInputColum('included')"></a>
+                      </div>
+                      <div id="includedDiv" >
+
+                      </div>
+
+                      <div class="form-group">
+                        <b>Exclude</b>
+                        <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addInputColum('exclude')"></a>
+                      </div>
+                      <div id="excludedDiv" >
+
+                      </div>
+
+                        {{-- <div class="form-group">
                         <label>File upload</label>
                         <input type="file" name="img[]" class="file-upload-default">
                         <div class="input-group col-xs-12">
@@ -46,17 +131,9 @@
                             <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                           </span>
                         </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputCity1">City</label>
-                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleTextarea1">Textarea</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                      </div>
-                      <button type="submit" class="btn btn-primary me-2">Submit</button>
-                      <button class="btn btn-light">Cancel</button>
+                      </div> --}}
+                      <button type="submit" class="btn btn-success me-2 col-2">Submit</button>
+                      {{-- <button class="btn btn-light">Cancel</button> --}}
                     </form>
                   </div>
                 </div>
@@ -66,4 +143,113 @@
 
 @endsection
 @section('js')
+<script>
+    function addTourPlan(){
+        var duration = document.getElementById("Duration").value;
+        var container = document.getElementById("tourPlanDiv");
+        var existingDays = container.querySelectorAll('input[name="day[]"]').length;
+
+        if (duration < existingDays) {
+        // Remove blocks after duration
+        for (let i = existingDays; i > duration; i--) {
+            // Find the .row containing day input with value i and remove it
+            let toRemove = Array.from(container.querySelectorAll('input[name="day[]"]'))
+                .find(input => parseInt(input.value) === i);
+            if (toRemove) toRemove.closest('.row').remove();
+        }
+        return;
+        }
+
+        for (let day = existingDays + 1; day <= duration; day++) {
+        let html = `
+        <div class="row">
+            <div class="form-group col-1">
+                <label>Day</label>
+                <input type="text" class="form-control" name="day[]" value="${day}" readonly>
+            </div>
+            <div class="form-group col-5">
+                <label>Title</label>
+                <input type="text" class="form-control" name="title[]" placeholder="Enter title">
+            </div>
+            <div class="form-group col-2">
+                <label>Image 1</label>
+                <input type="file" class="form-control" name="image_one[]">
+            </div>
+            <div class="form-group col-2">
+                <label>Image 2</label>
+                <input type="file" class="form-control" name="image_two[]">
+            </div>
+            <div class="form-group col-2">
+                <label>Image 3</label>
+                <input type="file" class="form-control" name="image_three[]">
+            </div>
+            <div class="form-group col-12 ">
+                <label>Description</label>
+                <textarea class="form-control" name="description[]" rows="4" placeholder="Enter description"></textarea>
+            </div><hr>
+        </div>
+        `;
+
+        container.insertAdjacentHTML('beforeend', html);
+    }
+    }
+//     function removeTourPlan(el) {
+//     el.closest('.row').remove();
+
+//     // Optional: If you want to update day numbers after removal:
+//     updateDayNumbers();
+// }
+
+// function updateDayNumbers() {
+//     let days = document.querySelectorAll('#tourPlanDiv .form-group.col-1 input[name="day[]"]');
+//     days.forEach((input, index) => {
+//         input.value = index + 1;
+//     });
+// }
+function addInputColum(type) {
+    let containerId = '';
+    let inputName = '';
+
+    // Determine container div ID and input name based on type
+    switch(type) {
+        case 'highlights':
+            containerId = 'tripHighlightsDiv';
+            inputName = 'highlights[]';
+            break;
+        case 'included':
+            containerId = 'includedDiv';
+            inputName = 'includes[]';
+            break;
+        case 'exclude':
+            containerId = 'excludedDiv';
+            inputName = 'excludes[]';
+            break;
+        default:
+            console.error('Unknown type:', type);
+            return;
+    }
+
+    const container = document.getElementById(containerId);
+
+    const html = `
+            <div class="row">
+            <div class="form-group col-11">
+                <input type="text" class="form-control" name="${inputName}">
+            </div>
+            <div class="form-group col-1">
+                <a href="javascript:void(0)" onclick="removeInputColum(this);" class="text-danger p-4" title="Remove">
+                    <i class="icon-trash"></i>
+                </a>
+            </div>
+            </div>
+    `;
+
+    container.insertAdjacentHTML('beforeend', html);
+}
+
+// Remove specific input row
+function removeInputColum(element) {
+    element.closest('.row').remove();
+}
+</script>
 @endsection
