@@ -36,7 +36,10 @@ Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::
 
 // continents and countries
 Route::get('/admin/continent/list', [App\Http\Controllers\Admin\GeographyController::class, 'continents'])->name('admin.continents');
+Route::get('/admin/continent/change/{code}/{status}', [App\Http\Controllers\Admin\GeographyController::class, 'continent_change_status'])->name('admin.continent_change_status');
+
 Route::get('/admin/country/list', [App\Http\Controllers\Admin\GeographyController::class, 'countries'])->name('admin.countries');
+Route::get('/admin/country/change/{id}/{status}', [App\Http\Controllers\Admin\GeographyController::class, 'country_change_status'])->name('admin.country_change_status');
 
 // packages
 Route::get('/admin/packages/list', [App\Http\Controllers\Admin\PackageController::class, 'index'])->name('admin.packages');
