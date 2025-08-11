@@ -24,7 +24,7 @@ Route::get('/blog-details/{id}/{slug}', [App\Http\Controllers\UserController::cl
 Route::get('/blogs', [App\Http\Controllers\UserController::class, 'blogs'])->name('user.blogs');
 Route::get('/contact', [App\Http\Controllers\UserController::class, 'contact'])->name('user.contact');
 Route::get('/gallery', [App\Http\Controllers\UserController::class, 'gallery'])->name('user.gallery');
-Route::get('/package-details', [App\Http\Controllers\UserController::class, 'package_details'])->name('user.package_details');
+Route::get('/package-details/{id}/{slug}', [App\Http\Controllers\UserController::class, 'package_details'])->name('user.package_details');
 Route::get('/packages', [App\Http\Controllers\UserController::class, 'packages'])->name('user.packages');
 Route::get('/privacy-policy', [App\Http\Controllers\UserController::class, 'privacy_policy'])->name('user.privacy_policy');
 Route::get('/terms-and-conditions', [App\Http\Controllers\UserController::class, 'terms_and_conditions'])->name('user.terms_and_conditions');

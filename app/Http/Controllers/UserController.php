@@ -12,7 +12,13 @@ use App\Models\Visa_document;
 use App\Models\Visa_faq;
 use App\Models\Testimonial;
 use App\Models\Gallery;
+use App\Models\Package;
 use App\Models\ContactEnquiry;
+use App\Models\Continent;
+use App\Models\Package_day_plan;
+use App\Models\Package_more;
+use App\Models\Package_image;
+use App\Models\Tour_type;
 use DB;
 use Illuminate\Http\Request;
 class UserController extends Controller
@@ -27,7 +33,11 @@ class UserController extends Controller
         $galleries = Gallery::orderBy('created_at', 'desc')
                             ->take(5)
                             ->get();
-        return view('user.home', compact('banners','countries','blogs','visas','testimonials','galleries'));
+        $packages = Package::with(['countryName', 'tourType'])
+                       ->orderBy('created_at', 'desc')
+                       ->take(6)
+                       ->get();
+        return view('user.home', compact('banners','countries','blogs','visas','testimonials','galleries','packages'));
     }
     public function about()
     {
@@ -54,14 +64,81 @@ class UserController extends Controller
         $galleries = Gallery::orderBy('created_at', 'desc')->get();
         return view('user.gallery', compact('galleries'));
     }
-    public function package_details()
+   public function package_details($id, $slug)
     {
-        return view('user.package_details');
+        $package = Package::where('id', $id)
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        // Get package images
+        $images = Package_image::where('package_id', $package->id)->pluck('images')->toArray();
+
+        // Merge main image + extra images
+        $allImages = collect([$package->main_image])->merge($images);
+
+        // Get first 3 images for display
+        $displayImages = $allImages->take(3);
+
+        $highlights = Package_more::where('package_id', $package->id)->where('type', 'highlights')->get();
+        $includes = Package_more::where('package_id', $package->id)->where('type', 'includes')->get();
+        $excludes = Package_more::where('package_id', $package->id)->where('type', 'excludes')->get();
+
+        $dayPlans = Package_day_plan::where('package_id', $package->id)
+            ->orderBy('day', 'asc')
+            ->get();
+
+        $country = Country::find($package->country);
+        $continent = Continent::find($package->continent);
+        $tourType = Tour_type::find($package->tour_type);
+$countries = Country::where('status', 1)->get(); 
+        return view('user.package_details', compact(
+            'package',
+            'images',        // still available if needed
+            'allImages',     // for Fancybox
+            'displayImages', // for showing the first 3
+            'highlights',
+            'includes',
+            'excludes',
+            'dayPlans',
+            'country',
+            'tourType',
+            'continent',
+            'countries'
+        ));
     }
-    public function packages()
+
+
+    public function packages(Request $request)
     {
-        return view('user.packages');
+        // Get distinct continent names
+        $continents = \DB::table('continents')
+            ->select('code', 'name')
+            ->whereIn('code', Package::distinct()->pluck('continent'))
+            ->get();
+
+        // Get distinct tour type names
+        $tourTypes = \DB::table('tour_types')
+            ->select('id', 'type')
+            ->whereIn('id', Package::distinct()->pluck('tour_type'))
+            ->get();
+
+        // Build query with filters
+        $query = Package::query();
+
+        if ($request->continent && $request->continent != 'all') {
+            $query->where('continent_id', $request->continent);
+        }
+
+        if ($request->tour_type) {
+            $query->where('tour_type_id', $request->tour_type);
+        }
+
+        $packages = $query->get();
+
+        return view('user.packages', compact('packages', 'continents', 'tourTypes'));
     }
+
+
     public function privacy_policy()
     {
         return view('user.privacy_policy');
@@ -155,7 +232,9 @@ class UserController extends Controller
         $insertEnquiry->phone=$request->input('phone');
         $save= $insertEnquiry->save();
         if($save){
-            return redirect()->route('user.home')->with('enquiry_success', true);
+            //return redirect()->route('user.home')->with('enquiry_success', true);
+            return redirect()->back()->with('enquiry_success', true)->withInput([]);
+
         }
         else{
             return redirect()->back()->with('fail', 'Looks like an error please try again later!');

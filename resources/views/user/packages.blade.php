@@ -17,7 +17,7 @@
         </section>
 </section>
 
-<section class="package-body p60">
+<section class="package-body p60"> 
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -25,237 +25,105 @@
                     <h2>Explore Popular Tours</h2>
                     <p>Get started with handpicked top rated trips.</p>
                 </div>
+
+                {{-- Filters --}}
                 <div class="filter-sec mb-4">
+                    {{-- Continent Buttons --}}
                     <div class="filter" data-aos="fade-up" data-aos-duration="1500">
-                        <button class="btn active">All</button>
-                        <button class="btn">Asia</button>
-                        <button class="btn">North America</button>
-                        <button class="btn">Europe</button>
-                        <button class="btn">South America</button>
+                        <button class="btn active" data-continent="all">All</button>
+                        @foreach($continents as $continent)
+                            <button class="btn" data-continent="{{ $continent->code }}">
+                                {{ $continent->name }}
+                            </button>
+                        @endforeach
                     </div>
+
+                    {{-- Tour Type Dropdown --}}
                     <div class="tourtype">
-                        <select name="" id="" class="form-control">
-                            <option selected disabled value="">Tour Type</option>
-                            <option value="">Adventure Tour</option>
-                            <option value="">Group Tour</option>
-                            <option value="">Seasonal Tour</option>
-                            <option value="">Relaxation Tour</option>
-                            <option value="">Family Friendly Tour</option>
+                        <select name="tour_type" class="form-control" id="tourTypeSelect">
+                            <option value="">Tour Type</option>
+                            @foreach($tourTypes as $type)
+                                <option value="{{ $type->id }}">{{ ucfirst($type->type) }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
             </div>
         </div>
+
+        {{-- Packages Loop --}}
         <div class="row">
-            <!-- loop area -->
-             <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1000">
-                <div class="box">
-                    <div class="destination-img">
-                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img1.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="content-box">
-                        <h3>Borobudur Heritage Trail</h3>
-                        <p><span>Budapest, Hungary</span></p>
-                        <div class="travel-count">2 Days, 1 Night</div>
-                        <div class="btm-box">
-                            <div class="price">
-                                <p>Start From</p>
-                                <div class="amount">4,999.00</div>
+            <div id="packagesList" class="row">
+                @foreach($packages as $package)
+                    <div class="col-lg-4 col-md-6 mb-3">
+                        <div class="box">
+                            <div class="destination-img">
+                                <a href="{{ route('user.package_details', ['id' => $package->id, 'slug' => $package->slug]) }}">
+                                    <img src="{{ asset('uploads/package/image/' . $package->main_image) }}" alt="{{ $package->title }}">
+                                </a>
                             </div>
-                            <div class="more">
-                                <a href="{{ route('user.package_details') }}">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-             <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1500">
-                <div class="box">
-                    <div class="destination-img">
-                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img2.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="content-box">
-                        <h3>Borobudur Heritage Trail</h3>
-                        <p><span>Budapest, Hungary</span></p>
-                        <div class="travel-count">2 Days, 1 Night</div>
-                        <div class="btm-box">
-                            <div class="price">
-                                <p>Start From</p>
-                                <div class="amount">4,999.00</div>
-                            </div>
-                            <div class="more">
-                                <a href="{{ route('user.package_details') }}">View More</a>
+                            <div class="content-box">
+                                <h3>{{ $package->title }}</h3>
+                                <p><span>{{ $package->location }}</span></p>
+                                <div class="travel-count">{{ $package->duration }}</div>
+                                <div class="btm-box">
+                                    <div class="price">
+                                        <p>Start From</p>
+                                        <div class="amount">{{ number_format($package->price, 2) }}</div>
+                                    </div>
+                                    <div class="more">
+                                        <a href="{{ route('user.package_details', ['id' => $package->id, 'slug' => $package->slug]) }}">View More</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-             <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1800">
-                <div class="box">
-                    <div class="destination-img">
-                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img3.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="content-box">
-                        <h3>Borobudur Heritage Trail</h3>
-                        <p><span>Budapest, Hungary</span></p>
-                        <div class="travel-count">2 Days, 1 Night</div>
-                        <div class="btm-box">
-                            <div class="price">
-                                <p>Start From</p>
-                                <div class="amount">4,999.00</div>
-                            </div>
-                            <div class="more">
-                                <a href="{{ route('user.package_details') }}">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-             <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1000">
-                <div class="box">
-                    <div class="destination-img">
-                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img4.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="content-box">
-                        <h3>Borobudur Heritage Trail</h3>
-                        <p><span>Budapest, Hungary</span></p>
-                        <div class="travel-count">2 Days, 1 Night</div>
-                        <div class="btm-box">
-                            <div class="price">
-                                <p>Start From</p>
-                                <div class="amount">4,999.00</div>
-                            </div>
-                            <div class="more">
-                                <a href="{{ route('user.package_details') }}">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-             <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1500">
-                <div class="box">
-                    <div class="destination-img">
-                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img5.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="content-box">
-                        <h3>Borobudur Heritage Trail</h3>
-                        <p><span>Budapest, Hungary</span></p>
-                        <div class="travel-count">2 Days, 1 Night</div>
-                        <div class="btm-box">
-                            <div class="price">
-                                <p>Start From</p>
-                                <div class="amount">4,999.00</div>
-                            </div>
-                            <div class="more">
-                                <a href="{{ route('user.package_details') }}">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-             <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1800">
-                <div class="box">
-                    <div class="destination-img">
-                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img6.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="content-box">
-                        <h3>Borobudur Heritage Trail</h3>
-                        <p><span>Budapest, Hungary</span></p>
-                        <div class="travel-count">2 Days, 1 Night</div>
-                        <div class="btm-box">
-                            <div class="price">
-                                <p>Start From</p>
-                                <div class="amount">4,999.00</div>
-                            </div>
-                            <div class="more">
-                                <a href="{{ route('user.package_details') }}">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-             <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1000">
-                <div class="box">
-                    <div class="destination-img">
-                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img7.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="content-box">
-                        <h3>Borobudur Heritage Trail</h3>
-                        <p><span>Budapest, Hungary</span></p>
-                        <div class="travel-count">2 Days, 1 Night</div>
-                        <div class="btm-box">
-                            <div class="price">
-                                <p>Start From</p>
-                                <div class="amount">4,999.00</div>
-                            </div>
-                            <div class="more">
-                                <a href="{{ route('user.package_details') }}">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-             <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1500">
-                <div class="box">
-                    <div class="destination-img">
-                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img8.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="content-box">
-                        <h3>Borobudur Heritage Trail</h3>
-                        <p><span>Budapest, Hungary</span></p>
-                        <div class="travel-count">2 Days, 1 Night</div>
-                        <div class="btm-box">
-                            <div class="price">
-                                <p>Start From</p>
-                                <div class="amount">4,999.00</div>
-                            </div>
-                            <div class="more">
-                                <a href="{{ route('user.package_details') }}">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- loop area close-->
-             <!-- loop area -->
-             <div class="col-lg-4 col-md-6 mb-3" data-aos="fade-up" data-aos-duration="1800">
-                <div class="box">
-                    <div class="destination-img">
-                        <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img9.jpg')}}" alt=""></a>
-                    </div>
-                    <div class="content-box">
-                        <h3>Borobudur Heritage Trail</h3>
-                        <p><span>Budapest, Hungary</span></p>
-                        <div class="travel-count">2 Days, 1 Night</div>
-                        <div class="btm-box">
-                            <div class="price">
-                                <p>Start From</p>
-                                <div class="amount">4,999.00</div>
-                            </div>
-                            <div class="more">
-                                <a href="{{ route('user.package_details') }}">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- loop area close-->
         </div>
+
+        {{-- Pagination (optional) --}}
+        {{-- {{ $packages->links() }} --}}
     </div>
 </section>
 
+
+@endsection
+@section('js')
+<script>
+    $(document).ready(function () {
+        let selectedContinent = "all";
+        let selectedTourType = "";
+
+        // Handle continent button click
+        $(".filter button").on("click", function () {
+            $(".filter button").removeClass("active");
+            $(this).addClass("active");
+            selectedContinent = $(this).data("continent");
+            loadPackages();
+        });
+
+        // Handle tour type dropdown change
+        $("#tourTypeSelect").on("change", function () {
+            selectedTourType = $(this).val();
+            loadPackages();
+        });
+
+        // Function to load packages via AJAX
+        function loadPackages() {
+            $.ajax({
+                url: "{{ route('user.packages') }}", // Same route as current page
+                type: "GET",
+                data: {
+                    continent: selectedContinent,
+                    tour_type: selectedTourType,
+                    ajax: 1 // flag for AJAX requests
+                },
+                success: function (data) {
+                    $("#packagesList").html($(data).find("#packagesList").html());
+                }
+            });
+        }
+    });
+</script>
 @endsection
