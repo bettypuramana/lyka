@@ -87,7 +87,7 @@ Route::post('/admin/gallery/store', [App\Http\Controllers\Admin\SiteConfiguratio
 Route::get('/admin/gallery/delete/{id}', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'destroy_gallery'])->name('admin.gallery_delete');
 
 Route::get('/admin/settings', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'settings'])->name('admin.settings');
-Route::get('/admin/settings-update', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'settings_update'])->name('admin.settings_update');
+Route::post('/admin/settings-update/{id}', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'settings_update'])->name('admin.settings_update');
 
 // enquiry
 Route::get('/admin/enquiry/package/list', [App\Http\Controllers\Admin\EnquiryController::class, 'package_enquiries'])->name('admin.package_enquiries');
