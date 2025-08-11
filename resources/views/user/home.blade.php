@@ -349,80 +349,59 @@
                 <p>Real Stories From Happy Adventurers</p>
             </div>
             <div class="col-lg-12 owl-carousel testimonial-scroll owl-theme">
-                <!-- loop area -->
-                 <div class="item">
-                    <div class="box">
-                        <div class="item-box">
-                            <div class="pic"><img src="{{asset('assets/images/test-img1.png')}}" alt=""></div>
-                            <div class="content">
-                                <h5>Brian A. Barnes</h5>
-                                <h6>CEO & Founder</h6>
-                                <p>Sit amet consectetur adipiscing congue pose  habit ante dignissim faucibus tincidunt vulputate ullamcorper mattis quisque esta sidiculus.</p>
+                @foreach($testimonials as $testimonial)
+                    <div class="item">
+                        <div class="box">
+                            <div class="item-box">
+                                <div class="pic">
+                                    <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}" alt="{{ $testimonial->name }}">
+                                </div>
+                                <div class="content">
+                                    <h5>{{ $testimonial->name }}</h5>
+                                    <h6>{{ $testimonial->designation }}</h6>
+                                    <p>{{ Str::limit($testimonial->message, 120) }}</p>
+                                </div>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#testimonial-modal-{{ $testimonial->id }}" class="btn-nav">
+                                    <img src="{{ asset('assets/images/link-arrow.svg') }}" alt="">
+                                </a>
                             </div>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#testimonials-pop1" class="btn-nav"><img src="{{asset('assets/images/link-arrow.svg')}}" alt=""></a>
                         </div>
                     </div>
-                </div>
-                 <!-- loop area close-->
-                  <!-- loop area -->
-                 <div class="item">
-                    <div class="box">
-                        <div class="item-box">
-                            <div class="pic"><img src="{{asset('assets/images/test-img2.png')}}" alt=""></div>
-                            <div class="content">
-                                <h5>Brian A. Barnes</h5>
-                                <h6>CEO & Founder</h6>
-                                <p>Sit amet consectetur adipiscing congue pose  habit ante dignissim faucibus tincidunt vulputate ullamcorper mattis quisque esta sidiculus.</p>
-                            </div>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#testimonials-pop1" class="btn-nav"><img src="{{asset('assets/images/link-arrow.svg')}}" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                 <!-- loop area close-->
-                  <!-- loop area -->
-                 <div class="item">
-                    <div class="box">
-                        <div class="item-box">
-                            <div class="pic"><img src="{{asset('assets/images/test-img3.png')}}" alt=""></div>
-                            <div class="content">
-                                <h5>Brian A. Barnes</h5>
-                                <h6>CEO & Founder</h6>
-                                <p>Sit amet consectetur adipiscing congue pose  habit ante dignissim faucibus tincidunt vulputate ullamcorper mattis quisque esta sidiculus.</p>
-                            </div>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#testimonials-pop1" class="btn-nav"><img src="{{asset('assets/images/link-arrow.svg')}}" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                 <!-- loop area close-->
+                @endforeach
             </div>
         </div>
     </div>
 </section>
-<!-- popup area -->
-            <div class="modal fade" id="testimonials-pop1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+
+<!-- Popup area -->
+@foreach($testimonials as $testimonial)
+    <div class="modal fade" id="testimonial-modal-{{ $testimonial->id }}" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
                 <div class="modal-header">
                     <div class="first">
-                            <div class="pic"><img src="{{asset('assets/images/test-img3.png')}}" alt=""></div>
-                            <div class="content">
-                                <h5>Brian A. Barnes</h5>
-                                <h6>CEO & Founder</h6>
-                            </div>
+                        <div class="pic">
+                            <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}" alt="{{ $testimonial->name }}">
                         </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="content">
+                            <h5>{{ $testimonial->name }}</h5>
+                            <h6>{{ $testimonial->designation }}</h6>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <div class="box-testi">
                         <div class="content-box">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            <p>Sit amet consectetur adipiscing congue pose  habit ante dignissim faucibus tincidunt vulputate ullamcorper mattis quisque esta sidiculus.</p>
+                            {!! nl2br(e($testimonial->message)) !!}
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
-            </div>
+        </div>
+    </div>
+@endforeach
+
     <!-- popup area close-->
 <section class="newsletter-sec" style="background-image: url(assets/images/newsletter-bg.jpg);">
     <div class="container">

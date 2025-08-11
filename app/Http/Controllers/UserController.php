@@ -8,6 +8,7 @@ use App\Models\Subscription;
 use App\Models\Enquiry;
 use App\Models\Blog;
 use App\Models\Visa;
+use App\Models\Testimonial;
 use DB;
 use Illuminate\Http\Request;
 class UserController extends Controller
@@ -18,7 +19,8 @@ class UserController extends Controller
         $countries = Country::where('status', 1)->get(); // Only active countries
         $blogs = Blog::latest()->take(6)->get(); 
         $visas = Visa::latest()->get(); 
-        return view('user.home', compact('banners','countries','blogs','visas'));
+        $testimonials = Testimonial::where('status',1)->latest()->get();
+        return view('user.home', compact('banners','countries','blogs','visas','testimonials'));
     }
     public function about()
     {
