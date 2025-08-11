@@ -19,80 +19,35 @@
 
 <section class="blog-details-body p60">
     <div class="container">
-       <div class="row">
-        <div class="col-lg-4 col-md-6 mb-3">
-        <div class="box">
-            <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-1.jpg')}}" alt=""></a></div>
-            <div class="content">
-                <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
-                <div class="title">
-                    <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
+        <div class="row">
+            @foreach($blogs as $blog)
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="box">
+                        <div class="blog-img">
+                            <a href="{{ route('user.blog_details', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
+                                <img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt="{{ $blog->title }}">
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4>
+                                <span>{{ \Carbon\Carbon::parse($blog->published_at)->format('d M Y') }}</span> |
+                                <span>{{ $blog->tags ?? '' }}</span>
+                            </h4>
+                            <div class="title">
+                                <h6>
+                                    <a href="{{ route('user.blog_details', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
+                                        {{ $blog->short_description }}
+                                    </a>
+                                </h6>
+                            </div>
+                            <a class="b-link" href="{{ route('user.blog_details', ['id' => $blog->id, 'slug' => $blog->slug]) }}">
+                                Read More
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
-            </div>
+            @endforeach
         </div>
-       </div>
-       <div class="col-lg-4 col-md-6 mb-3">
-        <div class="box">
-            <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-2.jpg')}}" alt=""></a></div>
-            <div class="content">
-                <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
-                <div class="title">
-                    <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
-                </div>
-                <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
-            </div>
-        </div>
-       </div>
-       <div class="col-lg-4 col-md-6 mb-3">
-        <div class="box">
-            <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-3.jpg')}}" alt=""></a></div>
-            <div class="content">
-                <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
-                <div class="title">
-                    <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
-                </div>
-                <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
-            </div>
-        </div>
-       </div>
-       <div class="col-lg-4 col-md-6 mb-3">
-        <div class="box">
-            <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-1.jpg')}}" alt=""></a></div>
-            <div class="content">
-                <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
-                <div class="title">
-                    <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
-                </div>
-                <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
-            </div>
-        </div>
-       </div>
-       <div class="col-lg-4 col-md-6 mb-3">
-        <div class="box">
-            <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-2.jpg')}}" alt=""></a></div>
-            <div class="content">
-                <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
-                <div class="title">
-                    <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
-                </div>
-                <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
-            </div>
-        </div>
-       </div>
-       <div class="col-lg-4 col-md-6 mb-3">
-        <div class="box">
-            <div class="blog-img"><a href="{{ route('user.blog_details') }}"><img src="{{asset('assets/images/blog-3.jpg')}}" alt=""></a></div>
-            <div class="content">
-                <h4><span>24 May 2023</span> | <span>Tent Camping</span></h4>
-                <div class="title">
-                    <h6><a href="{{ route('user.blog_details') }}">It’s That Time Of (December 2022) Desktop Edition</a></h6>
-                </div>
-                <a class="b-link" href="{{ route('user.blog_details') }}">Read More</a>
-            </div>
-        </div>
-       </div>
-       </div>
     </div>
 </section>
 

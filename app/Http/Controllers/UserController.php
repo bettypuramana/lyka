@@ -8,6 +8,8 @@ use App\Models\Subscription;
 use App\Models\Enquiry;
 use App\Models\Blog;
 use App\Models\Visa;
+use App\Models\Visa_document;
+use App\Models\Visa_faq;
 use App\Models\Testimonial;
 use DB;
 use Illuminate\Http\Request;
@@ -34,7 +36,8 @@ class UserController extends Controller
 
     public function blogs()
     {
-        return view('user.blogs');
+        $blogs = Blog::orderBy('published_at', 'desc')->get();
+        return view('user.blogs', compact('blogs'));
     }
     public function contact()
     {
@@ -71,9 +74,25 @@ class UserController extends Controller
 
         return view('user.visa', compact('visas','continents'));
     }
+    public function filterVisas($continentCode)
+    {
+        if ($continentCode === 'all') {
+            $visas = Visa::all();
+        } else {
+            $visas = Visa::where('continent', $continentCode)->get();
+        }
+
+        return view('user.partials.visa_list', compact('visas'));
+    }
      public function visa_details($slug)
     {
-        return view('user.visa_details');
+        $visa = Visa::where('slug', $slug)->firstOrFail();
+        $countries = Country::where('status', 1)->get();
+        // Fetch related documents and FAQs
+        $documents = Visa_document::where('visa_id', $visa->id)->get();
+        $faqs = Visa_faq::where('visa_id', $visa->id)->get();
+
+        return view('user.visa_details', compact('visa', 'documents', 'faqs','countries'));
     }
     public function store_enquiry(Request $request)
     {

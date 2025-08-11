@@ -30,6 +30,8 @@ Route::get('/privacy-policy', [App\Http\Controllers\UserController::class, 'priv
 Route::get('/terms-and-conditions', [App\Http\Controllers\UserController::class, 'terms_and_conditions'])->name('user.terms_and_conditions');
 Route::get('/visa', [App\Http\Controllers\UserController::class, 'visa'])->name('user.visa');
 Route::get('/visa-details/{slug}', [App\Http\Controllers\UserController::class, 'visa_details'])->name('user.visa_details');
+Route::get('/visa/filter/{continent}', [App\Http\Controllers\UserController::class, 'filterVisas'])->name('user.visa.filter');
+
 //Store Enquiry
 Route::post('/store_enquiry', [App\Http\Controllers\UserController::class, 'store_enquiry'])->name('user.store_enquiry');
 Route::post('/subscribe', [App\Http\Controllers\UserController::class, 'store_subscription'])->name('user.subscribe');

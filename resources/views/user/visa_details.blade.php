@@ -23,59 +23,40 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="visa-body-content">
-                    <h3>Easily Secure Your US Tourist Visa</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                    <h3>Documents needed for a US tourist</h3>
+                    <h3>Easily Secure Your Tourist Visa</h3>
+                    <p>{{ $visa->description }}</p>
+                    <h3>Documents needed for a tourist</h3>
                     <p>The following documents need to be carried with you on the interview date </p>
                     <ul>
-                        <li>Application form confirmation (DS-160)</li>
-                        <li>Appointment confirmation</li>
-                        <li>NOC from the company/ residence visa sponsor</li>
-                        <li>Original  passport, with residence visa copy and Eid copy</li>
-                        <li>Bank statement for the past 6 months</li>
-                        <li>Invitation letter ( If you are  invited by the company or family or friends)</li>
-                        <li>Passport size photo ( white background)</li>
-                        <li>Trade License for Owners</li>
+                        @foreach($documents as $doc)
+                            <li>{{ $doc->title }}</li>
+                        @endforeach
                     </ul>
                     <h3>FAQs</h3>
                     <div class="faq-sec">
                         <div class="accordion" id="v-tab">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="tab-view1">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tab1" aria-expanded="true" aria-controls="tab1">
-                                1. What documents are required for a South Korean visa from the UAE?
-                            </button>
-                            </h2>
-                            <div id="tab1" class="accordion-collapse collapse show" aria-labelledby="tab-view1" data-bs-parent="#v-tab">
-                            <div class="accordion-body">
-                                <p>Standard requirements include a completed visa application form, passport-sized photos, a valid passport, a flight itinerary, a hotel reservation,employment proof and proof of financial means. However, these requirements may vary based on the type of visa and the applicant’s purpose of travel.</p>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="tab-view2">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab2" aria-expanded="false" aria-controls="tab2">
-                                2. How long does it take to get a Korean visa from the UAE?
-                            </button>
-                            </h2>
-                            <div id="tab2" class="accordion-collapse collapse" aria-labelledby="tab-view2" data-bs-parent="#v-tab">
-                            <div class="accordion-body">
-                                <p>Standard requirements include a completed visa application form, passport-sized photos, a valid passport, a flight itinerary, a hotel reservation,employment proof and proof of financial means. However, these requirements may vary based on the type of visa and the applicant’s purpose of travel.</p>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="tab-view3">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tab3" aria-expanded="false" aria-controls="tab2">
-                                3. Can I apply for a South Korean visa online?
-                            </button>
-                            </h2>
-                            <div id="tab3" class="accordion-collapse collapse" aria-labelledby="tab-view3" data-bs-parent="#v-tab">
-                            <div class="accordion-body">
-                                <p>Standard requirements include a completed visa application form, passport-sized photos, a valid passport, a flight itinerary, a hotel reservation,employment proof and proof of financial means. However, these requirements may vary based on the type of visa and the applicant’s purpose of travel.</p>
-                            </div>
-                            </div>
-                        </div>
+                            @foreach($faqs as $index => $faq)
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="tab-view{{ $index }}">
+                                        <button class="accordion-button {{ $index != 0 ? 'collapsed' : '' }}"
+                                                type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#tab{{ $index }}"
+                                                aria-expanded="{{ $index == 0 ? 'true' : 'false' }}"
+                                                aria-controls="tab{{ $index }}">
+                                            {{ $index + 1 }}. {{ $faq->question }}
+                                        </button>
+                                    </h2>
+                                    <div id="tab{{ $index }}"
+                                        class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
+                                        aria-labelledby="tab-view{{ $index }}"
+                                        data-bs-parent="#v-tab">
+                                        <div class="accordion-body">
+                                            <p>{{ $faq->answer }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -88,47 +69,48 @@
                     <div class="visa-content">
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                     </div>
-                    <div class="row visa-form">
-                        <div class="col-lg-12 mb-3">
-                            <input type="text" class="form-control user" id="" placeholder="Name">
+
+                    <form id="visaEnquiryForm">
+                        @csrf
+                        <div class="row visa-form">
+                            <div class="col-lg-12 mb-3">
+                                <input type="text" name="name" class="form-control user" placeholder="Name" required>
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <input type="text" name="phone" class="form-control phone" placeholder="Phone Number" required>
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <input type="email" name="email" class="form-control mail" placeholder="Enter Your Email" required>
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <select name="nationality_id" class="form-control destinations1" required>
+                                    <option selected disabled value="">Your Nationality</option>
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-12 mb-3">
+                                <select name="travel_to" class="form-control travel1" required>
+                                    <option selected disabled value="">Travelling to</option>
+                                    <option value="Abu Dhabi">Abu Dhabi</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="France">France</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Spain">Spain</option>
+                                    <option value="Germany">Germany</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn form-btn">Send Enquiry</button>
+                            </div>
                         </div>
-                        <div class="col-lg-12 mb-3">
-                            <input type="text" class="form-control phone" id="" placeholder="Phone Number">
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <input type="email" class="form-control mail" id="" placeholder="Enter Your Email">
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <select name="" id="" class="form-control destinations1">
-                                <option selected disabled value="">Your Nationality</option>
-                                <option value="">Abu Dhabi</option>
-                                <option value="">Mexico</option>
-                                <option value="">France</option>
-                                <option value="">Italy</option>
-                                <option value="">Spain</option>
-                                <option value="">Germany</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-12 mb-3">
-                            <select name="" id="" class="form-control travel1">
-                                <option selected disabled value="">Travelling to</option>
-                                <option value="">Abu Dhabi</option>
-                                <option value="">Mexico</option>
-                                <option value="">France</option>
-                                <option value="">Italy</option>
-                                <option value="">Spain</option>
-                                <option value="">Germany</option>
-                            </select>
-                        </div>
-                        <div class="col-lg12">
-                            <button class="btn form-btn">Send Enquiry</button>
-                        </div>
-                    </div>
+                    </form>
+
+                    <div id="enquirySuccess" class="alert alert-success mt-3 d-none"></div>
                 </div>
-            </div>
+            </div>     
         </div>
     </div>
 </section>
-
-
 @endsection
