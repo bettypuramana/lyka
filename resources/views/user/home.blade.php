@@ -114,75 +114,33 @@
                 <p>Travel with Lyka Holidays</p>
             </div>
             <div class="col-lg-12 mb-3 owl-carousel destinations owl-theme">
-                <!-- loop section -->
-                 <div class="item">
+                @foreach($packages as $package)
+                <div class="item">
                     <div class="box">
                         <div class="destination-img">
-                            <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img1.jpg')}}" alt=""></a>
+                            <a href="{{ route('user.package_details', ['id' => $package->id, 'slug' => $package->slug]) }}">
+                                <img src="{{ asset('uploads/package/image/' . ($package->main_image ?? 'placeholder.jpg')) }}" alt="{{ $package->package_title }}">
+                            </a>
                         </div>
                         <div class="content-box">
-                            <h3>Borobudur Heritage Trail</h3>
-                            <p><span>Budapest, Hungary</span></p>
-                            <div class="travel-count">2 Days, 1 Night</div>
+                            <h3>{{ $package->package_title }}</h3>
+                            <p>
+                                <span>{{ $package->countryName->name ?? '' }}</span>
+                            </p>
+                            <div class="travel-count">{{ $package->duration ?? '-' }}</div>
                             <div class="btm-box">
                                 <div class="price">
                                     <p>Start From</p>
-                                    <div class="amount">4,999.00</div>
+                                    <div class="amount">{{ number_format($package->price, 2) }}</div>
                                 </div>
                                 <div class="more">
-                                    <a href="{{ route('user.package_details') }}">View More</a>
+                                    <a href="{{ route('user.package_details', ['id' => $package->id, 'slug' => $package->slug]) }}">View More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- loop section close-->
-                 <!-- loop section -->
-                 <div class="item">
-                    <div class="box">
-                        <div class="destination-img">
-                            <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img2.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="content-box">
-                            <h3>Borobudur Heritage Trail</h3>
-                            <p><span>Budapest, Hungary</span></p>
-                            <div class="travel-count">2 Days, 1 Night</div>
-                            <div class="btm-box">
-                                <div class="price">
-                                    <p>Start From</p>
-                                    <div class="amount">4,999.00</div>
-                                </div>
-                                <div class="more">
-                                    <a href="{{ route('user.package_details') }}">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- loop section close-->
-                 <!-- loop section -->
-                 <div class="item">
-                    <div class="box">
-                        <div class="destination-img">
-                            <a href="{{ route('user.package_details') }}"><img src="{{asset('assets/images/destination-img3.jpg')}}" alt=""></a>
-                        </div>
-                        <div class="content-box">
-                            <h3>Borobudur Heritage Trail</h3>
-                            <p><span>Budapest, Hungary</span></p>
-                            <div class="travel-count">2 Days, 1 Night</div>
-                            <div class="btm-box">
-                                <div class="price">
-                                    <p>Start From</p>
-                                    <div class="amount">4,999.00</div>
-                                </div>
-                                <div class="more">
-                                    <a href="{{ route('user.package_details') }}">View More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- loop section close-->
+                @endforeach
             </div>
             <div class="col-lg-12 d-flex justify-content-center">
                 <a class="link" href="{{ route('user.packages') }}">Explore More</a>
@@ -462,18 +420,3 @@
     </div>
 </section>
 @endsection
-@section('js')
-    @if(session('enquiry_success'))
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Submitted!',
-                    text: 'submitted successfully.',
-                    confirmButtonText: 'OK'
-                });
-            });
-        </script>
-    @endif
-    
-@endsection 

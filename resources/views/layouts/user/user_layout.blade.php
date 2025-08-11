@@ -178,6 +178,17 @@
 <script src="{{asset('assets/js/aos.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
  @yield('js')
-
+ @if(session('enquiry_success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Submitted!',
+                    text: 'submitted successfully.',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 </body>
 </html>
