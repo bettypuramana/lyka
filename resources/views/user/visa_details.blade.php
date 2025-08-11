@@ -67,7 +67,8 @@
                         <img src="{{asset('assets/images/travel-visa.svg')}}" alt=""> Visa Services Details
                     </div>
                     <div class="visa-content">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                       <!-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+                        <div id="enquirySuccess" class="alert alert-success mt-3 d-none"></div>
                     </div>
 
                     <form id="visaEnquiryForm">
@@ -93,12 +94,9 @@
                             <div class="col-lg-12 mb-3">
                                 <select name="travel_to" class="form-control travel1" required>
                                     <option selected disabled value="">Travelling to</option>
-                                    <option value="Abu Dhabi">Abu Dhabi</option>
-                                    <option value="Mexico">Mexico</option>
-                                    <option value="France">France</option>
-                                    <option value="Italy">Italy</option>
-                                    <option value="Spain">Spain</option>
-                                    <option value="Germany">Germany</option>
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-lg-12">
@@ -107,10 +105,34 @@
                         </div>
                     </form>
 
-                    <div id="enquirySuccess" class="alert alert-success mt-3 d-none"></div>
+                    
                 </div>
             </div>     
         </div>
     </div>
 </section>
 @endsection
+@section('js')
+    <script>
+        document.getElementById('visaEnquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let form = this;
+
+            fetch("{{ route('visa.enquiry.store') }}", {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('enquirySuccess').textContent = data.message;
+                    document.getElementById('enquirySuccess').classList.remove('d-none');
+                    form.reset();
+                }
+            })
+            .catch(err => console.error(err));
+        });
+    </script>
+    
+@endsection 
