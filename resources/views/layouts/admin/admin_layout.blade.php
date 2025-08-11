@@ -245,7 +245,7 @@
               </div>
             </li>
             {{-- <li class="nav-item nav-category"><span class="nav-link">Testimonials</span></li> --}}
-           
+
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
                 <span class="menu-title">Testimonials</span>
@@ -265,6 +265,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{route('admin.settings')}}" >
+                <span class="menu-title">Settings</span>
+                <i class="icon-folder-alt menu-icon"></i>
+              </a>
+            </li>
+            {{-- <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
                 <span class="menu-title">Settings</span>
                 <i class="icon-disc menu-icon"></i>
@@ -276,7 +282,7 @@
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.settings.social_media_links')}}"> Social media </a></li>
                 </ul>
               </div>
-            </li>
+            </li> --}}
           </ul>
         </nav>
         <!-- partial -->
