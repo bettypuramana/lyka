@@ -16,7 +16,16 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Testimonials</h4>
-                    </p>
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                        </div>
+                    @endif
+                    @if(session()->has('fail'))
+                        <div class="alert alert-danger">
+                        {{ session()->get('fail') }}
+                        </div>
+                    @endif
                     <div class="table-responsive">
                       <table class="table">
                         <thead>

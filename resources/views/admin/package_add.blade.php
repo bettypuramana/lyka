@@ -17,7 +17,8 @@
                   <div class="card-body">
                     <h4 class="card-title">Package Add</h4>
                     <form class="forms-sample row" action="{{route('admin.package_store')}}" method="post" enctype="multipart/form-data">
-                      <div class="form-group col-6">
+                        @csrf
+                        <div class="form-group col-6">
                         <label for="exampleInputName1">Package Title</label>
                         <input type="text" class="form-control" name="package_title" id="exampleInputName1" placeholder="Package Name">
                       </div>
@@ -35,7 +36,7 @@
                             <option value="">Select</option>
                             @if ($continents)
                                 @foreach ($continents as $row)
-                                    <option value="{{$row->id}}">{{$row->name}}</option>
+                                    <option value="{{$row->code}}">{{$row->name}}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -235,7 +236,6 @@ function addInputColum(type) {
             <div class="row">
             <div class="form-group col-11">
                 <input type="text" class="form-control" name="${inputName}">
-                <input type="hidden" name="titile_type" value="${type}">
             </div>
             <div class="form-group col-1">
                 <a href="javascript:void(0)" onclick="removeInputColum(this);" class="text-danger p-4" title="Remove">

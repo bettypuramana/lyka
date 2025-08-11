@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enquiry;
 use Illuminate\Http\Request;
 
 class EnquiryController extends Controller
@@ -13,7 +14,9 @@ class EnquiryController extends Controller
     }
     public function package_enquiries()
     {
-        return view('admin.enquiry_package');
+        $enquiries = Enquiry::join('countries', 'enquiries.destination', '=', 'countries.id')
+                    ->select('enquiries.*', 'countries.name as country_name')->orderBy('enquiries.id', 'desc')->get();
+        return view('admin.enquiry_package',compact('enquiries'));
     }
     public function visa_enquiries()
     {

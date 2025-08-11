@@ -55,13 +55,32 @@ Route::get('/admin/packages/delete/{id}', [App\Http\Controllers\Admin\PackageCon
 
 // visa
 Route::get('/admin/visa/list', [App\Http\Controllers\Admin\VisaController::class, 'index'])->name('admin.visa_list');
+Route::get('/admin/visa/new', [App\Http\Controllers\Admin\VisaController::class, 'create'])->name('admin.visa_new');
+Route::post('/admin/visa/store', [App\Http\Controllers\Admin\VisaController::class, 'store'])->name('admin.visa_store');
+Route::get('/admin/visa/edit/{id}', [App\Http\Controllers\Admin\VisaController::class, 'edit'])->name('admin.visa_edit');
+Route::post('/admin/visa/update/{id}', [App\Http\Controllers\Admin\VisaController::class, 'update'])->name('admin.visa_update');
+Route::get('/admin/visa/delete/{id}', [App\Http\Controllers\Admin\VisaController::class, 'destroy'])->name('admin.visa_delete');
 
 // blogs
 Route::get('/admin/blog/list', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('admin.blogs');
+Route::get('/admin/blog/new', [App\Http\Controllers\Admin\BlogController::class, 'create'])->name('admin.blog_new');
+Route::post('/admin/blog/store', [App\Http\Controllers\Admin\BlogController::class, 'store'])->name('admin.blog_store');
+Route::get('/admin/blog/edit/{id}', [App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('admin.blog_edit');
+Route::post('/admin/blog/update/{id}', [App\Http\Controllers\Admin\BlogController::class, 'update'])->name('admin.blog_update');
+Route::get('/admin/blog/delete/{id}', [App\Http\Controllers\Admin\BlogController::class, 'destroy'])->name('admin.blog_delete');
 
 // banner And gallery
 Route::get('/admin/banner/list', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'banners'])->name('admin.banners');
+Route::get('/admin/banner/new', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'banner_create'])->name('admin.banner_new');
+Route::post('/admin/banner/store', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'banner_store'])->name('admin.banner_store');
+Route::get('/admin/banner/edit/{id}', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'banner_edit'])->name('admin.banner_edit');
+Route::post('/admin/banner/update/{id}', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'banner_update'])->name('admin.banner_update');
+Route::get('/admin/banner/delete/{id}', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'banner_destroy'])->name('admin.banner_delete');
+
 Route::get('/admin/gallery/list', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'gallery'])->name('admin.gallery');
+Route::post('/admin/gallery/store', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'store_gallery'])->name('admin.store_gallery');
+Route::get('/admin/gallery/delete/{id}', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'destroy_gallery'])->name('admin.gallery_delete');
+
 Route::get('/admin/settings/contact', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'contact_settings'])->name('admin.settings.contact');
 Route::get('/admin/settings/aboutus', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'aboutus_settings'])->name('admin.settings.aboutus');
 Route::get('/admin/settings/social-media-links', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'socialmedialinks_settings'])->name('admin.settings.social_media_links');
@@ -75,6 +94,7 @@ Route::get('/admin/enquiry/contact/list', [App\Http\Controllers\Admin\EnquiryCon
 Route::get('/admin/testimonial/list', [App\Http\Controllers\Admin\TestimonialController::class, 'index'])->name('admin.testimonials');
 // subscriptions
 Route::get('/admin/subscription/list', [App\Http\Controllers\Admin\SubscriptionController::class, 'index'])->name('admin.subscriptions');
+Route::get('/admin/subscription/delete/{id}', [App\Http\Controllers\Admin\SubscriptionController::class, 'destroy'])->name('admin.subscription_destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

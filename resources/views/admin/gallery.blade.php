@@ -15,49 +15,56 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
+                    <form class="forms-sample row" action="{{route('admin.store_gallery')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="form-group col-5">
+                            <label for="exampleSelectGender">Image</label>
+                            <input type="file" class="form-control" name="image">
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                         <div class="form-group col-5">
+                            <label for="exampleSelectGender">Title</label>
+                            <input type="text" class="form-control" name="title">
+                        </div>
+                      <button type="submit" class="btn btn-success col-2">Submit</button>
+                    </form>
                     <h4 class="card-title">Gallery</h4>
-                    </p>
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                        </div>
+                    @endif
+                    @if(session()->has('fail'))
+                        <div class="alert alert-danger">
+                        {{ session()->get('fail') }}
+                        </div>
+                    @endif
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th>Profile</th>
-                            <th>VatNo.</th>
-                            <th>Created</th>
-                            <th>Status</th>
+                            <th>No</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Jacob</td>
-                            <td>53275531</td>
-                            <td>12 May 2017</td>
-                            <td><label class="badge badge-danger">Pending</label></td>
-                          </tr>
-                          <tr>
-                            <td>Messsy</td>
-                            <td>53275532</td>
-                            <td>15 May 2017</td>
-                            <td><label class="badge badge-warning">In progress</label></td>
-                          </tr>
-                          <tr>
-                            <td>John</td>
-                            <td>53275533</td>
-                            <td>14 May 2017</td>
-                            <td><label class="badge badge-info">Fixed</label></td>
-                          </tr>
-                          <tr>
-                            <td>Peter</td>
-                            <td>53275534</td>
-                            <td>16 May 2017</td>
-                            <td><label class="badge badge-success">Completed</label></td>
-                          </tr>
-                          <tr>
-                            <td>Dave</td>
-                            <td>53275535</td>
-                            <td>20 May 2017</td>
-                            <td><label class="badge badge-warning">In progress</label></td>
-                          </tr>
+                            @if (!empty($galleryimages))
+                                @foreach ($galleryimages as $index => $row)
+                                    <tr>
+                                        <td>{{$index+1}}</td>
+                                        <td><img style="width:70px;border-radius:0px;" src="{{ asset('uploads/gallery/'.$row->image) }}" ></td>
+                                        <td>{{$row->title}}</td>
+                                        <td>
+                                            <a href="{{ route('admin.gallery_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                       </table>
                     </div>
