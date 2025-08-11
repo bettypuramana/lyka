@@ -18,15 +18,15 @@
                   <div class="card-body">
                     <h4 class="card-title">Continents</h4>
                      @if(session()->has('success'))
-                    <div class="alert alert-success">
-                    {{ session()->get('success') }}
-                    </div>
-                @endif
-                @if(session()->has('fail'))
-                    <div class="alert alert-danger">
-                    {{ session()->get('fail') }}
-                    </div>
-                @endif
+                        <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                        </div>
+                    @endif
+                    @if(session()->has('fail'))
+                        <div class="alert alert-danger">
+                        {{ session()->get('fail') }}
+                        </div>
+                    @endif
                     <div class="table-responsive">
                       <table class="table" id="myTable">
                         <thead>
@@ -38,7 +38,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @if ($continents)
+                            @if (!empty($continents))
                                 @foreach ($continents as $index => $row)
                                     <tr>
                                         <td>{{$index+1}}</td>

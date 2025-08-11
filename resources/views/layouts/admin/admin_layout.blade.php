@@ -24,6 +24,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('theme/assets/images/favicon.png')}}" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@yaireo/tagify/dist/tagify.css">
   </head>
   <body>
     <div class="container-scroller">
@@ -200,6 +201,7 @@
               <div class="collapse" id="forms">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.visa_list')}}">Visa</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.visa_new')}}">Add Visa</a></li>
                 </ul>
               </div>
             </li>
@@ -211,6 +213,7 @@
               <div class="collapse" id="charts">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.blogs')}}">Blogs</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.blog_new')}}">Add Blogs</a></li>
                 </ul>
               </div>
             </li>
@@ -222,6 +225,7 @@
               <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.banners')}}">Banner</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.banner_new')}}">Add Banner</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.gallery')}}">Gallery</a></li>
                 </ul>
               </div>
@@ -242,13 +246,13 @@
             </li>
             {{-- <li class="nav-item nav-category"><span class="nav-link">Testimonials</span></li> --}}
             <li class="nav-item">
-              <a class="nav-link" href="{{route('admin.testimonials')}}" target="_blank">
+              <a class="nav-link" href="{{route('admin.testimonials')}}" >
                 <span class="menu-title">Testimonials</span>
                 <i class="icon-folder-alt menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('admin.subscriptions')}}" target="_blank">
+              <a class="nav-link" href="{{route('admin.subscriptions')}}" >
                 <span class="menu-title">Subscriptions</span>
                 <i class="icon-folder-alt menu-icon"></i>
               </a>
@@ -312,6 +316,7 @@
     <script src="{{asset('theme/assets/js/dashboard.js')}}"></script>
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
     <!-- End custom js for this page -->
     <script>
         $(document).ready(function () {

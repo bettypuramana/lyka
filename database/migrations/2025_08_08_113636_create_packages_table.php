@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('package_title',1000);
             $table->decimal('price', 8, 2);
             $table->integer('group_size');
-            $table->integer('continent');
+            $table->string('continent',5);
             $table->unsignedBigInteger('country');
             $table->foreign('country')->references('id')->on('countries');
             $table->unsignedBigInteger('tour_type');
