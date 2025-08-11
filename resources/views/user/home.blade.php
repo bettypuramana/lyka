@@ -274,65 +274,65 @@
                 <p>From hidden gems To global icons</p>
             </div>
         </div>
+
+        @php
+            // Make sure we don't break if less than 5 items
+            $chunks = $galleries->chunk(2); // 2 per column except middle which has 1
+        @endphp
+
         <div class="row">
+            {{-- First column --}}
             <div class="col-lg-4 col-md-4">
                 <div class="box">
-                    <div class="sm-ht" data-aos="fade-up" data-aos-duration="1000">
-                        <a href="{{asset('assets/images/gallery-img1.jpg')}}" data-fancybox="gallery" data-caption="Thailand">
-                            <img src="{{asset('assets/images/gallery-img1.jpg')}}" alt="">
-                            <div class="title">
-                                <h5>Thailand</h5>
-                                <p>08 Jul 2025</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="sm-ht" data-aos="fade-up" data-aos-duration="1100">
-                        <a href="{{asset('assets/images/gallery-img2.jpg')}}" data-fancybox="gallery" data-caption="Bora Bora island">
-                            <img src="{{asset('assets/images/gallery-img2.jpg')}}" alt="">
-                            <div class="title">
-                                <h5>Bora Bora island</h5>
-                                <p>08 Jul 2025</p>
-                            </div>
-                        </a>
-                    </div>
+                    @foreach($galleries->take(2) as $index => $item)
+                        <div class="sm-ht" data-aos="fade-up" data-aos-duration="{{ 1000 + ($index * 100) }}">
+                            <a href="{{ asset('uploads/gallery/'.$item->image) }}" data-fancybox="gallery" data-caption="{{ $item->title }}">
+                                <img src="{{ asset('uploads/gallery/'.$item->image) }}" alt="">
+                                <div class="title">
+                                    <h5>{{ $item->title }}</h5>
+                                    <p>{{ $item->created_at->format('d M Y') }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
+
+            {{-- Middle column --}}
             <div class="col-lg-4 col-md-4">
                 <div class="box">
-                    <div class="lg-ht" data-aos="fade-up" data-aos-duration="1200">
-                        <a href="{{asset('assets/images/gallery-img3.jpg')}}" data-fancybox="gallery" data-caption="Greece">
-                            <img src="{{asset('assets/images/gallery-img3.jpg')}}" alt="">
-                            <div class="title">
-                                <h5>Greece</h5>
-                                <p>08 Jul 2025</p>
-                            </div>
-                        </a>
-                    </div>
+                    @if($galleries->count() >= 3)
+                        <div class="lg-ht" data-aos="fade-up" data-aos-duration="1200">
+                            <a href="{{ asset('uploads/gallery/'.$galleries[2]->image) }}" data-fancybox="gallery" data-caption="{{ $galleries[2]->title }}">
+                                <img src="{{ asset('uploads/gallery/'.$galleries[2]->image) }}" alt="">
+                                <div class="title">
+                                    <h5>{{ $galleries[2]->title }}</h5>
+                                    <p>{{ $galleries[2]->created_at->format('d M Y') }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
+
+            {{-- Last column --}}
             <div class="col-lg-4 col-md-4">
                 <div class="box">
-                    <div class="sm-ht" data-aos="fade-up" data-aos-duration="1300">
-                        <a href="{{asset('assets/images/gallery-img4.jpg')}}" data-fancybox="gallery" data-caption="Bordeaux">
-                            <img src="{{asset('assets/images/gallery-img4.jpg')}}" alt="">
-                            <div class="title">
-                                <h5>Bordeaux</h5>
-                                <p>08 Jul 2025</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="sm-ht" data-aos="fade-up" data-aos-duration="1400">
-                        <a href="{{asset('assets/images/gallery-img5.jpg')}}" data-fancybox="gallery" data-caption="Turkey">
-                            <img src="{{asset('assets/images/gallery-img5.jpg')}}" alt="">
-                            <div class="title">
-                                <h5>Turkey</h5>
-                                <p>08 Jul 2025</p>
-                            </div>
-                        </a>
-                    </div>
+                    @foreach($galleries->slice(3, 2) as $index => $item)
+                        <div class="sm-ht" data-aos="fade-up" data-aos-duration="{{ 1300 + ($index * 100) }}">
+                            <a href="{{ asset('uploads/gallery/'.$item->image) }}" data-fancybox="gallery" data-caption="{{ $item->title }}">
+                                <img src="{{ asset('uploads/gallery/'.$item->image) }}" alt="">
+                                <div class="title">
+                                    <h5>{{ $item->title }}</h5>
+                                    <p>{{ $item->created_at->format('d M Y') }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-lg-12 mt-3 d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500">
                 <a class="link" href="{{ route('user.gallery') }}">View Gallery</a>
@@ -340,6 +340,7 @@
         </div>
     </div>
 </section>
+
 
 <section class="testimonials-sec p60" data-aos="fade-up" data-aos-duration="1500">
     <div class="container">

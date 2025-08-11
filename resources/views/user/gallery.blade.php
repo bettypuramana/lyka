@@ -20,95 +20,23 @@
 <section class="inner-gallery-sec p60">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="box" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="assets/images/gallery-img1.jpg" data-fancybox="gallery" data-caption="Thailand">
-                        <img src="assets/images/gallery-img1.jpg" alt="">
-                        <div class="title">
-                             <h5>Thailand</h5>
-                            <p>08 Jul 2025</p>
-                        </div>
-                    </a>
+            @foreach($galleries as $gallery)
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="box" data-aos="fade-up" data-aos-duration="1000">
+                        <a href="{{ asset('uploads/gallery/' . $gallery->image) }}"
+                           data-fancybox="gallery"
+                           data-caption="{{ $gallery->title }}">
+                            <img src="{{ asset('uploads/gallery/' . $gallery->image) }}" alt="{{ $gallery->title }}">
+                            <div class="title">
+                                <h5>{{ $gallery->title }}</h5>
+                                <p>{{ $gallery->created_at->format('d M Y') }}</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="box" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="assets/images/gallery-img2.jpg" data-fancybox="gallery" data-caption="Thailand">
-                        <img src="assets/images/gallery-img2.jpg" alt="">
-                        <div class="title">
-                             <h5>Thailand</h5>
-                            <p>08 Jul 2025</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="box" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="assets/images/gallery-img3.jpg" data-fancybox="gallery" data-caption="Thailand">
-                        <img src="assets/images/gallery-img3.jpg" alt="">
-                        <div class="title">
-                             <h5>Thailand</h5>
-                            <p>08 Jul 2025</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="box" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="assets/images/gallery-img4.jpg" data-fancybox="gallery" data-caption="Thailand">
-                        <img src="assets/images/gallery-img4.jpg" alt="">
-                        <div class="title">
-                             <h5>Thailand</h5>
-                            <p>08 Jul 2025</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="box" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="assets/images/gallery-img5.jpg" data-fancybox="gallery" data-caption="Thailand">
-                        <img src="assets/images/gallery-img5.jpg" alt="">
-                        <div class="title">
-                             <h5>Thailand</h5>
-                            <p>08 Jul 2025</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="box" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="assets/images/gallery-img1.jpg" data-fancybox="gallery" data-caption="Thailand">
-                        <img src="assets/images/gallery-img1.jpg" alt="">
-                        <div class="title">
-                             <h5>Thailand</h5>
-                            <p>08 Jul 2025</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="box" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="assets/images/gallery-img5.jpg" data-fancybox="gallery" data-caption="Thailand">
-                        <img src="assets/images/gallery-img5.jpg" alt="">
-                        <div class="title">
-                             <h5>Thailand</h5>
-                            <p>08 Jul 2025</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-3">
-                <div class="box" data-aos="fade-up" data-aos-duration="1000">
-                    <a href="assets/images/gallery-img1.jpg" data-fancybox="gallery" data-caption="Thailand">
-                        <img src="assets/images/gallery-img1.jpg" alt="">
-                        <div class="title">
-                             <h5>Thailand</h5>
-                            <p>08 Jul 2025</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+
 @endsection
