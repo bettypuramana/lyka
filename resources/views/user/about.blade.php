@@ -23,9 +23,9 @@
         <div class="row">
             <div class="col-lg-4" data-aos="fade-up" data-aos-duration="1000">
                 <div class="about-img">
-                    <img src="{{asset('assets/images/about-img1.jpg')}}" alt="">
+                    <img src="{{ asset('uploads/about_us/' . $about->about_image) }}" alt="">
                     <div class="experience">
-                        <h5>10</h5>
+                        <h5>{{ $about->year_experince }}</h5>
                         <span>Year Experience</span>
                     </div>
                 </div>
@@ -33,10 +33,8 @@
             <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1500">
                 <div class="about-content">
                     <h2>About Our Travel Agency</h2>
-                    <h3>Creating Unforgettable Travel Memories.</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                    <h3>{{ $about->about_title }}</h3>
+                    <p>{{$about->about_description }}</p>
                 </div>
             </div>
         </div>

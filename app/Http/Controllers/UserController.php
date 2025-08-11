@@ -19,6 +19,7 @@ use App\Models\Package_day_plan;
 use App\Models\Package_more;
 use App\Models\Package_image;
 use App\Models\Tour_type;
+use App\Models\Setting_tbl;
 use DB;
 use Illuminate\Http\Request;
 class UserController extends Controller
@@ -42,7 +43,8 @@ class UserController extends Controller
     public function about()
     {
         $testimonials = Testimonial::where('status',1)->latest()->get();
-        return view('user.about',compact('testimonials'));
+        $about = Setting_tbl::first(); // get single row
+        return view('user.about',compact('testimonials','about'));
     }
     public function blog_details($id, $slug)
     {

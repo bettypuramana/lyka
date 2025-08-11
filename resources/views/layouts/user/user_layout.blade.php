@@ -149,7 +149,7 @@
             <div class="container">
                 <div class="row flex-md-row flex-column-reverse">
                     <div class="col-lg-6 col-md-6 copyright">
-                        <p>© 2025 Lyka, All Rights Reserved</p>
+                        <p>© {{ date('Y') }} Lyka, All Rights Reserved</p>
                     </div>
                     <div class="col-lg-6 col-md-6 f-links">
                         <span>Developed by</span> <a href="https://betweenit.com/" target="_blank">Betweenit</a>
