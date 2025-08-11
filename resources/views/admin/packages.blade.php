@@ -64,8 +64,8 @@
 
                                         </td>
                                         <td>
-                                            <a href=""><i class="icon-pencil" ></i></a>&nbsp;&nbsp;&nbsp;
-                                            <a href=""><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
+                                            <a href="{{ route('admin.package_edit', ['id' => $row->id]) }}"><i class="icon-pencil" ></i></a>&nbsp;&nbsp;&nbsp;
+                                            <a href="{{ route('admin.package_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

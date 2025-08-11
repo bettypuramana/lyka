@@ -152,6 +152,7 @@ class SiteConfigurationController extends Controller
 
         $insert= new Gallery;
         $insert->title=$request->input('title');
+        $insert->date=$request->input('image_date');
         if ($request->file('image')!=null)
         {
             $file=$request->file('image');
