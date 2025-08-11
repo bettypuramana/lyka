@@ -196,67 +196,76 @@ class SiteConfigurationController extends Controller
     }
     public function settings()
     {
-        return view('admin.settings');
+        $settings=Setting_tbl::first();
+        return view('admin.settings',compact('settings'));
     }
     public function settings_update(Request $request, $id)
     {
         $validated = $request->validate([
-            'title' => 'required',
-            'short_description' => 'required',
-            'description' => 'required',
-            'meta_title' => 'required',
-            'meta_description' => 'required',
-            'published_date' => 'required',
-            'tags' => 'required',
+            'about_title' => 'required',
+            'year_experince' => 'required',
+            'about_description' => 'required',
+            'facebook' => 'required',
+            'instagram' => 'required',
+            'linkedin' => 'required',
+            'twitter' => 'required',
+            'youtube' => 'required',
+            'working_time' => 'required',
+            'contact_number' => 'required',
+            'email' => 'required',
+            'address' => 'required',
             ],
             [
-            'title.required' => 'This field is required',
-            'short_description.required' => 'This field is required',
-            'description.required' => 'This field is required',
-            'meta_title.required' => 'This field is required',
-            'meta_description.required' => 'This field is required',
-            'published_date.required' => 'This field is required',
-            'tags.required' => 'This field is required',
+            'about_title.required' => 'This field is required',
+            'year_experince.required' => 'This field is required',
+            'about_description.required' => 'This field is required',
+            'facebook.required' => 'This field is required',
+            'instagram.required' => 'This field is required',
+            'linkedin.required' => 'This field is required',
+            'twitter.required' => 'This field is required',
+            'youtube.required' => 'This field is required',
+            'working_time.required' => 'This field is required',
+            'contact_number.required' => 'This field is required',
+            'email.required' => 'This field is required',
+            'address.required' => 'This field is required',
             ]
         );
-
-        $tagsJson = json_decode($request->tags, true);
-        $tagsArray = array_column($tagsJson, 'value');
 
         $update= Setting_tbl::find($id);
         $update->about_title=$request->input('about_title');
         if ($request->file('about_image')!=null)
         {
-            $oldimage=$update->image;
+            $oldimage=$update->about_image;
 
             $file=$request->file('about_image');
             $extension=$file->getClientOriginalExtension();
             $filename=time().'about.'.$extension;
-            $file->move('uploads/settings',$filename);
+            $file->move('uploads/about_us',$filename);
             $update->about_image=$filename;
 
-            $imagePath = public_path('uploads/blogs/').$oldimage;
+            $imagePath = public_path('uploads/about_us/').$oldimage;
 
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
         }
-        $update->about_description=$request->input('short_description');
-        $update->facebook=$request->input('description');
-        $update->instagram=$request->input('meta_title');
-        $update->linkedin=$request->input('meta_description');
-        $update->twitter=$request->input('published_date');
-        $update->youtube=$request->input('title');
-        $update->working_time=$request->input('title');
-        $update->contact_number=$request->input('short_description');
-        $update->email=$request->input('description');
-        $update->address=$request->input('meta_title');
+        $update->about_description=$request->input('about_description');
+        $update->year_experince=$request->input('year_experince');
+        $update->facebook=$request->input('facebook');
+        $update->instagram=$request->input('instagram');
+        $update->linkedin=$request->input('linkedin');
+        $update->twitter=$request->input('twitter');
+        $update->youtube=$request->input('youtube');
+        $update->working_time=$request->input('working_time');
+        $update->contact_number=$request->input('contact_number');
+        $update->email=$request->input('email');
+        $update->address=$request->input('address');
         $save= $update->save();
 
 
         if($save)
         {
-          return redirect(route('admin.blogs'))->with('success','Details updated Successfully !');
+          return redirect(route('admin.settings'))->with('success','Details updated Successfully !');
         }
 
        else
