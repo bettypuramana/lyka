@@ -245,11 +245,18 @@
               </div>
             </li>
             {{-- <li class="nav-item nav-category"><span class="nav-link">Testimonials</span></li> --}}
+           
             <li class="nav-item">
-              <a class="nav-link" href="{{route('admin.testimonials')}}" >
+              <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
                 <span class="menu-title">Testimonials</span>
-                <i class="icon-folder-alt menu-icon"></i>
+                <i class="icon-book-open menu-icon"></i>
               </a>
+              <div class="collapse" id="forms">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.testimonials')}}">Testimonials</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('admin.testimonial_new')}}">Add Testimonial</a></li>
+                </ul>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('admin.subscriptions')}}" >

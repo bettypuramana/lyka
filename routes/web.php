@@ -92,6 +92,12 @@ Route::get('/admin/enquiry/contact/list', [App\Http\Controllers\Admin\EnquiryCon
 
 // testimonials
 Route::get('/admin/testimonial/list', [App\Http\Controllers\Admin\TestimonialController::class, 'index'])->name('admin.testimonials');
+Route::get('/admin/testimonial/new', [App\Http\Controllers\Admin\TestimonialController::class, 'create'])->name('admin.testimonial_new');
+Route::post('/admin/testimonial/store', [App\Http\Controllers\Admin\TestimonialController::class, 'store'])->name('admin.testimonial_store');
+Route::get('/admin/testimonial/edit/{id}', [App\Http\Controllers\Admin\TestimonialController::class, 'edit'])->name('admin.testimonial_edit');
+Route::post('/admin/testimonial/update/{id}', [App\Http\Controllers\Admin\TestimonialController::class, 'update'])->name('admin.testimonial_update');
+Route::get('/admin/testimonial/delete/{id}', [App\Http\Controllers\Admin\TestimonialController::class, 'destroy'])->name('admin.testimonial_delete');
+
 // subscriptions
 Route::get('/admin/subscription/list', [App\Http\Controllers\Admin\SubscriptionController::class, 'index'])->name('admin.subscriptions');
 Route::get('/admin/subscription/delete/{id}', [App\Http\Controllers\Admin\SubscriptionController::class, 'destroy'])->name('admin.subscription_destroy');
