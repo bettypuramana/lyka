@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Gallery;
+use App\Models\Setting_tbl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -193,16 +194,74 @@ class SiteConfigurationController extends Controller
             return redirect()->back()->with('Fail','Something Went Wrong');
         }
     }
-    public function contact_settings()
+    public function settings()
     {
-        return view('admin.settings_contact');
+        return view('admin.settings');
     }
-    public function aboutus_settings()
+    public function settings_update(Request $request, $id)
     {
-        return view('admin.settings_aboutus');
-    }
-    public function socialmedialinks_settings()
-    {
-        return view('admin.settings_socialmedialinks');
+        $validated = $request->validate([
+            'title' => 'required',
+            'short_description' => 'required',
+            'description' => 'required',
+            'meta_title' => 'required',
+            'meta_description' => 'required',
+            'published_date' => 'required',
+            'tags' => 'required',
+            ],
+            [
+            'title.required' => 'This field is required',
+            'short_description.required' => 'This field is required',
+            'description.required' => 'This field is required',
+            'meta_title.required' => 'This field is required',
+            'meta_description.required' => 'This field is required',
+            'published_date.required' => 'This field is required',
+            'tags.required' => 'This field is required',
+            ]
+        );
+
+        $tagsJson = json_decode($request->tags, true);
+        $tagsArray = array_column($tagsJson, 'value');
+
+        $update= Setting_tbl::find($id);
+        $update->about_title=$request->input('about_title');
+        if ($request->file('about_image')!=null)
+        {
+            $oldimage=$update->image;
+
+            $file=$request->file('about_image');
+            $extension=$file->getClientOriginalExtension();
+            $filename=time().'about.'.$extension;
+            $file->move('uploads/settings',$filename);
+            $update->about_image=$filename;
+
+            $imagePath = public_path('uploads/blogs/').$oldimage;
+
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+        $update->about_description=$request->input('short_description');
+        $update->facebook=$request->input('description');
+        $update->instagram=$request->input('meta_title');
+        $update->linkedin=$request->input('meta_description');
+        $update->twitter=$request->input('published_date');
+        $update->youtube=$request->input('title');
+        $update->working_time=$request->input('title');
+        $update->contact_number=$request->input('short_description');
+        $update->email=$request->input('description');
+        $update->address=$request->input('meta_title');
+        $save= $update->save();
+
+
+        if($save)
+        {
+          return redirect(route('admin.blogs'))->with('success','Details updated Successfully !');
+        }
+
+       else
+        {
+          return redirect()->back()->with('Fail','Something Went Wrong');
+        }
     }
 }

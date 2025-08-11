@@ -86,9 +86,8 @@ Route::get('/admin/gallery/list', [App\Http\Controllers\Admin\SiteConfigurationC
 Route::post('/admin/gallery/store', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'store_gallery'])->name('admin.store_gallery');
 Route::get('/admin/gallery/delete/{id}', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'destroy_gallery'])->name('admin.gallery_delete');
 
-Route::get('/admin/settings/contact', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'contact_settings'])->name('admin.settings.contact');
-Route::get('/admin/settings/aboutus', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'aboutus_settings'])->name('admin.settings.aboutus');
-Route::get('/admin/settings/social-media-links', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'socialmedialinks_settings'])->name('admin.settings.social_media_links');
+Route::get('/admin/settings', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'settings'])->name('admin.settings');
+Route::get('/admin/settings-update', [App\Http\Controllers\Admin\SiteConfigurationController::class, 'settings_update'])->name('admin.settings_update');
 
 // enquiry
 Route::get('/admin/enquiry/package/list', [App\Http\Controllers\Admin\EnquiryController::class, 'package_enquiries'])->name('admin.package_enquiries');
