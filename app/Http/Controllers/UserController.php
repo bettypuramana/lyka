@@ -11,6 +11,8 @@ use App\Models\Visa;
 use App\Models\Visa_document;
 use App\Models\Visa_faq;
 use App\Models\Testimonial;
+use App\Models\Gallery;
+use App\Models\ContactEnquiry;
 use DB;
 use Illuminate\Http\Request;
 class UserController extends Controller
@@ -22,11 +24,15 @@ class UserController extends Controller
         $blogs = Blog::latest()->take(6)->get(); 
         $visas = Visa::latest()->get(); 
         $testimonials = Testimonial::where('status',1)->latest()->get();
-        return view('user.home', compact('banners','countries','blogs','visas','testimonials'));
+        $galleries = Gallery::orderBy('created_at', 'desc')
+                            ->take(5)
+                            ->get();
+        return view('user.home', compact('banners','countries','blogs','visas','testimonials','galleries'));
     }
     public function about()
     {
-        return view('user.about');
+        $testimonials = Testimonial::where('status',1)->latest()->get();
+        return view('user.about',compact('testimonials'));
     }
     public function blog_details($id, $slug)
     {
@@ -45,7 +51,8 @@ class UserController extends Controller
     }
     public function gallery()
     {
-        return view('user.gallery');
+        $galleries = Gallery::orderBy('created_at', 'desc')->get();
+        return view('user.gallery', compact('galleries'));
     }
     public function package_details()
     {
@@ -94,6 +101,31 @@ class UserController extends Controller
 
         return view('user.visa_details', compact('visa', 'documents', 'faqs','countries'));
     }
+    public function store_visaEnq(Request $request)
+    {
+        $request->validate([
+            'name'          => 'required|string|max:255',
+            'phone'         => 'required|string|max:20',
+            'email'         => 'required|email',
+            'nationality_id'=> 'required|integer',
+            'travel_to'     => 'required|string|max:255',
+        ]);
+
+        DB::table('visa_enquiries')->insert([
+            'name'          => $request->name,
+            'phone'         => $request->phone,
+            'email'         => $request->email,
+            'nationality_id'=> $request->nationality_id,
+            'travel_to'     => $request->travel_to,
+            'created_at'    => now(),
+            'updated_at'    => now(),
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Successfully submitted your enquiry. We will get back to you soon.'
+        ]);
+    }
     public function store_enquiry(Request $request)
     {
       
@@ -124,6 +156,39 @@ class UserController extends Controller
         $save= $insertEnquiry->save();
         if($save){
             return redirect()->route('user.home')->with('enquiry_success', true);
+        }
+        else{
+            return redirect()->back()->with('fail', 'Looks like an error please try again later!');
+        }
+        
+    }
+    public function storeContEnquiry(Request $request)
+    {
+      
+        $validated = $request->validate([
+            
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+            ],
+            [
+            'name.required' => 'This field is required',
+            'email.required' => 'This field is required',
+            'subject.required' => 'This field is required',
+            'message.required' => 'This field is required', 
+            ]
+            
+        );
+
+        $insertEnquiry= new ContactEnquiry;
+        $insertEnquiry->name=$request->input('name');
+        $insertEnquiry->email=$request->input('email');
+        $insertEnquiry->subject=$request->input('subject');
+        $insertEnquiry->message=$request->input('message');
+        $save= $insertEnquiry->save();
+        if($save){
+            return redirect()->route('user.contact')->with('success', 'Your enquiry has been sent successfully!');
         }
         else{
             return redirect()->back()->with('fail', 'Looks like an error please try again later!');

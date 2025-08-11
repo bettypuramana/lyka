@@ -49,23 +49,33 @@
             <div class="col-lg-6 c-form-p" data-aos="fade-up" data-aos-duration="1000">
                 <h6>Lets craft brilliance together</h6>
                 <p>Got something in mind? We'd love to help.</p>
-                <div class="row">
-                    <div class="col-lg-6 mb-3">
-                        <input type="text" class="form-control" id="" placeholder="Name">
+                @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+
+                <form action="{{ route('contact.enquiry.store') }}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-lg-6 mb-3">
+                            <input type="text" name="name" class="form-control" placeholder="Name" required>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                            <textarea name="message" class="form-control txt" placeholder="Enter Your Message" required></textarea>
+                        </div>
+                        <div class="col-lg-12 mb-3 d-flex justify-content-center">
+                            <button type="submit" class="btn form-btn">
+                                SEND Enquiry 
+                                <img src="{{ asset('assets/images/button-arrow.svg') }}" alt="">
+                            </button>
+                        </div>
                     </div>
-                    <div class="col-lg-6 mb-3">
-                        <input type="email" class="form-control" id="" placeholder="Email">
-                    </div>
-                    <div class="col-lg-12 mb-3">
-                        <input type="text" class="form-control" id="" placeholder="Subject">
-                    </div>
-                    <div class="col-lg-12 mb-3">
-                        <textarea class="form-control txt" name="" placeholder="Enter Your Message"></textarea>
-                    </div>
-                    <div class="col-lg-12 mb-3 d-flex justify-content-center">
-                        <button class="btn form-btn">SEND Enquiry <img src="{{asset('assets/images/button-arrow.svg')}}" alt=""></button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
