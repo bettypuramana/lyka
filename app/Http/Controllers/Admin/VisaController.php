@@ -91,6 +91,13 @@ class VisaController extends Controller
          }
 
     }
+    public function edit($id)
+    {
+
+        $visa=Visa::where('id',$id)->first();
+        $continents = Continent::where('status',1)->orderBy('name', 'asc')->get();
+        return view('admin/visa_edit',compact('visa','continents'));
+    }
     public function update(Request $request, $id)
     {
 
@@ -186,13 +193,6 @@ class VisaController extends Controller
         return redirect()->back()->with('Fail','Something Went Wrong');
          }
 
-    }
-    public function edit($id)
-    {
-
-        $visa=Visa::where('id',$id)->first();
-        $continents = Continent::where('status',1)->orderBy('name', 'asc')->get();
-        return view('admin/visa_edit',compact('visa','continents'));
     }
     public function destroy($id)
     {

@@ -18,16 +18,20 @@
                     <form class="forms-sample row" action="{{route('admin.store_gallery')}}" method="post" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="form-group col-5">
+                        <div class="form-group col-3">
                             <label for="exampleSelectGender">Image</label>
                             <input type="file" class="form-control" name="image">
                             @error('image')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                         <div class="form-group col-5">
+                         <div class="form-group col-3">
                             <label for="exampleSelectGender">Title</label>
                             <input type="text" class="form-control" name="title">
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="exampleSelectGender">Date</label>
+                            <input type="date" class="form-control" name="image_date">
                         </div>
                       <button type="submit" class="btn btn-success col-2">Submit</button>
                     </form>
@@ -49,6 +53,7 @@
                             <th>No</th>
                             <th>Image</th>
                             <th>Title</th>
+                            <th>Date</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -59,6 +64,7 @@
                                         <td>{{$index+1}}</td>
                                         <td><img style="width:70px;border-radius:0px;" src="{{ asset('uploads/gallery/'.$row->image) }}" ></td>
                                         <td>{{$row->title}}</td>
+                                        <td>{{$row->date}}</td>
                                         <td>
                                             <a href="{{ route('admin.gallery_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
                                         </td>
