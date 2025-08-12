@@ -34,7 +34,7 @@
                       </div>
                       <div class="form-group col-6">
                           <label for="exampleSelectGender">Image</label>
-                          <input type="file" class="form-control" name="image" id="imageInput">
+                          <input type="file" class="form-control" name="image" id="imageInput" accept=".png, .jpg, .jpeg">
 
                           <div class="mt-2">
                               <img id="previewImage" src="" width="120">
@@ -52,7 +52,7 @@
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                       
+
                       <button type="submit" class="btn btn-success me-2 col-2">Submit</button>
                     </form>
                   </div>

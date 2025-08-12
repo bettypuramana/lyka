@@ -31,16 +31,16 @@
 
                         <div class="form-group col-6">
                             <label>Image</label>
-                            <input type="file" class="form-control" name="image" id="imageInput">
-                            
+                            <input type="file" class="form-control" name="image" id="imageInput" accept=".png, .jpg, .jpeg">
+
                             <div class="mt-2">
-                                <img id="previewImage" 
-                                    src="{{ asset('uploads/testimonial/' . $testimonial->image) }}" 
+                                <img id="previewImage"
+                                    src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
                                     width="120">
                             </div>
 
-                            @error('image') 
-                                <div class="text-danger">{{ $message }}</div> 
+                            @error('image')
+                                <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 

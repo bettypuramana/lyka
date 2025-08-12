@@ -28,7 +28,7 @@
                       <div class="form-group col-6">
 
                         <label for="exampleSelectGender">Image</label>
-                        <input type="file" class="form-control" name="image">
+                        <input type="file" class="form-control" name="image" accept=".png, .jpg, .jpeg">
                         @error('image')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

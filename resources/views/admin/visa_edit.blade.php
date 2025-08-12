@@ -35,12 +35,12 @@
                       </div>
                       <div class="form-group col-6">
                         <label for="exampleSelectGender">Flag</label>
-                        <input type="file" class="form-control" name="flag">
+                        <input type="file" class="form-control" name="flag" accept=".png, .jpg, .jpeg">
                         <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/visa/flags/'.$visa->flag) }}" >
                       </div>
                       <div class="form-group col-6">
                         <label for="exampleSelectGender">Image</label>
-                        <input type="file" class="form-control" name="image">
+                        <input type="file" class="form-control" name="image" accept=".png, .jpg, .jpeg">
                         <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/visa/'.$visa->image) }}" >
                       </div>
                       <div class="form-group">

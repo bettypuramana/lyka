@@ -82,11 +82,11 @@
                       </div>
                       <div class="form-group col-4">
                         <label for="exampleSelectGender">Main Image</label>
-                        <input type="file" class="form-control" name="main_image">
+                        <input type="file" class="form-control" name="main_image" accept=".png, .jpg, .jpeg">
                       </div>
                       <div class="form-group col-4">
                         <label for="exampleSelectGender">Images</label>
-                        <input type="file" class="form-control" name="images[]" multiple >
+                        <input type="file" class="form-control" name="images[]" multiple accept=".png, .jpg, .jpeg">
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">About</label>
@@ -174,15 +174,15 @@
             </div>
             <div class="form-group col-2">
                 <label>Image 1</label>
-                <input type="file" class="form-control" name="image_one[]">
+                <input type="file" class="form-control" name="image_one[]" accept=".png, .jpg, .jpeg">
             </div>
             <div class="form-group col-2">
                 <label>Image 2</label>
-                <input type="file" class="form-control" name="image_two[]">
+                <input type="file" class="form-control" name="image_two[]" accept=".png, .jpg, .jpeg">
             </div>
             <div class="form-group col-2">
                 <label>Image 3</label>
-                <input type="file" class="form-control" name="image_three[]">
+                <input type="file" class="form-control" name="image_three[]" accept=".png, .jpg, .jpeg">
             </div>
             <div class="form-group col-12 ">
                 <label>Description</label>

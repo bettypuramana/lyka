@@ -20,7 +20,7 @@
 
                         <div class="form-group col-3">
                             <label for="exampleSelectGender">Image</label>
-                            <input type="file" class="form-control" name="image">
+                            <input type="file" class="form-control" name="image" accept=".png, .jpg, .jpeg">
                             @error('image')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -28,10 +28,16 @@
                          <div class="form-group col-3">
                             <label for="exampleSelectGender">Title</label>
                             <input type="text" class="form-control" name="title">
+                            @error('title')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group col-3">
                             <label for="exampleSelectGender">Date</label>
                             <input type="date" class="form-control" name="image_date">
+                            @error('image_date')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                       <button type="submit" class="btn btn-success col-2">Submit</button>
                     </form>

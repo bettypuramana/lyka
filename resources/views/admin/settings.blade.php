@@ -40,7 +40,7 @@
                       </div>
                       <div class="form-group col-6">
                         <label for="exampleInputName1">Image</label>
-                        <input type="file" class="form-control" name="about_image" id="exampleInputName1" >
+                        <input type="file" class="form-control" name="about_image" id="exampleInputName1" accept=".png, .jpg, .jpeg">
                         @error('about_image')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

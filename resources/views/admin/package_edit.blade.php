@@ -82,12 +82,12 @@
                       </div>
                       <div class="form-group col-4">
                         <label for="exampleSelectGender">Main Image</label>
-                        <input type="file" class="form-control" name="main_image">
+                        <input type="file" class="form-control" name="main_image" accept=".png, .jpg, .jpeg">
                         <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/package/image/'.$package->main_image) }}" >
                       </div>
                       <div class="form-group col-4">
                         <label for="exampleSelectGender">Images</label>
-                        <input type="file" class="form-control" name="images[]" multiple >
+                        <input type="file" class="form-control" name="images[]" multiple accept=".png, .jpg, .jpeg">
                         @foreach ($package->packageImages as $img)
                         <div class="row">
                                 <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/package/images/'.$img->images) }}" >
@@ -121,17 +121,17 @@
                                 <div class="form-group col-2">
                                     <label>Image 1</label>
                                     <input type="file" class="form-control" name="image_one[]">
-                                    <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/package/images/'.$row->image_one) }}" >
+                                    <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/package/images/'.$row->image_one) }}" accept=".png, .jpg, .jpeg">
                                 </div>
                                 <div class="form-group col-2">
                                     <label>Image 2</label>
                                     <input type="file" class="form-control" name="image_two[]">
-                                    <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/package/images/'.$row->image_two) }}" >
+                                    <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/package/images/'.$row->image_two) }}" accept=".png, .jpg, .jpeg">
                                 </div>
                                 <div class="form-group col-2">
                                     <label>Image 3</label>
                                     <input type="file" class="form-control" name="image_three[]">
-                                    <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/package/images/'.$row->image_three) }}" >
+                                    <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/package/images/'.$row->image_three) }}" accept=".png, .jpg, .jpeg">
                                 </div>
                                 <div class="form-group col-12 ">
                                     <label>Description</label>
@@ -259,15 +259,15 @@
             </div>
             <div class="form-group col-2">
                 <label>Image 1</label>
-                <input type="file" class="form-control" name="image_one[]">
+                <input type="file" class="form-control" name="image_one[]" accept=".png, .jpg, .jpeg">
             </div>
             <div class="form-group col-2">
                 <label>Image 2</label>
-                <input type="file" class="form-control" name="image_two[]">
+                <input type="file" class="form-control" name="image_two[]" accept=".png, .jpg, .jpeg">
             </div>
             <div class="form-group col-2">
                 <label>Image 3</label>
-                <input type="file" class="form-control" name="image_three[]">
+                <input type="file" class="form-control" name="image_three[]" accept=".png, .jpg, .jpeg">
             </div>
             <div class="form-group col-12 ">
                 <label>Description</label>

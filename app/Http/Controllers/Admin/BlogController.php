@@ -28,7 +28,7 @@ class BlogController extends Controller
         $id = Auth::user()->id;
         $validated = $request->validate([
             'title' => 'required',
-            'image' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg|max:1024',
             'short_description' => 'required',
             'description' => 'required',
             'meta_title' => 'required',
@@ -90,7 +90,7 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required',
-            // 'image' => 'required',
+            'image' => 'mimes:jpeg,png,jpg|max:1024',
             'short_description' => 'required',
             'description' => 'required',
             'meta_title' => 'required',

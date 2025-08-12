@@ -30,9 +30,8 @@ class SiteConfigurationController extends Controller
         $id = Auth::user()->id;
         $validated = $request->validate([
             'title' => 'required',
-            'image' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg|max:1024',
             'sub_titile' => 'required',
-            // 'category_img' => 'required|image|mimes:png,jpg,jpeg|max:1024|dimensions:width=1000,height=700',
             ],
             [
             'title.required' => 'This field is required',
@@ -76,7 +75,7 @@ class SiteConfigurationController extends Controller
          $validated = $request->validate([
             'title' => 'required',
             'sub_titile' => 'required',
-            // 'category_img' => 'required|image|mimes:png,jpg,jpeg|max:1024|dimensions:width=1000,height=700',
+            'image' => 'mimes:jpeg,png,jpg|max:1024',
             ],
             [
             'title.required' => 'This field is required',
@@ -143,11 +142,15 @@ class SiteConfigurationController extends Controller
     {
         $id = Auth::user()->id;
         $validated = $request->validate([
-            'image' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg|max:1024',
+            'title' => 'required',
+            'image_date' => 'required',
             // 'category_img' => 'required|image|mimes:png,jpg,jpeg|max:1024|dimensions:width=1000,height=700',
             ],
             [
             'image.required' => 'This field is required',
+            'title.required' => 'This field is required',
+            'image_date.required' => 'This field is required',
             ]
         );
 
