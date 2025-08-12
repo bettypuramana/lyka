@@ -372,4 +372,12 @@ class PackageController extends Controller
             return redirect()->back()->with('Fail','Something Went Wrong');
         }
     }
+    public function change_status($id, $status)
+    {
+        $package = Package::find($id);
+        $package->status = $status == 1 ? 0 : 1;
+        $package->save();
+
+        return redirect()->back()->with('success', 'Package status updated.');
+    }
 }

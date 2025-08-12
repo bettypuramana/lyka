@@ -1,9 +1,12 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Packages - Lyka
+@endsection
 @section('content')
 
  <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Packages </h3>
+              <h3 class="page-title"> Packages <a href="{{route('admin.package_new')}}" class="btn btn-success btn-sm">Add</a></h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
@@ -15,7 +18,7 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Packages</h4>
+                    {{-- <h4 class="card-title">Packages</h4> --}}
                     @if(session()->has('success'))
                         <div class="alert alert-success">
                         {{ session()->get('success') }}
@@ -27,7 +30,7 @@
                         </div>
                     @endif
                     <div class="table-responsive">
-                      <table class="table">
+                      <table class="table" id="myTable">
                         <thead>
                           <tr>
                             <th>No</th>
@@ -57,9 +60,9 @@
 
                                         <td>
                                             @if ($row->status==1)
-                                            <label class="badge badge-success">Active</label>
+                                            <a href="{{ route('admin.package_change_status', ['id' => $row->id, 'status' => $row->status]) }}"><label class="badge badge-success">Active</label></a>
                                             @else
-                                            <label class="badge badge-danger">Inactive</label>
+                                            <a href="{{ route('admin.package_change_status', ['id' => $row->id, 'status' => $row->status]) }}"><label class="badge badge-danger">Inactive</label></a>
                                             @endif
 
                                         </td>

@@ -1,4 +1,7 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Banner Add - Lyka
+@endsection
 @section('content')
 
   <div class="content-wrapper">
@@ -15,7 +18,7 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Banner Add</h4>
+                    {{-- <h4 class="card-title">Banner Add</h4> --}}
                     <form class="forms-sample row" action="{{route('admin.banner_store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group col-6">

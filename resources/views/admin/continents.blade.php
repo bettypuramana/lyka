@@ -1,4 +1,7 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Continents - Lyka
+@endsection
 @section('content')
 
  <div class="content-wrapper">
@@ -16,7 +19,7 @@
                 <div class="card">
 
                   <div class="card-body">
-                    <h4 class="card-title">Continents</h4>
+                    {{-- <h4 class="card-title">Continents</h4> --}}
                      @if(session()->has('success'))
                         <div class="alert alert-success">
                         {{ session()->get('success') }}

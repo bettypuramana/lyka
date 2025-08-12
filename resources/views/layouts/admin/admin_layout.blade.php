@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Stellar Admin</title>
+    <title>@yield('title')</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('theme/assets/vendors/simple-line-icons/css/simple-line-icons.css')}}">
     <link rel="stylesheet" href="{{asset('theme/assets/vendors/flag-icon-css/css/flag-icons.min.css')}}">
@@ -32,17 +32,17 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.html">
-            <img src="{{asset('theme/assets/images/logo.svg')}}" alt="logo" class="logo-dark" />
-            <img src="{{asset('theme/assets/images/logo-light.svg')}}" alt="logo-light" class="logo-light">
+          <a class="navbar-brand brand-logo" href="{{route('admin.dashboard')}}">
+            <img src="{{asset('theme/assets/images/main-logo.svg')}}" alt="logo" class="logo-dark" />
+            <img src="{{asset('theme/assets/images/main-logo.svg')}}" alt="logo-light" class="logo-light">
           </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('theme/assets/images/logo-mini.svg')}}" alt="logo" /></a>
+          {{-- <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('theme/assets/images/logo-mini.svg')}}" alt="logo" /></a> --}}
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="icon-menu"></span>
           </button>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-center">
-          <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stellar dashboard!</h5>
+          <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome {{ Auth::user()->name }} !</h5>
           <ul class="navbar-nav navbar-nav-right">
             {{-- <form class="search-form d-none d-md-block" action="#">
               <i class="icon-magnifier"></i>
@@ -51,7 +51,7 @@
             {{-- <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li> --}}
             {{-- <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li> --}}
             <li class="nav-item dropdown">
-              <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+              {{-- <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="icon-speech"></i>
                 <span class="count">7</span>
               </a>
@@ -88,7 +88,7 @@
                     <p class="font-weight-light small-text"> The meeting is cancelled </p>
                   </div>
                 </a>
-              </div>
+              </div> --}}
             </li>
             {{-- <li class="nav-item dropdown language-dropdown d-none d-sm-flex align-items-center">
               <a class="nav-link d-flex align-items-center dropdown-toggle" id="LanguageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -141,7 +141,7 @@
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item navbar-brand-mini-wrapper">
-              <a class="nav-link navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('theme/assets/images/logo-mini.svg')}}" alt="logo" /></a>
+              <a class="nav-link navbar-brand brand-logo-mini" href="{{route('admin.dashboard')}}"></a>
             </li>
             <li class="nav-item nav-profile">
               {{-- <a href="#" class="nav-link">
@@ -247,11 +247,11 @@
             {{-- <li class="nav-item nav-category"><span class="nav-link">Testimonials</span></li> --}}
 
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
+              <a class="nav-link" data-bs-toggle="collapse" href="#testimonials" aria-expanded="false" aria-controls="testimonials">
                 <span class="menu-title">Testimonials</span>
                 <i class="icon-book-open menu-icon"></i>
               </a>
-              <div class="collapse" id="forms">
+              <div class="collapse" id="testimonials">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.testimonials')}}">Testimonials</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('admin.testimonial_new')}}">Add Testimonial</a></li>
@@ -334,6 +334,14 @@
     <script>
         $(document).ready(function () {
             $('#myTable').DataTable();
+        });
+    </script>
+    <script src="https://cdn.tiny.cloud/1/1h1d8a76efrvsatdciuhxdl6iqtb2ruk9491orca22nqlj6k/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+    <script>
+        tinymce.init({
+            selector: '.textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
     </script>
     @yield('js')

@@ -1,4 +1,7 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Testimonial Edit - Lyka
+@endsection
 @section('content')
 
 <div class="content-wrapper">
@@ -19,13 +22,13 @@
                         @csrf
                         <div class="form-group col-6">
                             <label>Name</label>
-                            <input type="text" class="form-control" name="name" value="{{ old('name', $testimonial->name) }}">
+                            <input type="text" class="form-control" name="name" value="{{ old('name', $testimonial->name) }}" placeholder="Name">
                             @error('name') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="form-group col-6">
                             <label>Designation</label>
-                            <input type="text" class="form-control" name="designation" value="{{ old('designation', $testimonial->designation) }}">
+                            <input type="text" class="form-control" name="designation" value="{{ old('designation', $testimonial->designation) }}" placeholder="Designation">
                             @error('designation') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
 
@@ -36,7 +39,7 @@
                             <div class="mt-2">
                                 <img id="previewImage"
                                     src="{{ asset('uploads/testimonial/' . $testimonial->image) }}"
-                                    width="120">
+                                    width="80">
                             </div>
 
                             @error('image')
@@ -47,7 +50,7 @@
 
                         <div class="form-group">
                             <label>Comment</label>
-                            <textarea class="form-control" rows="6" name="message">{{ old('message', $testimonial->message) }}</textarea>
+                            <textarea class="form-control textarea" rows="6" name="message">{{ old('message', $testimonial->message) }}</textarea>
                             @error('message') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
 

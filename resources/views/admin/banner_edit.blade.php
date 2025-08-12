@@ -1,13 +1,16 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Banner Edit - Lyka
+@endsection
 @section('content')
 
   <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Banner Add </h3>
+              <h3 class="page-title"> Banner Edit </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Banner Add</li>
+                  <li class="breadcrumb-item active" aria-current="page">Banner Edit</li>
                 </ol>
               </nav>
             </div>
@@ -15,7 +18,7 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Banner Add</h4>
+                    {{-- <h4 class="card-title">Banner Add</h4> --}}
                     <form class="forms-sample row" action="{{ route('admin.banner_update', ['id' => $banner->id]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group col-6">
