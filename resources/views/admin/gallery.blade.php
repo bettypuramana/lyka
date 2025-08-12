@@ -1,4 +1,7 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Gallery - Lyka
+@endsection
 @section('content')
 
  <div class="content-wrapper">
@@ -41,7 +44,8 @@
                         </div>
                       <button type="submit" class="btn btn-success col-2">Submit</button>
                     </form>
-                    <h4 class="card-title">Gallery</h4>
+                    {{-- <h4 class="card-title">Gallery</h4> --}}
+                    <hr>
                     @if(session()->has('success'))
                         <div class="alert alert-success">
                         {{ session()->get('success') }}
@@ -53,7 +57,7 @@
                         </div>
                     @endif
                     <div class="table-responsive">
-                      <table class="table">
+                      <table class="table" id="myTable">
                         <thead>
                           <tr>
                             <th>No</th>

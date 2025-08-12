@@ -1,4 +1,7 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Settings - Lyka
+@endsection
 @section('content')
 
   <div class="content-wrapper">

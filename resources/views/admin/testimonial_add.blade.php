@@ -1,4 +1,7 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Testimonial Add - Lyka
+@endsection
 @section('content')
 
   <div class="content-wrapper">
@@ -15,19 +18,19 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Testimonial Add</h4>
+                    {{-- <h4 class="card-title">Testimonial Add</h4> --}}
                     <form class="forms-sample row" action="{{route('admin.testimonial_store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group col-6">
                         <label for="exampleInputName1">Name</label>
-                        <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{old('name')}}" placeholder="Visa Name">
+                        <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{old('name')}}" placeholder="Name">
                         @error('name')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="form-group col-6">
                         <label for="exampleSelectGender">Designation</label>
-                        <input type="text" class="form-control" name="designation" value="{{old('designation')}}" id="exampleInputName1" placeholder="Visa Name">
+                        <input type="text" class="form-control" name="designation" value="{{old('designation')}}" id="exampleInputName1" placeholder="Designation">
                         @error('designation')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -47,7 +50,7 @@
 
                       <div class="form-group">
                         <label for="exampleTextarea1">Comment</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="6" name="message">{{old('message')}}</textarea>
+                        <textarea class="form-control textarea" id="exampleTextarea1" rows="6" name="message">{{old('message')}}</textarea>
                         @error('message')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

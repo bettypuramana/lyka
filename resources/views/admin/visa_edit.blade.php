@@ -1,13 +1,16 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Visa Edit - Lyka
+@endsection
 @section('content')
 
   <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Visa Add </h3>
+              <h3 class="page-title"> Visa Edit </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Visa Add</li>
+                  <li class="breadcrumb-item active" aria-current="page">Visa Edit</li>
                 </ol>
               </nav>
             </div>
@@ -15,8 +18,8 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Visa Add</h4>
-                    <form class="forms-sample row" action="{{ route('admin.visa_update', ['id' => $visa->id]) }}" method="post" enctype="multipart/form-data">
+                    {{-- <h4 class="card-title">Visa Add</h4> --}}
+                    <form class="forms-sample row" action="{{ route('admin.visa_update', ['id' => $visa->id]) }}" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                         @csrf
                         <div class="form-group col-6">
                         <label for="exampleInputName1">Visa Title</label>
@@ -45,7 +48,7 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="6" name="description">{{$visa->description}}</textarea>
+                        <textarea class="form-control textarea" id="exampleTextarea1" rows="6" name="description">{{$visa->description}}</textarea>
                       </div>
                        <div class="form-group">
                         <b>Documents needed</b>
@@ -143,6 +146,73 @@ function addFaqColum() {
 }
 function removeInputColum(element) {
     element.closest('.row').remove();
+}
+function validateForm() {
+    let isValid = true;
+    document.getElementById('visa_title_error').innerHTML='';
+    document.getElementById('continent_error').innerHTML='';
+    document.getElementById('description_error').innerHTML='';
+    document.getElementById('Document_colum_error').innerHTML='';
+    document.getElementById('faq_colum_error').innerHTML='';
+    // Check visa_title
+    const visaTitle = document.querySelector('input[name="visa_title"]').value.trim();
+    if (!visaTitle) {
+        document.getElementById('visa_title_error').innerHTML='This field is required';
+        isValid = false;
+    }
+
+    // Check continent
+    const continent = document.querySelector('select[name="continent"]').value;
+    if (!continent) {
+        document.getElementById('continent_error').innerHTML='This field is required';
+        isValid = false;
+    }
+
+    // Check description
+    const description = document.querySelector('textarea[name="description"]').value.trim();
+    if (!description) {
+        document.getElementById('description_error').innerHTML='This field is required';
+        isValid = false;
+    }
+
+    // Check documents inputs (if any added)
+    const documents = document.querySelectorAll('input[name="documents[]"]');
+    if(documents.length>0){
+        for (let i = 0; i < documents.length; i++) {
+        if (!documents[i].value.trim()) {
+            document.getElementById('Document_colum_error').innerHTML='Please fill all document fields or remove empty ones.';
+            isValid = false;
+        }
+    }
+    }else{
+            document.getElementById('Document_colum_error').innerHTML='Please add documents';
+            isValid = false;
+    }
+
+
+    // Check FAQ questions and answers (if any added)
+    const questions = document.querySelectorAll('input[name="questions[]"]');
+    const answers = document.querySelectorAll('textarea[name="answers[]"]');
+    if(questions.length>0){
+    for (let i = 0; i < questions.length; i++) {
+        if (!questions[i].value.trim()) {
+
+
+            document.getElementById('faq_colum_error').innerHTML='Please fill all FAQ questions or remove empty ones.';
+            isValid = false;
+        }
+        if (!answers[i].value.trim()) {
+            document.getElementById('faq_colum_error').innerHTML='Please fill all FAQ answers or remove empty ones.';
+            isValid = false;
+        }
+    }
+    }else{
+            document.getElementById('faq_colum_error').innerHTML='Please add FAQ';
+            isValid = false;
+    }
+
+    // If all validations passed
+    return isValid;
 }
 </script>
 @endsection

@@ -1,4 +1,7 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Subscriptions - Lyka
+@endsection
 @section('content')
 
  <div class="content-wrapper">
@@ -15,7 +18,7 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Subscriptions</h4>
+                    {{-- <h4 class="card-title">Subscriptions</h4> --}}
                     @if(session()->has('success'))
                         <div class="alert alert-success">
                         {{ session()->get('success') }}

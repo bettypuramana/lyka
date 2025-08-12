@@ -1,9 +1,13 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Blogs - Lyka
+@endsection
 @section('content')
 
  <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Blogs </h3>
+              <h3 class="page-title"> Blogs <a href="{{route('admin.blog_new')}}" class="btn btn-success btn-sm">Add</a></h3>
+
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
@@ -15,7 +19,7 @@
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Blogs</h4>
+                    {{-- <h4 class="card-title">Blogs</h4> --}}
                     @if(session()->has('success'))
                         <div class="alert alert-success">
                         {{ session()->get('success') }}
@@ -27,7 +31,7 @@
                         </div>
                     @endif
                     <div class="table-responsive">
-                      <table class="table">
+                      <table class="table" id="myTable">
                         <thead>
                           <tr>
                             <th>No</th>

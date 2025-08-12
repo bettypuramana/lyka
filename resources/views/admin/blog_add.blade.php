@@ -1,4 +1,7 @@
 @extends('layouts.admin.admin_layout')
+@section('title')
+Blog Add - Lyka
+@endsection
 @section('content')
 
   <div class="content-wrapper">
@@ -15,7 +18,7 @@
               <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Blog Add</h4>
+                    {{-- <h4 class="card-title">Blog Add</h4> --}}
                     <form class="forms-sample row" action="{{route('admin.blog_store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                       <div class="form-group col-6">
@@ -48,29 +51,29 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">Short Description</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="short_description">{{old('short_description')}}</textarea>
+                        <input type="text" name="short_description" id="short_description" class="form-control" value="{{old('short_description')}}">
                         @error('short_description')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="6" name="description">{{old('description')}}</textarea>
+                        <textarea class="form-control textarea" id="exampleTextarea1" rows="6" name="description">{{old('description')}}</textarea>
                         @error('description')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
 
                       <div class="form-group">
-                        <label for="exampleInputName1">Meta Title</label>
-                        <input type="text" class="form-control" name="meta_title" id="exampleInputName1" placeholder="Meta Title" value="{{old('meta_title')}}">
+                        <label for="exampleInputName1">Meta Title ( 60 characters )</label>
+                        <input type="text" class="form-control" name="meta_title" id="exampleInputName1" placeholder="Meta Title" value="{{old('meta_title')}}" maxlength="60">
                         @error('meta_title')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="form-group">
-                        <label for="exampleTextarea1">Meta Description</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="4" name="meta_description">{{old('meta_description')}}</textarea>
+                        <label for="exampleTextarea1">Meta Description  ( 160 characters )</label>
+                        <input type="text" name="meta_description" id="meta_description" class="form-control" value="{{old('meta_description')}}" maxlength="160">
                         @error('meta_description')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
