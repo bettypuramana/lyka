@@ -14,7 +14,12 @@ Subscriptions - Lyka
                 </ol>
               </nav>
             </div>
+            <a href="{{ route('admin.subscriptions.export') }}" class="btn btn-success mb-3">
+                <i class="icon-download"></i> Export to Excel
+            </a>
+
             <div class="row">
+              
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
