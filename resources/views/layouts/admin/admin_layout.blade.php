@@ -119,7 +119,9 @@
                   <p class="mb-1 mt-3">{{ Auth::user()->name }}</p>
                   <p class="font-weight-light text-muted mb-0">{{ Auth::user()->email }}</p>
                 </div>
-                <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i>Change Password </a>
+                  <a class="dropdown-item" href="{{ route('admin.changePassword') }}">
+                      <i class="dropdown-item-icon icon-user text-primary"></i> Change Password
+                  </a>
                 {{-- <a class="dropdown-item"><i class="dropdown-item-icon icon-speech text-primary"></i> Messages</a>
                 <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i> Activity</a>
                 <a class="dropdown-item"><i class="dropdown-item-icon icon-question text-primary"></i> FAQ</a> --}}
