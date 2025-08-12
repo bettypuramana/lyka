@@ -34,6 +34,10 @@ Route::get('/visa/filter/{continent}', [App\Http\Controllers\UserController::cla
 Route::post('/visa-enquiry', [App\Http\Controllers\UserController::class, 'store_visaEnq'])->name('visa.enquiry.store');
 Route::post('/contact-enquiry', [App\Http\Controllers\UserController::class, 'storeContEnquiry'])->name('contact.enquiry.store');
 
+//change password
+Route::get('/change-password', [App\Http\Controllers\Admin\DashboardController::class, 'changePasswordForm'])->name('admin.changePassword');
+Route::post('/change-password', [App\Http\Controllers\Admin\DashboardController::class, 'updatePassword'])->name('admin.updatePassword');
+
 
 //Store Enquiry
 Route::post('/store_enquiry', [App\Http\Controllers\UserController::class, 'store_enquiry'])->name('user.store_enquiry');
