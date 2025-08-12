@@ -110,6 +110,7 @@ Route::get('/admin/testimonial/delete/{id}', [App\Http\Controllers\Admin\Testimo
 // subscriptions
 Route::get('/admin/subscription-list', [App\Http\Controllers\Admin\SubscriptionController::class, 'index'])->name('admin.subscriptions');
 Route::get('/admin/subscription/delete/{id}', [App\Http\Controllers\Admin\SubscriptionController::class, 'destroy'])->name('admin.subscription_destroy');
+Route::get('admin/subscriptions/export', [App\Http\Controllers\Admin\SubscriptionController::class, 'export'])->name('admin.subscriptions.export');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
