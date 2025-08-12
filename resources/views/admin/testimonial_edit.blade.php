@@ -20,19 +20,19 @@ Testimonial Edit - Lyka
                 <div class="card-body">
                     <form class="forms-sample row" action="{{ route('admin.testimonial_update', $testimonial->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                             <label>Name</label>
                             <input type="text" class="form-control" name="name" value="{{ old('name', $testimonial->name) }}" placeholder="Name">
                             @error('name') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
 
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                             <label>Designation</label>
                             <input type="text" class="form-control" name="designation" value="{{ old('designation', $testimonial->designation) }}" placeholder="Designation">
                             @error('designation') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
 
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                             <label>Image</label>
                             <input type="file" class="form-control" name="image" id="imageInput" accept=".png, .jpg, .jpeg">
 

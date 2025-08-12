@@ -34,14 +34,14 @@ Settings - Lyka
                         <div class="form-group">
                         <b>About Section</b>
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="exampleSelectGender">Title</label>
                         <input type="text" class="form-control" name="about_title" placeholder="Title" value="{{$settings->about_title}}">
                         @error('about_title')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="exampleInputName1">Image</label>
                         <input type="file" class="form-control" name="about_image" id="exampleInputName1" accept=".png, .jpg, .jpeg">
                         @error('about_image')
@@ -50,7 +50,7 @@ Settings - Lyka
                         <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/about_us/'.$settings->about_image) }}" >
 
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="exampleSelectGender">Year Experince</label>
                         <input type="number" class="form-control" name="year_experince" placeholder="Year Experince" value="{{$settings->year_experince}}">
                         @error('year_experince')
@@ -67,35 +67,35 @@ Settings - Lyka
                        <div class="form-group">
                         <b>Social Media Links</b>
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="exampleSelectGender">Facebook</label>
                         <input type="text" class="form-control" name="facebook" placeholder="Facebook" value="{{$settings->facebook}}">
                         @error('facebook')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="exampleSelectGender">Instagram</label>
                         <input type="text" class="form-control" name="instagram" placeholder="Instagram" value="{{$settings->instagram}}">
                         @error('instagram')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="exampleSelectGender">Linkedin</label>
                         <input type="text" class="form-control" name="linkedin" placeholder="Linkedin" value="{{$settings->linkedin}}">
                         @error('linkedin')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="exampleSelectGender">X.com</label>
                         <input type="text" class="form-control" name="twitter" placeholder="X.com" value="{{$settings->twitter}}">
                         @error('titltwittere')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="exampleSelectGender">Youtube</label>
                         <input type="text" class="form-control" name="youtube" placeholder="Youtube" value="{{$settings->youtube}}">
                         @error('youtube')
@@ -105,28 +105,28 @@ Settings - Lyka
                       <div class="form-group">
                       <b>Contact Home Page</b>
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-3">
                         <label for="exampleSelectGender">Working Time</label>
                         <input type="text" class="form-control" name="working_time" placeholder="Hours: 8:00 - 17:00, Mon - Sat" value="{{$settings->working_time}}">
                         @error('working_time')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-3">
                         <label for="exampleSelectGender">Contact Number</label>
                         <input type="text" class="form-control" name="contact_number" placeholder="+971 54 346 5001, +91 95444 99009" value="{{$settings->contact_number}}">
                         @error('contact_number')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-3">
                         <label for="exampleSelectGender">Email</label>
                         <input type="text" class="form-control" name="email" placeholder="support@lyka.com" value="{{$settings->email}}">
                         @error('email')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-3">
                         <label for="exampleSelectGender">Address</label>
                         <input type="text" class="form-control" name="address" placeholder="4517 Washington Ave. Manchester, Kentucky 39495" value="{{$settings->address}}">
                         @error('address')

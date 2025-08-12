@@ -42,7 +42,10 @@ Gallery - Lyka
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                      <button type="submit" class="btn btn-success col-2">Submit</button>
+                        <div class="col-2 p-4">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+
                     </form>
                     {{-- <h4 class="card-title">Gallery</h4> --}}
                     <hr>
