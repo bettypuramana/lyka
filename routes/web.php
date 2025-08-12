@@ -35,6 +35,10 @@ Route::get('/visa/filter/{continent}', [App\Http\Controllers\UserController::cla
 Route::post('/visa-enquiry', [App\Http\Controllers\UserController::class, 'store_visaEnq'])->name('visa.enquiry.store');
 Route::post('/contact-enquiry', [App\Http\Controllers\UserController::class, 'storeContEnquiry'])->name('contact.enquiry.store');
 
+//change password
+Route::get('/change-password', [App\Http\Controllers\Admin\DashboardController::class, 'changePasswordForm'])->name('admin.changePassword');
+Route::post('/change-password', [App\Http\Controllers\Admin\DashboardController::class, 'updatePassword'])->name('admin.updatePassword');
+
 
 //Store Enquiry
 Route::post('/store_enquiry', [App\Http\Controllers\UserController::class, 'store_enquiry'])->name('user.store_enquiry');
@@ -107,6 +111,7 @@ Route::get('/admin/testimonial/delete/{id}', [App\Http\Controllers\Admin\Testimo
 // subscriptions
 Route::get('/admin/subscription-list', [App\Http\Controllers\Admin\SubscriptionController::class, 'index'])->name('admin.subscriptions');
 Route::get('/admin/subscription/delete/{id}', [App\Http\Controllers\Admin\SubscriptionController::class, 'destroy'])->name('admin.subscription_destroy');
+Route::get('admin/subscriptions/export', [App\Http\Controllers\Admin\SubscriptionController::class, 'export'])->name('admin.subscriptions.export');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
