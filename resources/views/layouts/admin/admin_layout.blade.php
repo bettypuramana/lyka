@@ -113,7 +113,7 @@
                 {{-- <img class="img-xs rounded-circle ms-2" src="{{asset('theme/assets/images/faces/face8.jpg')}}" alt="Profile image"> --}}
                  <span class="font-weight-normal"> {{ Auth::user()->name }} </span>
                 </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown" style="margin-left: -99px;" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
                   {{-- <img class="img-md rounded-circle" src="{{asset('theme/assets/images/faces/face8.jpg')}}" alt="Profile image"> --}}
                   <p class="mb-1 mt-3">{{ Auth::user()->name }}</p>
