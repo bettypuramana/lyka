@@ -50,7 +50,7 @@
       showPoint: false,
       fullWidth: true
     }
-    
+
     var responsiveOptions = [
       ['screen and (max-width: 480px)', {
         height: 150,
@@ -86,44 +86,44 @@
     //Sessions by Channel doughnut chart
 
 
-    if ($("#sessionsDoughnutChart").length) { 
-      const doughnutChartCanvas = document.getElementById('sessionsDoughnutChart');
-      new Chart(doughnutChartCanvas, {
-        type: 'doughnut',
-        data: {
-          labels: [
-            'Reassigned',
-            'Not Assigned',
-            'Assigned'
-          ],
-          datasets: [{
-              data: [55,25,20],
-              backgroundColor: [
-                '#ffca00',
-                '#38ce3c',
-                '#ff4d6b'
-              ],
-              borderColor: ['#ffca00','#38ce3c','#ff4d6b']
-          }]
-        },
-        options: {
-          cutout: 75,
-          animationEasing: "easeOutBounce",
-          animateRotate: true,
-          animateScale: false,
-          responsive: true,
-          maintainAspectRatio: true,
-          showScale: false,
-          legend: false,
-          plugins: {
-            legend: {
-                display: false,
-            }
-          }
-        },
-      })
-    }
-      
+    // if ($("#sessionsDoughnutChart").length) {
+    //   const doughnutChartCanvas = document.getElementById('sessionsDoughnutChart');
+    //   new Chart(doughnutChartCanvas, {
+    //     type: 'doughnut',
+    //     data: {
+    //       labels: [
+    //         'Reassigned',
+    //         'Not Assigned',
+    //         'Assigned'
+    //       ],
+    //       datasets: [{
+    //           data: [55,25,20],
+    //           backgroundColor: [
+    //             '#ffca00',
+    //             '#38ce3c',
+    //             '#ff4d6b'
+    //           ],
+    //           borderColor: ['#ffca00','#38ce3c','#ff4d6b']
+    //       }]
+    //     },
+    //     options: {
+    //       cutout: 75,
+    //       animationEasing: "easeOutBounce",
+    //       animateRotate: true,
+    //       animateScale: false,
+    //       responsive: true,
+    //       maintainAspectRatio: true,
+    //       showScale: false,
+    //       legend: false,
+    //       plugins: {
+    //         legend: {
+    //             display: false,
+    //         }
+    //       }
+    //     },
+    //   })
+    // }
+
         //Vector map
 
         $('#dashboard-vmap').vectorMap({
@@ -374,7 +374,7 @@
                   ticks: {
                     display: true,
                     color:"#6C7383",
-                        
+
                   },
                 },
                 y: {
@@ -407,7 +407,7 @@
               }
             },
           });
-        
+
         }
 
 
@@ -422,7 +422,7 @@
           document.querySelector('#proBanner').classList.add('d-none');
           document.querySelector('.navbar').classList.add('fixed-top');
         }
-        
+
         if ($( ".navbar" ).hasClass( "fixed-top" )) {
           document.querySelector('.page-body-wrapper').classList.remove('pt-0');
           document.querySelector('.navbar').classList.remove('proBanner-padding-top');
@@ -430,7 +430,7 @@
         else {
           document.querySelector('.page-body-wrapper').classList.add('pt-0');
           document.querySelector('.navbar').classList.add('proBanner-padding-top');
-          
+
         }
         document.querySelector('#bannerClose').addEventListener('click',function() {
           document.querySelector('#proBanner').classList.add('d-none');
@@ -441,7 +441,7 @@
           document.querySelector('.navbar').classList.remove('pt-3');
           document.querySelector('.navbar').classList.remove('proBanner-padding-top');
           var date = new Date();
-          date.setTime(date.getTime() + 24 * 60 * 60 * 1000); 
+          date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
           $.cookie('stellar-pro-banner', "true", { expires: date });
         });
   });

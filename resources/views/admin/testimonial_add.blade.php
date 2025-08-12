@@ -21,21 +21,21 @@ Testimonial Add - Lyka
                     {{-- <h4 class="card-title">Testimonial Add</h4> --}}
                     <form class="forms-sample row" action="{{route('admin.testimonial_store')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group col-6">
+                        <div class="form-group col-4">
                         <label for="exampleInputName1">Name</label>
                         <input type="text" class="form-control" name="name" id="exampleInputName1" value="{{old('name')}}" placeholder="Name">
                         @error('name')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                         <label for="exampleSelectGender">Designation</label>
                         <input type="text" class="form-control" name="designation" value="{{old('designation')}}" id="exampleInputName1" placeholder="Designation">
                         @error('designation')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
-                      <div class="form-group col-6">
+                      <div class="form-group col-4">
                           <label for="exampleSelectGender">Image</label>
                           <input type="file" class="form-control" name="image" id="imageInput" accept=".png, .jpg, .jpeg">
 
