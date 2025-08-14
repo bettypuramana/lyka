@@ -215,6 +215,7 @@ class SiteConfigurationController extends Controller
             'youtube' => 'required',
             'working_time' => 'required',
             'contact_number' => 'required',
+            'contact_number_two' => 'required',
             'email' => 'required',
             'address' => 'required',
             ],
@@ -229,6 +230,7 @@ class SiteConfigurationController extends Controller
             'youtube.required' => 'This field is required',
             'working_time.required' => 'This field is required',
             'contact_number.required' => 'This field is required',
+            'contact_number_two.required' => 'This field is required',
             'email.required' => 'This field is required',
             'address.required' => 'This field is required',
             ]
@@ -261,6 +263,7 @@ class SiteConfigurationController extends Controller
         $update->youtube=$request->input('youtube');
         $update->working_time=$request->input('working_time');
         $update->contact_number=$request->input('contact_number');
+        $update->contact_number_two=$request->input('contact_number_two');
         $update->email=$request->input('email');
         $update->address=$request->input('address');
         $save= $update->save();

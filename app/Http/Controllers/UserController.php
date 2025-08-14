@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
-use App\Models\Banner; 
+use App\Models\Banner;
 use App\Models\Country;
 use App\Models\Subscription;
 use App\Models\Enquiry;
@@ -28,8 +28,8 @@ class UserController extends Controller
     {
         $banners = Banner::all(); // Fetch all banner records
         $countries = Country::where('status', 1)->get(); // Only active countries
-        $blogs = Blog::latest()->take(6)->get(); 
-        $visas = Visa::latest()->get(); 
+        $blogs = Blog::latest()->take(6)->get();
+        $visas = Visa::latest()->get();
         $testimonials = Testimonial::where('status',1)->latest()->get();
         $galleries = Gallery::orderBy('created_at', 'desc')
                             ->take(5)
@@ -38,33 +38,39 @@ class UserController extends Controller
                        ->orderBy('created_at', 'desc')
                        ->take(6)
                        ->get();
-        return view('user.home', compact('banners','countries','blogs','visas','testimonials','galleries','packages'));
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.home', compact('banners','countries','blogs','visas','testimonials','galleries','packages','settings'));
     }
     public function about()
     {
         $testimonials = Testimonial::where('status',1)->latest()->get();
         $about = Setting_tbl::first(); // get single row
-        return view('user.about',compact('testimonials','about'));
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.about',compact('testimonials','about','settings'));
     }
     public function blog_details($id, $slug)
     {
         $blog = Blog::findOrFail($id); // Optionally verify the slug too
-        return view('user.blog_details', compact('blog'));
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.blog_details', compact('blog','settings'));
     }
 
     public function blogs()
     {
         $blogs = Blog::orderBy('published_at', 'desc')->get();
-        return view('user.blogs', compact('blogs'));
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.blogs', compact('blogs','settings'));
     }
     public function contact()
     {
-        return view('user.contact');
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.contact','settings');
     }
     public function gallery()
     {
+
         $galleries = Gallery::orderBy('created_at', 'desc')->get();
-        return view('user.gallery', compact('galleries'));
+        return view('user.gallery', compact('galleries','settings'));
     }
    public function package_details($id, $slug)
     {
@@ -92,7 +98,8 @@ class UserController extends Controller
         $country = Country::find($package->country);
         $continent = Continent::find($package->continent);
         $tourType = Tour_type::find($package->tour_type);
-$countries = Country::where('status', 1)->get(); 
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+$countries = Country::where('status', 1)->get();
         return view('user.package_details', compact(
             'package',
             'images',        // still available if needed
@@ -105,7 +112,8 @@ $countries = Country::where('status', 1)->get();
             'country',
             'tourType',
             'continent',
-            'countries'
+            'countries',
+            'settings'
         ));
     }
 
@@ -136,18 +144,20 @@ $countries = Country::where('status', 1)->get();
         }
 
         $packages = $query->get();
-
-        return view('user.packages', compact('packages', 'continents', 'tourTypes'));
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.packages', compact('packages', 'continents', 'tourTypes','settings'));
     }
 
 
     public function privacy_policy()
     {
-        return view('user.privacy_policy');
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.privacy_policy','settings');
     }
     public function terms_and_conditions()
     {
-        return view('user.terms_and_conditions');
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.terms_and_conditions','settings');
     }
     public function visa()
     {
@@ -157,8 +167,8 @@ $countries = Country::where('status', 1)->get();
                     ->select('continents.code', 'continents.name')
                     ->distinct()
                     ->get();
-
-        return view('user.visa', compact('visas','continents'));
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.visa', compact('visas','continents','settings'));
     }
     public function filterVisas($continentCode)
     {
@@ -167,8 +177,8 @@ $countries = Country::where('status', 1)->get();
         } else {
             $visas = Visa::where('continent', $continentCode)->get();
         }
-
-        return view('user.partials.visa_list', compact('visas'));
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.partials.visa_list', compact('visas','settings'));
     }
      public function visa_details($slug)
     {
@@ -177,8 +187,8 @@ $countries = Country::where('status', 1)->get();
         // Fetch related documents and FAQs
         $documents = Visa_document::where('visa_id', $visa->id)->get();
         $faqs = Visa_faq::where('visa_id', $visa->id)->get();
-
-        return view('user.visa_details', compact('visa', 'documents', 'faqs','countries'));
+        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        return view('user.visa_details', compact('visa', 'documents', 'faqs','countries','settings'));
     }
     public function store_visaEnq(Request $request)
     {
@@ -207,23 +217,23 @@ $countries = Country::where('status', 1)->get();
     }
     public function store_enquiry(Request $request)
     {
-      
+
         $validated = $request->validate([
-            
+
             'destination' => 'required',
             'quantity' => 'required',
             'travel_date' => 'required',
             'name' => 'required',
-            'phone' => 'required',            
+            'phone' => 'required',
             ],
             [
             'destination.required' => 'This field is required',
             'quantity.required' => 'This field is required',
             'travel_date.required' => 'This field is required',
-            'name.required' => 'This field is required', 
-            'phone.required' => 'This field is required',  
+            'name.required' => 'This field is required',
+            'phone.required' => 'This field is required',
             ]
-            
+
         );
 
         $insertEnquiry= new Enquiry;
@@ -241,13 +251,13 @@ $countries = Country::where('status', 1)->get();
         else{
             return redirect()->back()->with('fail', 'Looks like an error please try again later!');
         }
-        
+
     }
     public function storeContEnquiry(Request $request)
     {
-      
+
         $validated = $request->validate([
-            
+
             'name' => 'required',
             'email' => 'required',
             'subject' => 'required',
@@ -257,9 +267,9 @@ $countries = Country::where('status', 1)->get();
             'name.required' => 'This field is required',
             'email.required' => 'This field is required',
             'subject.required' => 'This field is required',
-            'message.required' => 'This field is required', 
+            'message.required' => 'This field is required',
             ]
-            
+
         );
 
         $insertEnquiry= new ContactEnquiry;
@@ -274,7 +284,7 @@ $countries = Country::where('status', 1)->get();
         else{
             return redirect()->back()->with('fail', 'Looks like an error please try again later!');
         }
-        
+
     }
     public function store_subscription(Request $request)
     {

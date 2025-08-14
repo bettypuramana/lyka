@@ -39,6 +39,7 @@ Visa Enquiry - Lyka
                             <th>Email</th>
                             <th>Nationality</th>
                             <th>Destination</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -51,6 +52,9 @@ Visa Enquiry - Lyka
                                         <td>{{$row->email}}</td>
                                         <td>{{$row->nation_name}}</td>
                                         <td>{{$row->destination_name}}</td>
+                                        <td>
+                                            <a href="{{ route('admin.visa_enquiry_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif

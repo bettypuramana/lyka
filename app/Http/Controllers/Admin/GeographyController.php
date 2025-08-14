@@ -39,4 +39,14 @@ class GeographyController extends Controller
 
         return redirect()->back()->with('success', 'Country status updated.');
     }
+    public function country_by_continent(Request $request)
+    {
+        $id=$request->input('id');
+
+        $countries=Country::where('continent_id',$id)->select('id','name')->get();
+
+
+
+        echo json_encode($countries);
+    }
 }

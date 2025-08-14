@@ -340,12 +340,14 @@
     </script>
     <script src="https://cdn.tiny.cloud/1/1h1d8a76efrvsatdciuhxdl6iqtb2ruk9491orca22nqlj6k/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
     <script>
-        tinymce.init({
-            selector: '.textarea',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-        });
-    </script>
+    tinymce.init({
+        selector: '.textarea',
+        menubar: false, // removes top menu bar
+        plugins: 'lists', // only keep basic list plugin
+        toolbar: 'undo redo | bold italic underline | bullist numlist | removeformat',
+        branding: false // removes "Powered by TinyMCE"
+    });
+</script>
     @yield('js')
   </body>
 </html>

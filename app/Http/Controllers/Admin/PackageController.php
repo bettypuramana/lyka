@@ -54,6 +54,7 @@ class PackageController extends Controller
         $package->country=$request->input('country');
         $package->tour_type=$request->input('tour_type');
         $package->duration=$request->input('duration');
+        $package->night=$request->input('night');
         $package->about=$request->input('about');
         if ($request->file('main_image')!=null)
         {
@@ -162,6 +163,7 @@ class PackageController extends Controller
         $package->country=$request->input('country');
         $package->tour_type=$request->input('tour_type');
         $package->duration=$request->input('duration');
+        $package->night=$request->input('night');
         $package->about=$request->input('about');
         if ($request->hasFile('main_image')) {
         if ($package->main_image && file_exists(public_path('uploads/package/image/'.$package->main_image))) {
