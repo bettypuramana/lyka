@@ -248,7 +248,7 @@
                                 <img src="{{ asset('uploads/gallery/'.$item->image) }}" alt="">
                                 <div class="title">
                                     <h5>{{ $item->title }}</h5>
-                                    <p>{{ $item->created_at->format('d M Y') }}</p>
+                                    <p>{{ $item->date->format('d M Y') }}</p>
                                 </div>
                             </a>
                         </div>
