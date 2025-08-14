@@ -1,16 +1,16 @@
 @extends('layouts.user.user_layout')
-@section('title', 'Lyka | Package Details')
+@section('title', 'Lyka | ' .  $package->package_title )
 @section('content')
 <section class="inner-banner-area">
             <div class="container">
                 <div class="inner-banner" style="background-image: url({{ asset('assets/images/package-view-banner.png') }});">
                     <div class="inner-body">
-                        <h1 data-aos="fade-up" data-aos-duration="1000">Package Details</h1>
+                        <h1 data-aos="fade-up" data-aos-duration="1000">{{ $package->package_title }}</h1>
                         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-duration="1500">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('user.packages') }}">Package</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Parthenon in Athens, Greece</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $package->package_title }}</li>
                         </ol>
                     </div>
                 </div>

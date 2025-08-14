@@ -1,16 +1,16 @@
 @extends('layouts.user.user_layout')
-@section('title', 'Lyka | Blog Details')
+@section('title', 'Lyka | ' . (!empty($blog->meta_title) ? $blog->meta_title : $blog->title))
 @section('content')
  <section class="inner-banner-area">
             <div class="container">
                 <div class="inner-banner" style="background-image: url({{ asset('assets/images/package-view-banner.png') }});">
                     <div class="inner-body">
-                        <h1>Blog Details</h1>
+                        <h1>{{ $blog->title }}</h1>
                         <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('user.blogs') }}">Blogs</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $blog->title }}</li>
                         </ol>
                     </div>
                 </div>

@@ -1,16 +1,16 @@
 @extends('layouts.user.user_layout')
-@section('title', 'Lyka | Visa Details')
+@section('title', 'Lyka | ' .  $visa->title )
 @section('content')
 <section class="inner-banner-area">
             <div class="container">
                 <div class="inner-banner" style="background-image: url({{ asset('assets/images/visa-banner.png') }});">
                     <div class="inner-body">
-                        <h1>Visa Details</h1>
+                        <h1>{{$visa->title}}</h1>
                         <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('user.home') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('user.visa') }}">Visa</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">USA Visa</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{$visa->title}}</li>
                         </ol>
                     </div>
                 </div>
