@@ -125,14 +125,15 @@ $countries = Country::where('status', 1)->get();
             ->get();
 
         // Build query with filters
-        $query = Package::query();
-
+        $query = Package::query()
+                ->join('countries', 'packages.country', '=', 'countries.id')
+                ->select('packages.*', 'countries.name as country_name');
         if ($request->continent && $request->continent != 'all') {
-            $query->where('continent_id', $request->continent);
+            $query->where('continent', $request->continent);
         }
 
         if ($request->tour_type) {
-            $query->where('tour_type_id', $request->tour_type);
+            $query->where('tour_type', $request->tour_type);
         }
 
         $packages = $query->get();
