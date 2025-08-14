@@ -24,7 +24,8 @@ Visa Edit - Lyka
                         <div class="form-group col-6">
                         <label for="exampleInputName1">Visa Title</label>
                         <input type="text" class="form-control" name="visa_title" id="exampleInputName1" placeholder="Visa Name" value="{{$visa->title}}">
-                      </div>
+                        <p class="text-danger" id="visa_title_error"></p>
+                    </div>
                       <div class="form-group col-6">
                         <label for="exampleInputName1">Continent</label>
                         <select class="form-select" name="continent" id="continent">
@@ -35,24 +36,29 @@ Visa Edit - Lyka
                                 @endforeach
                             @endif
                         </select>
+                        <p class="text-danger" id="continent_error"></p>
                       </div>
                       <div class="form-group col-6">
                         <label for="exampleSelectGender">Flag</label>
                         <input type="file" class="form-control" name="flag" accept=".png, .jpg, .jpeg">
+                        <p class="text-danger" id="flag_error"></p>
                         <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/visa/flags/'.$visa->flag) }}" >
                       </div>
                       <div class="form-group col-6">
                         <label for="exampleSelectGender">Image</label>
                         <input type="file" class="form-control" name="image" accept=".png, .jpg, .jpeg">
+                        <p class="text-danger" id="image_error"></p>
                         <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/visa/'.$visa->image) }}" >
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">Description</label>
                         <textarea class="form-control textarea" id="exampleTextarea1" rows="6" name="description">{{$visa->description}}</textarea>
-                      </div>
+                        <p class="text-danger" id="description_error"></p>
+                    </div>
                        <div class="form-group">
                         <b>Documents needed</b>
                         <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addDocumentColum();"></a>
+                        <p class="text-danger" id="Document_colum_error"></p>
                       </div>
                       <div id="documentsDiv" >
                             @if (!empty($visa->visaDocuments))
@@ -75,6 +81,7 @@ Visa Edit - Lyka
                       <div class="form-group">
                         <b>FAQs</b>
                         <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addFaqColum();"></a>
+                        <p class="text-danger" id="faq_colum_error"></p>
                       </div>
                       <div id="faqDiv" >
                              @if (!empty($visa->visaFAQs))
@@ -154,6 +161,8 @@ function validateForm() {
     document.getElementById('description_error').innerHTML='';
     document.getElementById('Document_colum_error').innerHTML='';
     document.getElementById('faq_colum_error').innerHTML='';
+
+    tinymce.triggerSave();
     // Check visa_title
     const visaTitle = document.querySelector('input[name="visa_title"]').value.trim();
     if (!visaTitle) {

@@ -130,6 +130,8 @@ function validateForm() {
     document.getElementById('description_error').innerHTML='';
     document.getElementById('Document_colum_error').innerHTML='';
     document.getElementById('faq_colum_error').innerHTML='';
+
+    tinymce.triggerSave();
     // Check visa_title
     const visaTitle = document.querySelector('input[name="visa_title"]').value.trim();
     if (!visaTitle) {
