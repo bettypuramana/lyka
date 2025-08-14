@@ -113,11 +113,11 @@ Route::get('/admin/subscription-list', [App\Http\Controllers\Admin\SubscriptionC
 Route::get('/admin/subscription/delete/{id}', [App\Http\Controllers\Admin\SubscriptionController::class, 'destroy'])->name('admin.subscription_destroy');
 Route::get('admin/subscriptions/export', [App\Http\Controllers\Admin\SubscriptionController::class, 'export'])->name('admin.subscriptions.export');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 // require __DIR__.'/auth.php';
 
