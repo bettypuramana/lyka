@@ -25,6 +25,7 @@
         .swal2-select{
             display:none;
         }
+        
     </style>
 
 </head>
@@ -39,10 +40,10 @@
             </div>
         <div class="nav-box">
             <ul>
-                <li><a href="{{ route('user.home') }}">Home</a></li>
-                <li><a href="{{ route('user.about') }}">About Us</a></li>
-                <li><a href="{{ route('user.visa') }}">Visa</a></li>
-                <li><a href="{{ route('user.packages') }}">Destinations</a></li>
+                <li class="{{ request()->routeIs('user.home') ? 'active' : '' }}"><a href="{{ route('user.home') }}">Home</a></li>
+                <li class="{{ request()->routeIs('user.about') ? 'active' : '' }}"><a href="{{ route('user.about') }}">About Us</a></li>
+                <li class="{{ request()->routeIs('user.visa') || request()->routeIs('user.visa_details') ? 'active' : '' }}"><a href="{{ route('user.visa') }}">Visa</a></li>
+                <li class="{{ request()->routeIs('user.packages') || request()->routeIs('user.package_details') ? 'active' : '' }}"><a href="{{ route('user.packages') }}">Destinations</a></li>
                 <li><a href="{{ route('user.blogs') }}">Blogs</a></li>
                 <li><a href="{{ route('user.contact') }}">Contact Us</a></li>
             </ul>
@@ -65,10 +66,10 @@
                         <div class="logo"><a href="{{ route('user.home') }}"><img src="{{asset('assets/images/logo.svg')}}" alt=""></a></div>
                         <div class="nav">
                             <ul>
-                                <li><a href="{{ route('user.home') }}">Home</a></li>
-                                <li><a href="{{ route('user.packages') }}">Destination</a></li>
-                                <li><a href="{{ route('user.visa') }}">Visa</a></li>
-                                <li><a href="{{ route('user.contact') }}">Contact Us</a></li>
+                                <li class="{{ request()->routeIs('user.home') ? 'active' : '' }}"><a href="{{ route('user.home') }}">Home</a></li>
+                                <li class="{{ request()->routeIs('user.packages') || request()->routeIs('user.package_details') ? 'active' : '' }}"><a href="{{ route('user.packages') }}">Destination</a></li>
+                                <li class="{{ request()->routeIs('user.visa') || request()->routeIs('user.visa_details') ? 'active' : '' }}"><a href="{{ route('user.visa') }}">Visa</a></li>
+                                <li class="{{ request()->routeIs('user.contact') ? 'active' : '' }}"><a href="{{ route('user.contact') }}">Contact Us</a></li>
                             </ul>
                         </div>
                         <div class="side-nav">
@@ -123,10 +124,10 @@
                         <div class="f-box">
                             <h4>Quick Link</h4>
                             <ul>
-                                <li><a href="{{ route('user.about') }}">About</a></li>
-                                <li><a href="{{ route('user.packages') }}">Destinations</a></li>
+                                <li class="{{ request()->routeIs('user.about') ? 'active' : '' }}"><a href="{{ route('user.about') }}">About</a></li>
+                                <li class="{{ request()->routeIs('user.packages') || request()->routeIs('user.package_details') ? 'active' : '' }}"><a href="{{ route('user.packages') }}">Destinations</a></li>
                                 <li><a href="{{ route('user.contact') }}">Contact</a></li>
-                                <li><a href="{{ route('user.visa') }}">Visa</a></li>
+                                <li class="{{ request()->routeIs('user.visa') || request()->routeIs('user.visa_details') ? 'active' : '' }}"><a href="{{ route('user.visa') }}">Visa</a></li>
                                 <li><a href="{{ route('user.privacy_policy') }}">Privacy Policy</a></li>
                                 <li><a href="{{ route('user.terms_and_conditions') }}">Terms & Conditions</a></li>
                             </ul>

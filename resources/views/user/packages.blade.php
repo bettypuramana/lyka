@@ -54,6 +54,7 @@
         {{-- Packages Loop --}}
         <div class="row">
             <div id="packagesList" class="row">
+                
                 @foreach($packages as $package)
                     <div class="col-lg-4 col-md-6 mb-3">
                         <div class="box">
@@ -63,9 +64,9 @@
                                 </a>
                             </div>
                             <div class="content-box">
-                                <h3>{{ $package->title }}</h3>
-                                <p><span>{{ $package->location }}</span></p>
-                                <div class="travel-count">{{ $package->duration }}</div>
+                                <h3>{{ $package->package_title }}</h3>
+                                <p><span>{{ $package->country_name }}</span></p>
+                                <div class="travel-count">{{ $package->duration }} Days, {{ $package->night }} Night</div>
                                 <div class="btm-box">
                                     <div class="price">
                                         <p>Start From</p>

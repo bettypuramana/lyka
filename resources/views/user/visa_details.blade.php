@@ -25,6 +25,7 @@
                 <div class="visa-body-content">
                     <h3>Easily Secure Your Tourist Visa</h3>
                     <p>{!! $visa->description !!}</p>
+                    @if(!empty($documents) && count($documents) > 0)
                     <h3>Documents needed for a tourist</h3>
                     <p>The following documents need to be carried with you on the interview date </p>
                     <ul>
@@ -32,6 +33,8 @@
                             <li>{{ $doc->title }}</li>
                         @endforeach
                     </ul>
+                    @endif
+                    @if(!empty($faqs) && count($faqs) > 0)
                     <h3>FAQs</h3>
                     <div class="faq-sec">
                         <div class="accordion" id="v-tab">
@@ -59,6 +62,7 @@
                             @endforeach
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="col-lg-4">
