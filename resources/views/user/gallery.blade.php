@@ -29,7 +29,7 @@
                             <img src="{{ asset('uploads/gallery/' . $gallery->image) }}" alt="{{ $gallery->title }}">
                             <div class="title">
                                 <h5>{{ $gallery->title }}</h5>
-                                <p>{{ $gallery->created_at->format('d M Y') }}</p>
+                                <p>{{ $gallery->date->format('d M Y') }}</p>
                             </div>
                         </a>
                     </div>
