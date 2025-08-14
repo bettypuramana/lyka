@@ -250,7 +250,7 @@ $countries = Country::where('status', 1)->get();
         $validated = $request->validate([
             
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required',
             ],

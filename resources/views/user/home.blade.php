@@ -127,7 +127,7 @@
                             <p>
                                 <span>{{ $package->countryName->name ?? '' }}</span>
                             </p>
-                            <div class="travel-count">{{ $package->duration ?? '-' }}</div>
+                            <div class="travel-count">{{ $package->duration }} Days, {{ $package->night }} Night</div>
                             <div class="btm-box">
                                 <div class="price">
                                     <p>Start From</p>
@@ -248,7 +248,7 @@
                                 <img src="{{ asset('uploads/gallery/'.$item->image) }}" alt="">
                                 <div class="title">
                                     <h5>{{ $item->title }}</h5>
-                                    <p>{{ $item->date->format('d M Y') }}</p>
+                                    <p>{{ \Carbon\Carbon::parse($item->date)->format('d M Y') }}</p>
                                 </div>
                             </a>
                         </div>
@@ -265,7 +265,7 @@
                                 <img src="{{ asset('uploads/gallery/'.$galleries[2]->image) }}" alt="">
                                 <div class="title">
                                     <h5>{{ $galleries[2]->title }}</h5>
-                                    <p>{{ $galleries[2]->created_at->format('d M Y') }}</p>
+                                    <p>{{ \Carbon\Carbon::parse($item->date)->format('d M Y') }}</p>
                                 </div>
                             </a>
                         </div>
@@ -282,7 +282,7 @@
                                 <img src="{{ asset('uploads/gallery/'.$item->image) }}" alt="">
                                 <div class="title">
                                     <h5>{{ $item->title }}</h5>
-                                    <p>{{ $item->created_at->format('d M Y') }}</p>
+                                    <p>{{ \Carbon\Carbon::parse($item->date)->format('d M Y') }}</p>
                                 </div>
                             </a>
                         </div>
@@ -311,7 +311,7 @@
                 @foreach($testimonials as $testimonial)
                     <div class="item">
                         <div class="box">
-                            <div class="item-box">
+                            <div class="item-box" >
                                 <div class="pic">
                                     <img src="{{ asset('uploads/testimonial/' . $testimonial->image) }}" alt="{{ $testimonial->name }}">
                                 </div>
