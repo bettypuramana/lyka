@@ -114,8 +114,15 @@ Settings - Lyka
                       </div>
                       <div class="form-group col-3">
                         <label for="exampleSelectGender">Contact Number</label>
-                        <input type="text" class="form-control" name="contact_number" placeholder="+971 54 346 5001, +91 95444 99009" value="{{$settings->contact_number}}">
+                        <input type="text" class="form-control" name="contact_number" placeholder="+971 54 346 5001" value="{{$settings->contact_number}}">
                         @error('contact_number')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                      </div>
+                      <div class="form-group col-3">
+                        <label for="exampleSelectGender">Second Contact Number</label>
+                        <input type="text" class="form-control" name="contact_number_two" placeholder="+91 95444 99009" value="{{$settings->contact_number_two}}">
+                        @error('contact_number_two')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
@@ -133,6 +140,14 @@ Settings - Lyka
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
+                      <div class="form-group col-3">
+                        </div>
+                        <div class="form-group col-3">
+                        </div>
+                        <div class="form-group col-3">
+                        </div>
+
+
                       <button type="submit" class="btn btn-success me-2 col-2">Submit</button>
                     </form>
                   </div>

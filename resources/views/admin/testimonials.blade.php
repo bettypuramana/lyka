@@ -6,11 +6,12 @@ Testimonials - Lyka
 
  <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Testimonials <a href="{{route('admin.testimonial_new')}}" class="btn btn-success btn-sm">Add</a></h3>
+              <h3 class="page-title"> Testimonials </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Testimonials</li>
+                  <a href="{{route('admin.testimonial_new')}}" class="btn btn-dark btn-sm" style="margin-left: 10px" >Add</a>
                 </ol>
               </nav>
             </div>

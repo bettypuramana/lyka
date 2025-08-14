@@ -20,6 +20,19 @@ class EnquiryController extends Controller
                     ->select('enquiries.*', 'countries.name as country_name')->orderBy('enquiries.id', 'desc')->get();
         return view('admin.enquiry_package',compact('enquiries'));
     }
+    public function packag_enquiry_delete($id)
+    {
+        $del=Enquiry::where('id',$id)->delete();
+
+        if($del)
+        {
+            return redirect(route('admin.package_enquiries'))->with('success','Deleted Successfully !');
+        }
+        else
+        {
+            return redirect()->back()->with('Fail','Something Went Wrong');
+        }
+    }
     public function visa_enquiries()
     {
         $visa_enquiries = Visa_enquirie::join('countries as nation', 'visa_enquiries.nationality_id', '=', 'nation.id')
@@ -28,10 +41,39 @@ class EnquiryController extends Controller
                     ->orderBy('visa_enquiries.id', 'desc')->get();
         return view('admin.enquiry_visa',compact('visa_enquiries'));
     }
+    public function visa_enquiry_delete($id)
+    {
+        $del=Visa_enquirie::where('id',$id)->delete();
+
+        if($del)
+        {
+            return redirect(route('admin.visa_enquiries'))->with('success','Deleted Successfully !');
+        }
+        else
+        {
+            return redirect()->back()->with('Fail','Something Went Wrong');
+        }
+    }
+
     public function contact_enquiries()
     {
         $contact_enquiries = Contact_enquirie::orderBy('id', 'desc')->get();
 
         return view('admin.enquiry_contact',compact('contact_enquiries'));
     }
+    public function contact_enquiry_delete($id)
+    {
+        $del=Contact_enquirie::where('id',$id)->delete();
+
+        if($del)
+        {
+            return redirect(route('admin.contact_enquiries'))->with('success','Deleted Successfully !');
+        }
+        else
+        {
+            return redirect()->back()->with('Fail','Something Went Wrong');
+        }
+    }
+
+
 }

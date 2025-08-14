@@ -318,7 +318,7 @@
                                 <div class="content">
                                     <h5>{{ $testimonial->name }}</h5>
                                     <h6>{{ $testimonial->designation }}</h6>
-                                    <p>{{ Str::limit($testimonial->message, 120) }}</p>
+                                    <p>{!! Str::limit($testimonial->message, 120) !!}</p>
                                 </div>
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#testimonial-modal-{{ $testimonial->id }}" class="btn-nav">
                                     <img src="{{ asset('assets/images/link-arrow.svg') }}" alt="">
@@ -352,7 +352,7 @@
                 <div class="modal-body">
                     <div class="box-testi">
                         <div class="content-box">
-                            {!! nl2br(e($testimonial->message)) !!}
+                            {!! $testimonial->message !!}
                         </div>
                     </div>
                 </div>
@@ -380,7 +380,7 @@
     </div>
 </section>
 
-<section class="blog-sec p60"> 
+<section class="blog-sec p60">
     <div class="container">
         <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1000">
             <div class="col-lg-6 mb-3 title-head">

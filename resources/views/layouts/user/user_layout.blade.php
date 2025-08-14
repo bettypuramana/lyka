@@ -27,12 +27,12 @@
         }
         
     </style>
-    
+
 </head>
 <body>
 <!-- navigation menu -->
  <div id="mySidenav" class="sidenav">
-    
+
     <div class="menu-wrapper">
         <div class="nav-head">
                 <div class="nav-logo"><a href="{{ route('user.home') }}"><img src="{{asset('assets/images/f-logo.svg')}}" alt=""></a></div>
@@ -96,11 +96,27 @@
                             <p>Sit amet consectetur adipiscinelit Sem et aliquam enimdeassa ornare vulputate neque feugiat secursun blandit volutpat hendr mauris</p>
                             <h6>Follow Us On:</h6>
                             <div class="social-media">
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                                <a href=""><i class="fa fa-instagram"></i></a>
-                                <a href=""><i class="fa fa-linkedin"></i></a>
-                                <a href=""><img src="{{asset('assets/images/twitter-icon.svg')}}" alt=""></a>
-                                <a href=""><i class="fa fa-youtube"></i></a>
+                                @if($settings->facebook)
+                                    <a href="{{ $settings->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                                @endif
+
+                                @if($settings->instagram)
+                                    <a href="{{ $settings->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                                @endif
+
+                                @if($settings->linkedin)
+                                    <a href="{{ $settings->linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                @endif
+
+                                @if($settings->twitter)
+                                    <a href="{{ $settings->twitter }}" target="_blank">
+                                        <img src="{{ asset('assets/images/twitter-icon.svg') }}" alt="Twitter">
+                                    </a>
+                                @endif
+
+                                @if($settings->youtube)
+                                    <a href="{{ $settings->youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -133,17 +149,17 @@
                         <div class="f-box" data-aos="fade-up" data-aos-duration="1600">
                             <h4>Reach Out To Us</h4>
                             <ul class="address-sec">
-                                <li class="working-time"><p>Hours: 8:00 - 17:00, Mon - Sat</p></li>
-                                <li class="phone"><a href="tel:+971 54 346 5001">+971 54 346 5001</a>, <a href="tel:+91 95444 99009">+91 95444 99009</a></li>
-                                <li class="mail"><a href="mailto:support@lyka.com">support@lyka.com</a></li>
+                                <li class="working-time"><p>{{$settings->working_time}}</p></li>
+                                <li class="phone"><a href="tel:{{$settings->contact_number}}">{{$settings->contact_number}}</a>, <a href="tel:{{$settings->contact_number_two}}">{{$settings->contact_number_two}}</a></li>
+                                <li class="mail"><a href="mailto:{{$settings->email}}">{{$settings->email}}</a></li>
                                 <li class="map">
-                                    <p>4517 Washington Ave. Manchester, Kentucky 39495</p>
+                                    <p>{{$settings->address}}</p>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <hr>                
+                <hr>
             </div>
         </div>
         <div class="copyright-sec">

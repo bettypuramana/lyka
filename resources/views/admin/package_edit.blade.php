@@ -38,7 +38,7 @@ Package Edit - Lyka
                       </div>
                       <div class="form-group col-4">
                         <label for="exampleInputName1">Continent</label>
-                        <select class="form-select" name="continent" id="continent">
+                        <select class="form-select" name="continent" id="continent" onchange="getCountries();">
                             <option value="">Select</option>
                             @if ($continents)
                                 @foreach ($continents as $row)
@@ -51,12 +51,7 @@ Package Edit - Lyka
                       <div class="form-group col-4">
                         <label for="exampleInputName1">Country</label>
                         <select class="form-select" name="country" id="country">
-                            <option value="">Select</option>
-                            @if ($countries)
-                                @foreach ($countries as $row)
-                                    <option value="{{$row->id}}" {{ $package->country == $row->id ? "selected" :""}}>{{$row->name}}</option>
-                                @endforeach
-                            @endif
+
                         </select>
                         <p class="text-danger" id="country_error"></p>
                       </div>
@@ -73,7 +68,7 @@ Package Edit - Lyka
                         </select>
                         <p class="text-danger" id="tour_type_error"></p>
                       </div>
-                      <div class="form-group col-4">
+                      <div class="form-group col-3">
                         <label for="exampleSelectGender">Duration ( Days )</label>
                         <select class="form-select" id="Duration" name="duration" onchange="addTourPlan();">
                             <option value="">Select</option>
@@ -90,13 +85,18 @@ Package Edit - Lyka
                         </select>
                         <p class="text-danger" id="duration_error"></p>
                       </div>
-                      <div class="form-group col-4">
+                      <div class="form-group col-3">
+                        <label for="exampleSelectGender">No Of Nights</label>
+                        <input type="number" class="form-control" name="night" placeholder="No Of Nights" value="{{$package->night}}">
+                        <p class="text-danger" id="night_error"></p>
+                      </div>
+                      <div class="form-group col-3">
                         <label for="exampleSelectGender">Main Image</label>
                         <input type="file" class="form-control" name="main_image" accept=".png, .jpg, .jpeg">
                         <img style="width:70px;margin-top:5px;" src="{{ asset('uploads/package/image/'.$package->main_image) }}" >
                         <p class="text-danger" id="main_image_error"></p>
                       </div>
-                      <div class="form-group col-4">
+                      <div class="form-group col-3">
                         <label for="exampleSelectGender">Images</label>
                         <input type="file" class="form-control" name="images[]" multiple accept=".png, .jpg, .jpeg">
                         <p class="text-danger" id="images_error"></p>
@@ -359,7 +359,7 @@ function validateForm() {
     let isValid = true;
 
     // Clear previous errors
-    ['package_title', 'price', 'group_size', 'continent', 'country', 'tour_type', 'duration', 'about','highlights','included','exclude','tour_plan']
+    ['package_title', 'price', 'group_size', 'continent', 'country', 'tour_type', 'duration', 'night', 'about','highlights','included','exclude','tour_plan']
       .forEach(id => document.getElementById(id + '_error').textContent = '');
 
     // Get values
@@ -370,6 +370,7 @@ function validateForm() {
     const country = document.querySelector('select[name="country"]').value;
     const tourType = document.querySelector('select[name="tour_type"]').value;
     const duration = document.querySelector('select[name="duration"]').value;
+    const night = document.querySelector('input[name="night"]').value;
     const about = document.querySelector('textarea[name="about"]').value.trim();
 
     // Validate each field
@@ -401,7 +402,10 @@ function validateForm() {
         document.getElementById('duration_error').textContent = 'Duration is required';
         isValid = false;
     }
-
+    if (!night) {
+        document.getElementById('night_error').textContent = 'Night is required';
+        isValid = false;
+    }
     if (!about) {
         document.getElementById('about_error').textContent = 'About field is required';
         isValid = false;
@@ -469,5 +473,38 @@ function validateForm() {
 
     return isValid;
 }
+function getCountries() {
+    // event.preventDefault();
+    var selectedCountryId = "{{ $package->country }}";
+    var id = document.getElementById("continent").value;
+
+    $.ajax({
+        url: "{{ route('admin.country_by_continent') }}",
+        type: "POST",
+        data: {
+            "_token": "{{ csrf_token() }}",
+            id: id,
+        },
+        dataType: 'json',
+        success: function(res) {
+            // console.log(res);
+
+            var html = '<option value="">select</option>';
+            for (var i = 0; i < res.length; i++) {
+                var selected = (res[i].id == selectedCountryId) ? 'selected' : '';
+                html += '<option value="' + res[i].id + '" ' + selected + '>' + res[i].name + '</option>';
+            }
+                $('#country').html(html);
+        },
+            error: function(e) {
+                //    loader_off();
+            }
+        });
+}
+  window.onload = function() {
+            setTimeout(function() {
+            getCountries();
+            }, 500);
+        };
 </script>
 @endsection

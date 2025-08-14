@@ -39,6 +39,7 @@ Package Enquiry - Lyka
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Travel Date</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -51,6 +52,9 @@ Package Enquiry - Lyka
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->phone}}</td>
                                         <td>{{$row->travel_date}}</td>
+                                        <td>
+                                            <a href="{{ route('admin.packag_enquiry_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif

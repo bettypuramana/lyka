@@ -6,12 +6,13 @@ Blogs - Lyka
 
  <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> Blogs <a href="{{route('admin.blog_new')}}" class="btn btn-success btn-sm">Add</a></h3>
+              <h3 class="page-title"> Blogs </h3>
 
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Blogs</li>
+                  <a href="{{route('admin.blog_new')}}" class="btn btn-dark btn-sm" style="margin-left: 10px" >Add</a>
                 </ol>
               </nav>
             </div>

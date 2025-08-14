@@ -54,6 +54,7 @@ Route::get('/admin/continent/change/{code}/{status}', [App\Http\Controllers\Admi
 
 Route::get('/admin/country-list', [App\Http\Controllers\Admin\GeographyController::class, 'countries'])->name('admin.countries');
 Route::get('/admin/country/change/{id}/{status}', [App\Http\Controllers\Admin\GeographyController::class, 'country_change_status'])->name('admin.country_change_status');
+Route::post('/admin/ccountry-by-continent', [App\Http\Controllers\Admin\GeographyController::class, 'country_by_continent'])->name('admin.country_by_continent');
 
 // packages
 Route::get('/admin/packages-list', [App\Http\Controllers\Admin\PackageController::class, 'index'])->name('admin.packages');
@@ -97,8 +98,13 @@ Route::post('/admin/settings-update/{id}', [App\Http\Controllers\Admin\SiteConfi
 
 // enquiry
 Route::get('/admin/packag-enquiry-list', [App\Http\Controllers\Admin\EnquiryController::class, 'package_enquiries'])->name('admin.package_enquiries');
+Route::get('/admin/{id}/packag-enquiry-delete', [App\Http\Controllers\Admin\EnquiryController::class, 'packag_enquiry_delete'])->name('admin.packag_enquiry_delete');
+
 Route::get('/admin/visa-enquiry-list', [App\Http\Controllers\Admin\EnquiryController::class, 'visa_enquiries'])->name('admin.visa_enquiries');
+Route::get('/admin/{id}/visa-enquiry-delete', [App\Http\Controllers\Admin\EnquiryController::class, 'visa_enquiry_delete'])->name('admin.visa_enquiry_delete');
+
 Route::get('/admin/contact-enquiry-list', [App\Http\Controllers\Admin\EnquiryController::class, 'contact_enquiries'])->name('admin.contact_enquiries');
+Route::get('/admin/{id}/contact-enquiry-delete', [App\Http\Controllers\Admin\EnquiryController::class, 'contact_enquiry_delete'])->name('admin.contact_enquiry_delete');
 
 // testimonials
 Route::get('/admin/testimonial-list', [App\Http\Controllers\Admin\TestimonialController::class, 'index'])->name('admin.testimonials');

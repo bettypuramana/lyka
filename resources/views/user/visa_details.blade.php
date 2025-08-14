@@ -24,7 +24,7 @@
             <div class="col-lg-8">
                 <div class="visa-body-content">
                     <h3>Easily Secure Your Tourist Visa</h3>
-                    <p>{{ $visa->description }}</p>
+                    <p>{!! $visa->description !!}</p>
                     @if(!empty($documents) && count($documents) > 0)
                     <h3>Documents needed for a tourist</h3>
                     <p>The following documents need to be carried with you on the interview date </p>
@@ -109,9 +109,9 @@
                         </div>
                     </form>
 
-                    
+
                 </div>
-            </div>     
+            </div>
         </div>
     </div>
 </section>
@@ -138,5 +138,5 @@
             .catch(err => console.error(err));
         });
     </script>
-    
-@endsection 
+
+@endsection
