@@ -79,10 +79,10 @@
                         @csrf
                         <div class="row visa-form">
                             <div class="col-lg-12 mb-3">
-                                <input type="text" name="name" class="form-control user" placeholder="Name" required>
+                                <input type="text" name="name" class="form-control user" placeholder="Name" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')" required>
                             </div>
                             <div class="col-lg-12 mb-3">
-                                <input type="text" name="phone" class="form-control phone" placeholder="Phone Number" required>
+                                <input type="text" name="phone" class="form-control phone" placeholder="Phone Number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                             </div>
                             <div class="col-lg-12 mb-3">
                                 <input type="email" name="email" class="form-control mail" placeholder="Enter Your Email" required>
