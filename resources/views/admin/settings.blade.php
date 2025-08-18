@@ -59,7 +59,7 @@ Settings - Lyka
                       </div>
                       <div class="form-group">
                         <label for="exampleTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="6" name="about_description" placeholder="Description">{{$settings->about_description}}</textarea>
+                        <textarea class="form-control textarea" id="editor" rows="6" name="about_description" placeholder="Description">{{$settings->about_description}}</textarea>
                         @error('about_description')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
