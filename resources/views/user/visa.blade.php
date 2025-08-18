@@ -17,7 +17,7 @@
         </div>
     </div>
 </section>
-
+</section>
 <section class="visa-body p60">
     <div class="container">
         <div class="row">

@@ -52,8 +52,7 @@
         </div>
 
         {{-- Packages Loop --}}
-        <div class="row">
-            <div id="packagesList" class="row">
+        <div class="row"  id="packagesList">
                 
                 @foreach($packages as $package)
                     <div class="col-lg-4 col-md-6 mb-3">
@@ -80,7 +79,6 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
         </div>
 
         {{-- Pagination (optional) --}}
