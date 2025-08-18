@@ -141,6 +141,11 @@ Settings - Lyka
                         @enderror
                       </div>
                       <div class="form-group col-3">
+                        <label for="exampleSelectGender">Whats App Number</label>
+                        <input type="text" class="form-control" name="whats_app" placeholder="+91 95444 99009" value="{{$settings->whats_app}}">
+                        @error('whats_app')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="form-group col-3">
                         </div>
