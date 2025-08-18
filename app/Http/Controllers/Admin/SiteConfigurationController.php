@@ -218,6 +218,7 @@ class SiteConfigurationController extends Controller
             'contact_number_two' => 'required',
             'email' => 'required',
             'address' => 'required',
+            'whats_app' => 'required',
             ],
             [
             'about_title.required' => 'This field is required',
@@ -233,6 +234,7 @@ class SiteConfigurationController extends Controller
             'contact_number_two.required' => 'This field is required',
             'email.required' => 'This field is required',
             'address.required' => 'This field is required',
+            'whats_app.required' => 'This field is required',
             ]
         );
 
@@ -266,6 +268,7 @@ class SiteConfigurationController extends Controller
         $update->contact_number_two=$request->input('contact_number_two');
         $update->email=$request->input('email');
         $update->address=$request->input('address');
+        $update->whats_app=$request->input('whats_app');
         $save= $update->save();
 
 
