@@ -57,7 +57,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-lg-6 mb-3">
-                            <input type="text" name="name" class="form-control" placeholder="Name" required>
+                            <input type="text" name="name" class="form-control" placeholder="Name" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')" required>
                         </div>
                         <div class="col-lg-6 mb-3">
                             <input type="email" name="email" class="form-control" placeholder="Email" required>

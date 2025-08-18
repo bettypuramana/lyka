@@ -61,8 +61,9 @@
 
             {{-- Hidden Fancybox links --}}
             @foreach ($allImages->slice(3) as $hiddenImage)
-                <a href="{{ asset('uploads/package/images/' . $hiddenImage) }}" data-fancybox="gallery" data-caption="" style="display:none;"></a>
+                <a href="{{ $hiddenImage }}" data-fancybox="gallery" data-caption="" style="display:none;"></a>
             @endforeach
+
         </div>
 
 
