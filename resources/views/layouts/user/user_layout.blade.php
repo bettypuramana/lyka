@@ -25,7 +25,7 @@
         .swal2-select{
             display:none;
         }
-        
+
     </style>
 
 </head>
@@ -149,12 +149,28 @@
                         <div class="f-box" data-aos="fade-up" data-aos-duration="1600">
                             <h4>Reach Out To Us</h4>
                             <ul class="address-sec">
-                                <li class="working-time"><p>{{$settings->working_time}}</p></li>
-                                <li class="phone"><a href="tel:{{$settings->contact_number}}">{{$settings->contact_number}}</a>, <a href="tel:{{$settings->contact_number_two}}">{{$settings->contact_number_two}}</a></li>
-                                <li class="mail"><a href="mailto:{{$settings->email}}">{{$settings->email}}</a></li>
-                                <li class="map">
+                                @if ($settings->working_time)
+                                    <li class="working-time"><p>{{$settings->working_time}}</p></li>
+                                @endif
+
+                                <li class="phone">
+                                    @if ($settings->contact_number)
+                                        <a href="tel:{{$settings->contact_number}}">{{$settings->contact_number}}</a>,
+                                    @endif
+                                    @if ($settings->contact_number_two)
+                                        <a href="tel:{{$settings->contact_number_two}}">{{$settings->contact_number_two}}</a>
+                                    @endif
+
+                                </li>
+                                @if ($settings->email)
+                                    <li class="mail"><a href="mailto:{{$settings->email}}">{{$settings->email}}</a></li>
+                                @endif
+                                @if ($settings->address)
+                                  <li class="map">
                                     <p>{{$settings->address}}</p>
                                 </li>
+                                @endif
+
                             </ul>
                         </div>
                     </div>
