@@ -64,7 +64,7 @@
                                                 <i class="fa fa-minus" aria-hidden="true"></i>
                                                 </button>
                                             </div>
-                                            <input class="input-group-field " type="number" name="quantity" value="0">
+                                            <input class="input-group-field " type="number" name="quantity" value="1">
                                             <div class="input-group-button">
                                                 <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity">
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
@@ -77,19 +77,19 @@
                                         @enderror
                                     </div>
                                     <div class="col-lg-4 col-md-6 mb-3">
-                                        <input type="text" class="form-control date"  name="travel_date" id="datepicker" placeholder="Travel Date">
+                                        <input readonly type="text" class="form-control date"  name="travel_date" id="datepicker" placeholder="Travel Date">
                                         @error('travel_date')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-lg-4 col-md-6 mb-3">
-                                        <input type="text" class="form-control user" name="name" id="" placeholder="Name">
+                                        <input type="text" class="form-control user" name="name" placeholder="Name" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
                                         @error('name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-lg-4 col-md-6 mb-3">
-                                        <input type="text" class="form-control phone" name="phone" id="" placeholder="Phone Number">
+                                        <input type="text" class="form-control phone" name="phone" placeholder="Phone Number" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                                         @error('phone')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
