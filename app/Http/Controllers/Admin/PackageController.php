@@ -60,7 +60,7 @@ class PackageController extends Controller
         {
             $file=$request->file('main_image');
             $extension=$file->getClientOriginalExtension();
-            $filename=$id.time().'.'.$extension;
+            $filename=time().'.'.$extension;
             $file->move('uploads/package/image',$filename);
             $package->main_image=$filename;
         }

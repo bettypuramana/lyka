@@ -160,7 +160,7 @@
                 @foreach ($visas as $visa)
                     <div class="item">
                         <div class="box">
-                            <a href="{{ route('user.visa_details', $visa->id) }}">
+                            <a href="{{ route('user.visa_details', $visa->slug) }}">
                                 <div class="visa-location">
                                     <img src="{{ asset('uploads/visa/' . $visa->image) }}" alt="{{ $visa->title }}">
                                 </div>

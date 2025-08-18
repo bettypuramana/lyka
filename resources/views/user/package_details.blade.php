@@ -36,20 +36,25 @@
                 </div>
             </div>
         </div>
+
+
         <div class="row">
+            {{-- @php
+                print_r($displayImages);
+                exit;
+            @endphp --}}
             @foreach ($displayImages as $index => $image)
                 <div class="col-lg-{{ $index == 0 ? '6' : '3' }} col-md-4 col-sm-4 mb-3 {{ $index == 0 ? 'd-none d-sm-none d-md-block' : '' }}" data-aos="fade-up" data-aos-duration="{{ 1000 + ($index * 500) }}">
                     <div class="img-box">
                         @if ($index == 2)
-                            <img src="{{ asset('uploads/package/images/' . $image) }}" alt="" data-aos="fade-up" data-aos-duration="1800">
-                            <a href="{{ asset('uploads/package/images/' . $image) }}" class="view-more" data-fancybox="gallery" data-caption="">
+                            <a href="{{ asset($image) }}" class="view-more" data-fancybox="gallery" data-caption="">
                                 <img src="{{ asset('assets/images/gallery-icon.svg') }}" alt="">View Gallery
                             </a>
-                        @else
-                            <a href="{{ asset('uploads/package/images/' . $image) }}" data-fancybox="gallery" data-caption="">
-                                <img src="{{ asset('uploads/package/images/' . $image) }}" alt="">
-                            </a>
                         @endif
+                            <a href="{{ asset($image) }}" data-fancybox="gallery" data-caption="">
+                                <img src="{{ asset($image) }}" alt="">
+                            </a>
+
                     </div>
                 </div>
             @endforeach
@@ -92,7 +97,7 @@
             <div class="col-lg-8">
                 <div class="tour-sec" data-aos="fade-up" data-aos-duration="1000">
                     <h4>About This Tour</h4>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>    
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
                     <h4>Trip Highlights</h4>
                     <ul class="heighlight">
                         @foreach($highlights as $highlight)
