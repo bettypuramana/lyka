@@ -19,7 +19,32 @@ Continents - Lyka
                 <div class="card">
 
                   <div class="card-body">
-                    {{-- <h4 class="card-title">Continents</h4> --}}
+                    <form class="forms-sample row" action="{{route('admin.continent_store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+
+
+                         <div class="form-group col-5">
+                            <label for="exampleSelectGender">Continent</label>
+                            <input type="text" class="form-control" name="continent" placeholder="Africa" value="{{old('continent')}}">
+                            @error('continent')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                         <div class="form-group col-5">
+                            <label for="exampleSelectGender">Continent Code</label>
+                            <input type="text" class="form-control" name="continent_code" placeholder="AF" value="{{old('continent_code')}}">
+                            @error('continent_code')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-2 p-4">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+
+                    </form>
+                    {{-- <h4 class="card-title">Gallery</h4> --}}
+                    <hr>
                      @if(session()->has('success'))
                         <div class="alert alert-success">
                         {{ session()->get('success') }}
@@ -38,6 +63,7 @@ Continents - Lyka
                             <th>Continent</th>
                             <th>Code</th>
                             <th>Status</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -53,6 +79,9 @@ Continents - Lyka
                                             @else
                                                 <a href="{{ route('admin.continent_change_status', ['code' => $row->code, 'status' => $row->status]) }}"><label class="badge badge-danger">Inactive</label></a>
                                             @endif
+                                        </td>
+                                         <td>
+                                            <a href="{{ route('admin.continent_delete', ['id' => $row->code]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

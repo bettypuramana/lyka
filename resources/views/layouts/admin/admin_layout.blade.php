@@ -326,6 +326,7 @@
     <script src="{{asset('theme/assets/js/misc.js')}}"></script>
     <script src="{{asset('theme/assets/js/settings.js')}}"></script>
     <script src="{{asset('theme/assets/js/todolist.js')}}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{asset('theme/assets/js/dashboard.js')}}"></script>
@@ -339,7 +340,7 @@
         });
     </script>
     <script src="https://cdn.tiny.cloud/1/1h1d8a76efrvsatdciuhxdl6iqtb2ruk9491orca22nqlj6k/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
-    <script>
+    {{-- <script>
     tinymce.init({
         selector: '.textarea',
         menubar: false, // removes top menu bar
@@ -347,6 +348,13 @@
         toolbar: 'undo redo | bold italic underline | bullist numlist | removeformat',
         branding: false // removes "Powered by TinyMCE"
     });
+</script> --}}
+<script>
+    ClassicEditor
+        .create(document.querySelector('.textarea'))
+        .catch(error => {
+            console.error(error);
+        });
 </script>
     @yield('js')
   </body>
