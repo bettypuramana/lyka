@@ -38,38 +38,39 @@ class UserController extends Controller
                        ->orderBy('created_at', 'desc')
                        ->take(6)
                        ->get();
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        $settings = Setting_tbl::first();
         return view('user.home', compact('banners','countries','blogs','visas','testimonials','galleries','packages','settings'));
     }
     public function about()
     {
         $testimonials = Testimonial::where('status',1)->latest()->get();
         $about = Setting_tbl::first(); // get single row
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        $settings = Setting_tbl::first();
         return view('user.about',compact('testimonials','about','settings'));
     }
     public function blog_details($id, $slug)
     {
         $blog = Blog::findOrFail($id); // Optionally verify the slug too
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        $settings = Setting_tbl::first();
         return view('user.blog_details', compact('blog','settings'));
     }
 
     public function blogs()
     {
         $blogs = Blog::orderBy('published_at', 'desc')->get();
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        $settings = Setting_tbl::first();
         return view('user.blogs', compact('blogs','settings'));
     }
     public function contact()
     {
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
-        return view('user.contact','settings');
+        $settings = Setting_tbl::first();
+        return view('user.contact',compact('settings'));
     }
     public function gallery()
     {
 
         $galleries = Gallery::orderBy('created_at', 'desc')->get();
+        $settings = Setting_tbl::first();
         return view('user.gallery', compact('galleries','settings'));
     }
    public function package_details($id, $slug)
@@ -79,13 +80,27 @@ class UserController extends Controller
             ->firstOrFail();
 
         // Get package images
-        $images = Package_image::where('package_id', $package->id)->pluck('images')->toArray();
+        // $images = Package_image::where('package_id', $package->id)->pluck('images')->toArray();
 
-        // Merge main image + extra images
-        $allImages = collect([$package->main_image])->merge($images);
+        // // Merge main image + extra images
+        // $allImages = collect([$package->main_image])->merge($images);
 
-        // Get first 3 images for display
-        $displayImages = $allImages->take(3);
+        // // Get first 3 images for display
+        // $displayImages = $allImages->take(3);
+
+        $mainImage = $package->main_image
+    ? asset('uploads/package/image/' . $package->main_image)
+    : null;
+
+$images = Package_image::where('package_id', $package->id)
+    ->pluck('images')
+    ->map(function ($img) {
+        return asset('uploads/package/images/' . $img);
+    });
+
+$allImages = collect([$mainImage])->merge($images)->filter();
+
+$displayImages = $allImages->take(3)->values();
 
         $highlights = Package_more::where('package_id', $package->id)->where('type', 'highlights')->get();
         $includes = Package_more::where('package_id', $package->id)->where('type', 'includes')->get();
@@ -98,7 +113,7 @@ class UserController extends Controller
         $country = Country::find($package->country);
         $continent = Continent::find($package->continent);
         $tourType = Tour_type::find($package->tour_type);
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        $settings = Setting_tbl::first();
 $countries = Country::where('status', 1)->get();
         return view('user.package_details', compact(
             'package',
@@ -145,20 +160,20 @@ $countries = Country::where('status', 1)->get();
         }
 
         $packages = $query->get();
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        $settings = Setting_tbl::first();
         return view('user.packages', compact('packages', 'continents', 'tourTypes','settings'));
     }
 
 
     public function privacy_policy()
     {
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
-        return view('user.privacy_policy','settings');
+        $settings = Setting_tbl::first();
+        return view('user.privacy_policy',compact('settings'));
     }
     public function terms_and_conditions()
     {
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
-        return view('user.terms_and_conditions','settings');
+        $settings = Setting_tbl::first();
+        return view('user.terms_and_conditions',compact('settings'));
     }
     public function visa()
     {
@@ -168,7 +183,7 @@ $countries = Country::where('status', 1)->get();
                     ->select('continents.code', 'continents.name')
                     ->distinct()
                     ->get();
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        $settings = Setting_tbl::first();
         return view('user.visa', compact('visas','continents','settings'));
     }
     public function filterVisas($continentCode)
@@ -178,7 +193,7 @@ $countries = Country::where('status', 1)->get();
         } else {
             $visas = Visa::where('continent', $continentCode)->get();
         }
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        $settings = Setting_tbl::first();
         return view('user.partials.visa_list', compact('visas','settings'));
     }
      public function visa_details($slug)
@@ -188,7 +203,7 @@ $countries = Country::where('status', 1)->get();
         // Fetch related documents and FAQs
         $documents = Visa_document::where('visa_id', $visa->id)->get();
         $faqs = Visa_faq::where('visa_id', $visa->id)->get();
-        $settings = Setting_tbl::select('facebook','instagram','linkedin','twitter','youtube','working_time','contact_number','contact_number_two','email','address')->first();
+        $settings = Setting_tbl::first();
         return view('user.visa_details', compact('visa', 'documents', 'faqs','countries','settings'));
     }
     public function store_visaEnq(Request $request)
