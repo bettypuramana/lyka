@@ -339,16 +339,7 @@
             $('#myTable').DataTable();
         });
     </script>
-    <script src="https://cdn.tiny.cloud/1/1h1d8a76efrvsatdciuhxdl6iqtb2ruk9491orca22nqlj6k/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
-    {{-- <script>
-    tinymce.init({
-        selector: '.textarea',
-        menubar: false, // removes top menu bar
-        plugins: 'lists', // only keep basic list plugin
-        toolbar: 'undo redo | bold italic underline | bullist numlist | removeformat',
-        branding: false // removes "Powered by TinyMCE"
-    });
-</script> --}}
+
 <script>
     ClassicEditor
         .create(document.querySelector('.textarea'))
