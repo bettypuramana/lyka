@@ -240,14 +240,15 @@ $countries = Country::where('status', 1)->get();
             'quantity' => 'required',
             'travel_date' => 'required',
             'name' => 'required',
-            'phone' => 'required',
+            'phone'       => ['required|max:20', 'regex:/^\+[1-9][0-9]{7,14}$/'],
             ],
             [
             'destination.required' => 'This field is required',
             'quantity.required' => 'This field is required',
             'travel_date.required' => 'This field is required',
             'name.required' => 'This field is required',
-            'phone.required' => 'This field is required',
+            'phone.required'       => 'This field is required',
+            'phone.regex'          => 'Phone number must be in international format (e.g. +971501234567)',
             ]
 
         );
