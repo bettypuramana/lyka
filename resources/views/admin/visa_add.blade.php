@@ -55,21 +55,27 @@ Visa Add - Lyka
                       </div>
                        <div class="form-group">
                         <b>Documents needed</b>
-                        <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addDocumentColum();"></a>
+                        {{-- <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addDocumentColum();"></a> --}}
                          <p class="text-danger" id="Document_colum_error"></p>
                       </div>
                       <div id="documentsDiv" >
 
                       </div>
                       <div class="form-group">
+                         <a href="javascript:void(0)" class="btn btn-dark btn-sm" onclick="addDocumentColum();">Add Documents</a>
+                      </div>
+                      <div class="form-group">
                         <b>FAQs</b>
-                        <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addFaqColum();"></a>
+                        {{-- <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addFaqColum();"></a> --}}
                         <p class="text-danger" id="faq_colum_error"></p>
                       </div>
 
                       <div id="faqDiv" >
 
                       </div>
+                        <div class="form-group">
+                            <a href="javascript:void(0)" class="btn btn-dark btn-sm" onclick="addFaqColum();">Add FAQs</a>
+                        </div>
                       <button type="submit" class="btn btn-success me-2 col-2">Submit</button>
                     </form>
                   </div>

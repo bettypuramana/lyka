@@ -158,7 +158,7 @@ Package Edit - Lyka
 
                       <div class="form-group">
                         <b>Trip Highlights</b>
-                        <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addInputColum('highlights');"></a>
+                        {{-- <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addInputColum('highlights');"></a> --}}
                         <p class="text-danger" id="highlights_error"></p>
                       </div>
                       <div id="tripHighlightsDiv" >
@@ -178,10 +178,12 @@ Package Edit - Lyka
                             @endforeach
                         @endif
                       </div>
-
+                        <div class="form-group">
+                            <a href="javascript:void(0)" class="btn btn-dark btn-sm" onclick="addInputColum('highlights');">Add Highlights</a>
+                        </div>
                       <div class="form-group">
                         <b>Included</b>
-                        <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addInputColum('included')"></a>
+                        {{-- <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addInputColum('included')"></a> --}}
                         <p class="text-danger" id="included_error"></p>
                       </div>
                       <div id="includedDiv" >
@@ -201,10 +203,12 @@ Package Edit - Lyka
                             @endforeach
                             @endif
                       </div>
-
+                    <div class="form-group">
+                        <a href="javascript:void(0)" class="btn btn-dark btn-sm" onclick="addInputColum('included')">Add Included</a>
+                        </div>
                       <div class="form-group">
                         <b>Exclude</b>
-                        <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addInputColum('exclude')"></a>
+                        {{-- <a href="javascript:void(0)" class="text-primary icon-plus" onclick="addInputColum('exclude')"></a> --}}
                         <p class="text-danger" id="exclude_error"></p>
                       </div>
                       <div id="excludedDiv" >
@@ -224,7 +228,9 @@ Package Edit - Lyka
                             @endforeach
                             @endif
                       </div>
-
+                        <div class="form-group">
+                            <a href="javascript:void(0)" class="btn btn-dark btn-sm" onclick="addInputColum('exclude')">Add Exclude</a>
+                            </div>
                         {{-- <div class="form-group">
                         <label>File upload</label>
                         <input type="file" name="img[]" class="file-upload-default">
@@ -372,7 +378,11 @@ function validateForm() {
     const duration = document.querySelector('select[name="duration"]').value;
     const night = document.querySelector('input[name="night"]').value;
     const about = document.querySelector('textarea[name="about"]').value.trim();
+    const imagesInput = document.querySelector('input[name="images[]"]');
+    const newImages = imagesInput.files.length;
 
+    const existingImages = document.querySelectorAll('input[name="image_id[]"]').length;
+    const totalImages = existingImages + newImages;
     // Validate each field
     if (!packageTitle) {
         document.getElementById('package_title_error').textContent = 'Package Title is required';
@@ -405,6 +415,10 @@ function validateForm() {
     if (!night) {
         document.getElementById('night_error').textContent = 'Night is required';
         isValid = false;
+    }
+    if (totalImages  > 3) {
+    document.getElementById('images_error').textContent = 'Maximum 3 images are allowed';
+    isValid = false;
     }
     if (!about) {
         document.getElementById('about_error').textContent = 'About field is required';

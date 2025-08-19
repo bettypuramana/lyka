@@ -50,11 +50,15 @@ Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::
 
 // continents and countries
 Route::get('/admin/continent-list', [App\Http\Controllers\Admin\GeographyController::class, 'continents'])->name('admin.continents');
+Route::post('/admin/continent/store', [App\Http\Controllers\Admin\GeographyController::class, 'continent_store'])->name('admin.continent_store');
 Route::get('/admin/continent/change/{code}/{status}', [App\Http\Controllers\Admin\GeographyController::class, 'continent_change_status'])->name('admin.continent_change_status');
+Route::get('/admin/continent/delete/{id}', [App\Http\Controllers\Admin\GeographyController::class, 'continent_destroy'])->name('admin.continent_delete');
 
 Route::get('/admin/country-list', [App\Http\Controllers\Admin\GeographyController::class, 'countries'])->name('admin.countries');
+Route::post('/admin/country/store', [App\Http\Controllers\Admin\GeographyController::class, 'country_store'])->name('admin.country_store');
 Route::get('/admin/country/change/{id}/{status}', [App\Http\Controllers\Admin\GeographyController::class, 'country_change_status'])->name('admin.country_change_status');
-Route::post('/admin/ccountry-by-continent', [App\Http\Controllers\Admin\GeographyController::class, 'country_by_continent'])->name('admin.country_by_continent');
+Route::post('/admin/country-by-continent', [App\Http\Controllers\Admin\GeographyController::class, 'country_by_continent'])->name('admin.country_by_continent');
+Route::get('/admin/country/delete/{id}', [App\Http\Controllers\Admin\GeographyController::class, 'countryt_destroy'])->name('admin.country_delete');
 
 // packages
 Route::get('/admin/packages-list', [App\Http\Controllers\Admin\PackageController::class, 'index'])->name('admin.packages');

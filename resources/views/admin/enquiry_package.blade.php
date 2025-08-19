@@ -34,11 +34,11 @@ Package Enquiry - Lyka
                         <thead>
                           <tr>
                             <th>No</th>
-                            <th>Destination</th>
-                            <th>Passengers</th>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Travel Date</th>
+                            <th>Destination</th>
+                            <th>Passengers</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -47,11 +47,12 @@ Package Enquiry - Lyka
                                 @foreach ($enquiries as $index => $row)
                                     <tr>
                                         <td>{{$index+1}}</td>
-                                        <td>{{$row->country_name}}</td>
-                                        <td>{{$row->passengers}}</td>
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->phone}}</td>
                                         <td>{{$row->travel_date}}</td>
+                                        <td>{{$row->country_name}}</td>
+                                        <td>{{$row->passengers}}</td>
+
                                         <td>
                                             <a href="{{ route('admin.packag_enquiry_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
                                         </td>
