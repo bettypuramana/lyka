@@ -183,7 +183,20 @@
                                         @enderror
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <input type="text" class="form-control phone" name="phone" placeholder="Phone Number" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                     <input 
+                                        type="text" 
+                                        id="phone" 
+                                        name="phone" 
+                                        class="form-control phone" maxlength="16"
+                                        placeholder="Phone Number with Country Code"
+                                        value="{{ old('phone') }}"
+                                        oninput="
+                                            this.value = this.value.replace(/[^0-9+]/g, '');
+                                            if (this.value.length > 0 && this.value[0] !== '+') {
+                                                this.value = '+' + this.value.replace(/^\+/, '');
+                                            }
+                                        "
+                                    >
                                     @error('phone')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
