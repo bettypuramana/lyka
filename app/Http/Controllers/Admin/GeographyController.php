@@ -22,7 +22,7 @@ class GeographyController extends Controller
     {
         $validated = $request->validate([
             'continent' => 'required',
-            'continent_code' => 'required|unique:continents,code',
+            'continent_code' => 'required|max:2|unique:continents,code',
             ],
             [
             'continent.required' => 'This field is required',

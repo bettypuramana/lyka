@@ -34,11 +34,11 @@
                 <div class="about-content">
                     <h2>About Our Travel Agency</h2>
                     <h3>{{ $about->about_title }}</h3>
-                    <p>{{$about->about_description }}</p>
+                    <p>{!! $about->about_description !!}</p>
                 </div>
             </div>
         </div>
-        
+
     </div>
     </div>
     <section class="testimonials-sec p60" data-aos="fade-up" data-aos-duration="1500">
