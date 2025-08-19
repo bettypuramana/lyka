@@ -97,11 +97,11 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Destination</th>
-                                        <th>Passengers</th>
                                         <th>Name</th>
                                         <th>Phone</th>
                                         <th>Travel Date</th>
+                                        <th>Destination</th>
+                                        <th>Passengers</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -110,11 +110,11 @@
                                             @foreach ($enquiries as $index => $row)
                                                 <tr>
                                                     <td>{{$index+1}}</td>
-                                                    <td>{{$row->country_name}}</td>
-                                                    <td>{{$row->passengers}}</td>
                                                     <td>{{$row->name}}</td>
                                                     <td>{{$row->phone}}</td>
                                                     <td>{{$row->travel_date}}</td>
+                                                    <td>{{$row->country_name}}</td>
+                                                    <td>{{$row->passengers}}</td>
                                                 </tr>
                                             @endforeach
                                         @endif
