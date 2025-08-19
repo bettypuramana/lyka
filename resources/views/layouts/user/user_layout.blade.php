@@ -48,11 +48,27 @@
                 <li><a href="{{ route('user.contact') }}">Contact Us</a></li>
             </ul>
             <div class="social-media">
-                <a href=""><i class="fa fa-facebook"></i></a>
-                <a href=""><i class="fa fa-instagram"></i></a>
-                <a href=""><i class="fa fa-linkedin"></i></a>
-                <a href=""><img src="{{asset('assets/images/twitter-icon.svg')}}" alt=""></a>
-                <a href=""><i class="fa fa-youtube"></i></a>
+                @if($settings->facebook)
+                    <a href="{{ $settings->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                @endif
+
+                @if($settings->instagram)
+                    <a href="{{ $settings->instagram }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                @endif
+
+                @if($settings->linkedin)
+                    <a href="{{ $settings->linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                @endif
+
+                @if($settings->twitter)
+                    <a href="{{ $settings->twitter }}" target="_blank">
+                        <img src="{{ asset('assets/images/twitter-icon.svg') }}" alt="Twitter">
+                    </a>
+                @endif
+
+                @if($settings->youtube)
+                    <a href="{{ $settings->youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                @endif
             </div>
         </div>
     </div>
@@ -197,10 +213,11 @@
 			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
 		</svg>
 	</div>
-    <a href="https://web.whatsapp.com/" class="whatsapp" target="_blank">
-        <img src="{{asset('assets/images/whatsapp-icon.svg')}}" alt="">
+    <a href="https://wa.me/{{ preg_replace('/\D/', '', $settings->whats_app) }}" class="whatsapp" target="_blank">
+        <img src="{{ asset('assets/images/whatsapp-icon.svg') }}" alt="WhatsApp">
         <div class="wave"></div>
     </a>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
