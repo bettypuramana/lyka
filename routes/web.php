@@ -54,6 +54,12 @@ Route::post('/admin/continent/store', [App\Http\Controllers\Admin\GeographyContr
 Route::get('/admin/continent/change/{code}/{status}', [App\Http\Controllers\Admin\GeographyController::class, 'continent_change_status'])->name('admin.continent_change_status');
 Route::get('/admin/continent/delete/{id}', [App\Http\Controllers\Admin\GeographyController::class, 'continent_destroy'])->name('admin.continent_delete');
 
+//tour type
+Route::get('/admin/tour-type-list', [App\Http\Controllers\Admin\TourTypeController::class, 'index'])->name('admin.tour_type');
+Route::post('/admin/tour-type/store', [App\Http\Controllers\Admin\TourTypeController::class, 'tour_type_store'])->name('admin.tour_type_store');
+Route::get('/admin/tour-type/delete/{id}', [App\Http\Controllers\Admin\TourTypeController::class, 'tour_type_destroy'])->name('admin.tour_type_delete');
+
+
 Route::get('/admin/country-list', [App\Http\Controllers\Admin\GeographyController::class, 'countries'])->name('admin.countries');
 Route::post('/admin/country/store', [App\Http\Controllers\Admin\GeographyController::class, 'country_store'])->name('admin.country_store');
 Route::get('/admin/country/change/{id}/{status}', [App\Http\Controllers\Admin\GeographyController::class, 'country_change_status'])->name('admin.country_change_status');
