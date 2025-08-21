@@ -261,6 +261,12 @@
               </div>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{route('admin.tour_type')}}" >
+                <span class="menu-title">Tour Types</span>
+                <i class="icon-folder-alt menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{route('admin.subscriptions')}}" >
                 <span class="menu-title">Subscriptions</span>
                 <i class="icon-folder-alt menu-icon"></i>

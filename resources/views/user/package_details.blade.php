@@ -88,7 +88,7 @@
                         <div class="icon"><img src="{{asset('assets/images/group-icon.svg')}}" alt=""></div>
                         <div class="content">
                             <span class="sub-title">Group Size</span>
-                            <span class="title">{{ $package->group_size }} People</span>
+                            <span class="title">{{ $package->group_size }} {{ $package->group_size == 1 ? 'Person' : 'Persons' }}</span>
                         </div>
                     </div>
                 </div>

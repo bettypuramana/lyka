@@ -153,11 +153,13 @@
                         <div class="f-box">
                             <h4>Tour Type</h4>
                             <ul>
-                                <li><a href="{{ route('user.packages') }}">Wild & Adventure Tour</a></li>
-                                <li><a href="{{ route('user.packages') }}">Group Tour</a></li>
-                                <li><a href="{{ route('user.packages') }}">Seasonal Tour</a></li>
-                                <li><a href="{{ route('user.packages') }}">Relaxation Tour</a></li>
-                                <li><a href="{{ route('user.packages') }}">Family Friendly Tour</a></li>
+                                @foreach($tourTypes as $type)
+                                    <li>
+                                        <a href="{{ route('user.packages') }}">
+                                            {{ $type->type }}
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
