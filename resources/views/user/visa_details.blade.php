@@ -82,13 +82,18 @@
                                 <input type="text" name="name" class="form-control user" placeholder="Name" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')" required>
                             </div>
                             <div class="col-lg-12 mb-3">
-                                <input type="text" name="phone" class="form-control phone" placeholder="Phone Number" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                                <input type="text" name="phone" class="form-control phone" placeholder="Phone Number with Country Code" oninput="
+                                            this.value = this.value.replace(/[^0-9+]/g, '');
+                                            if (this.value.length > 0 && this.value[0] !== '+' && this.value[0] != 0) {
+                                                this.value = '+' + this.value.replace(/^\+/, '');
+                                            }
+                                        " required>
                             </div>
                             <div class="col-lg-12 mb-3">
                                 <input type="email" name="email" class="form-control mail" placeholder="Enter Your Email" required>
                             </div>
                             <div class="col-lg-12 mb-3">
-                                <select name="nationality_id" class="form-control destinations1" required>
+                                <select name="nationality_id" class="form-control destinations1" id="destinations" onchange="syncCountries()" required>
                                     <option selected disabled value="">Your Nationality</option>
                                     @foreach($countries as $country)
                                         <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -96,7 +101,7 @@
                                 </select>
                             </div>
                             <div class="col-lg-12 mb-3">
-                                <select name="travel_to" class="form-control travel1" required>
+                                <select name="travel_to" class="form-control travel1" id="travel" onchange="syncCountries()" required>
                                     <option selected disabled value="">Travelling to</option>
                                     @foreach($countries as $country)
                                         <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -117,6 +122,32 @@
 </section>
 @endsection
 @section('js')
+<script>
+function syncCountries() {
+    let nationalityValue = $("#destinations").val();
+    let travelValue = $("#travel").val();
+
+    // Reset (show all options again)
+    $("#destinations ~ .nice-select li").show();
+    $("#travel ~ .nice-select li").show();
+
+    // Hide nationality in travel list
+    if (nationalityValue) {
+        $(`#travel ~ .nice-select li[data-value="${nationalityValue}"]`).hide();
+        if (travelValue === nationalityValue) {
+            $("#travel").val("").niceSelect("update");
+        }
+    }
+
+    // Hide travel in nationality list
+    if (travelValue) {
+        $(`#destinations ~ .nice-select li[data-value="${travelValue}"]`).hide();
+        if (nationalityValue === travelValue) {
+            $("#destinations").val("").niceSelect("update");
+        }
+    }
+}
+</script>
     <script>
         document.getElementById('visaEnquiryForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -133,6 +164,17 @@
                     document.getElementById('enquirySuccess').textContent = data.message;
                     document.getElementById('enquirySuccess').classList.remove('d-none');
                     form.reset();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Submitted!',
+                        text: 'submitted successfully.',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        // Reload the page if the user clicks "OK"
+                        if (result.isConfirmed) {
+                            window.location.reload();
+                        }
+                    });
                 }
             })
             .catch(err => console.error(err));

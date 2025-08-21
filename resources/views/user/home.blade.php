@@ -48,7 +48,7 @@
                                         <select name="destination" id="destination" class="form-control destinations1">
                                             <option selected disabled value="">Destinations</option>
                                             @foreach($countries as $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                <option value="{{ $country->id }}" {{ old('destination') == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
                                             @endforeach
                                         </select>
                                         @error('destination')
@@ -64,7 +64,7 @@
                                                 <i class="fa fa-minus" aria-hidden="true"></i>
                                                 </button>
                                             </div>
-                                            <input class="input-group-field " type="number" name="quantity" value="1">
+                                            <input class="input-group-field " type="number" name="quantity" value="{{old('quantity',1)}}">
                                             <div class="input-group-button">
                                                 <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity">
                                                 <i class="fa fa-plus" aria-hidden="true"></i>
@@ -77,19 +77,24 @@
                                         @enderror
                                     </div>
                                     <div class="col-lg-4 col-md-6 mb-3">
-                                        <input readonly type="text" class="form-control date"  name="travel_date" id="datepicker" placeholder="Travel Date">
+                                        <input readonly type="text" class="form-control date"  name="travel_date" id="datepicker" placeholder="Travel Date" value="{{old('travel_date')}}">
                                         @error('travel_date')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-lg-4 col-md-6 mb-3">
-                                        <input type="text" class="form-control user" name="name" placeholder="Name" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
+                                        <input type="text" class="form-control user" name="name" placeholder="Name" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')" value="{{old('name')}}">
                                         @error('name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="col-lg-4 col-md-6 mb-3">
-                                        <input type="text" class="form-control phone" name="phone" placeholder="Phone Number" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                        <input type="text" class="form-control phone" name="phone" placeholder="Phone Number with Country Code" oninput="
+                                            this.value = this.value.replace(/[^0-9+]/g, '');
+                                            if (this.value.length > 0 && this.value[0] !== '+' && this.value[0] != 0) {
+                                                this.value = '+' + this.value.replace(/^\+/, '');
+                                            }
+                                        " value="{{old('phone')}}">
                                         @error('phone')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror

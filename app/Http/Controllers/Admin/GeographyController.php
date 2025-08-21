@@ -128,7 +128,7 @@ class GeographyController extends Controller
     {
         $id=$request->input('id');
 
-        $countries=Country::where('continent_id',$id)->select('id','name')->get();
+        $countries=Country::where('continent_id',$id)->where('status',1)->select('id','name')->get();
 
 
 
