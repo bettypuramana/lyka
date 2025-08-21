@@ -87,7 +87,7 @@ Package Add - Lyka
                       </div>
                        <div class="form-group col-3">
                         <label for="exampleSelectGender">No Of Nights</label>
-                        <input type="number" class="form-control" name="night" placeholder="No Of Nights">
+                        <input type="number" class="form-control" name="night" id="night" placeholder="No Of Nights">
                         <p class="text-danger" id="night_error"></p>
                       </div>
                       <div class="form-group col-3">
@@ -172,6 +172,11 @@ Package Add - Lyka
         var duration = document.getElementById("Duration").value;
         var container = document.getElementById("tourPlanDiv");
         var existingDays = container.querySelectorAll('input[name="day[]"]').length;
+
+        if(duration) {
+        let nights = parseInt(duration) - 1;
+$('#night').val(nights);
+        }
 
         if (duration < existingDays) {
         // Remove blocks after duration

@@ -199,11 +199,8 @@
         <div class="copyright-sec">
             <div class="container">
                 <div class="row flex-md-row flex-column-reverse">
-                    <div class="col-lg-6 col-md-6 copyright">
+                    <div class="col-lg-12 copyright">
                         <p>© {{ date('Y') }} Lyka, All Rights Reserved</p>
-                    </div>
-                    <div class="col-lg-6 col-md-6 f-links">
-                        <span>Developed by</span> <a href="https://betweenit.com/" target="_blank">Betweenit</a>
                     </div>
                 </div>
             </div>
@@ -216,10 +213,12 @@
 		</svg>
 	</div>
     <a href="https://wa.me/{{ preg_replace('/\D/', '', $settings->whats_app) }}" class="whatsapp" target="_blank">
+        <div class="pop-view" id="pop-view1">
+            Click here for more package details
+        </div>
         <img src="{{ asset('assets/images/whatsapp-icon.svg') }}" alt="WhatsApp">
         <div class="wave"></div>
     </a>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
