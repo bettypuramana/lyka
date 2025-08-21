@@ -116,7 +116,6 @@ body {
 .header-body header .col-lg-12 .nav ul li.active a {
   color: #C9A887;
 }
-
 .header-body header .col-lg-12 .btn-click {
   width: 43px;
   height: 43px;
@@ -556,6 +555,8 @@ body {
 .modal .first .pic {
   width: 70px;
   height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .modal .first .pic img {
   width: 100%;
@@ -585,7 +586,7 @@ body {
   height: 60px;
   position: fixed;
   z-index: 999;
-  bottom: 20px;
+  bottom: 50%;
   right: 10px;
   background-color: #068238;
   border-radius: 100%;
@@ -595,6 +596,28 @@ body {
 }
 .whatsapp img {
   width: 60%;
+}
+.whatsapp .pop-view {
+  width: 200px;
+  background-color: #FFF;
+  border-radius: 6px;
+  padding: 12px;
+  position: absolute;
+  right: 80px;
+  box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.1);
+  color: #068238;
+  display: none;
+}
+.whatsapp .pop-view::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #FFF;
+  position: absolute;
+  right: -14px;
+  top: 21px;
 }
 .whatsapp .wave {
   width: 60px;
@@ -616,6 +639,13 @@ body {
     transform: scale(3);
     opacity: 0;
   }
+}
+
+.swal2-confirm {
+  background-color: #143f45;
+}
+.swal2-confirm:hover {
+  background-color: #143f45;
 }
 
 .destination-sec {
@@ -856,6 +886,16 @@ body {
   color: #143f45;
   text-align: left;
 }
+.why-choose-area .content ul {
+  margin-bottom: 15px;
+}
+.why-choose-area .content ul li {
+  background-image: url(../images/list-arrow.svg);
+  background-repeat: no-repeat;
+  padding-left: 28px;
+  margin-bottom: 8px;
+  background-position: 0px 2px;
+}
 .why-choose-area .content .count-box {
   width: 80%;
   display: flex;
@@ -1052,6 +1092,9 @@ body {
   font-family: "Satoshi-Medium";
   font-size: 16px;
   color: #143f45;
+  text-align: center;
+}
+.testimonials-sec .box .item-box .content div {
   text-align: center;
 }
 .testimonials-sec .box .item-box .content p {
@@ -1492,9 +1535,11 @@ footer .copyright-sec {
 }
 footer .copyright-sec .copyright {
   color: #FFF;
+  text-align: center;
 }
 footer .copyright-sec .copyright p {
   margin: 0;
+  text-align: center;
 }
 footer .copyright-sec .f-links {
   display: flex;
@@ -1514,7 +1559,7 @@ footer .copyright-sec .f-links span {
 .progress-wrap {
   position: fixed;
   right: 10px;
-  bottom: 180px;
+  bottom: 30px;
   height: 46px;
   width: 46px;
   cursor: pointer;

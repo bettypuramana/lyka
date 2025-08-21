@@ -87,7 +87,7 @@ Package Edit - Lyka
                       </div>
                       <div class="form-group col-3">
                         <label for="exampleSelectGender">No Of Nights</label>
-                        <input type="number" class="form-control" name="night" placeholder="No Of Nights" value="{{$package->night}}">
+                        <input type="number" class="form-control" name="night" id="night" placeholder="No Of Nights" value="{{$package->night}}">
                         <p class="text-danger" id="night_error"></p>
                       </div>
                       <div class="form-group col-3">
@@ -268,7 +268,10 @@ Package Edit - Lyka
         }
         return;
         }
-
+if(duration) {
+        let nights = parseInt(duration) - 1;
+$('#night').val(nights);
+        }
         for (let day = existingDays + 1; day <= duration; day++) {
         let html = `
         <div class="row">

@@ -45,7 +45,7 @@ Packages - Lyka
                             <th>Days</th>
                             <th>Tour Type</th>
                             <th>Price</th>
-                            <th>Status</th>
+
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -62,14 +62,14 @@ Packages - Lyka
                                         <td>{{$row->tourType->type}}</td>
                                         <td>{{$row->price}}</td>
 
-                                        <td>
+                                        <!-- <td>
                                             @if ($row->status==1)
                                             <a href="{{ route('admin.package_change_status', ['id' => $row->id, 'status' => $row->status]) }}"><label class="badge badge-success">Active</label></a>
                                             @else
                                             <a href="{{ route('admin.package_change_status', ['id' => $row->id, 'status' => $row->status]) }}"><label class="badge badge-danger">Inactive</label></a>
                                             @endif
 
-                                        </td>
+                                        </td> -->
                                         <td>
                                             <a href="{{ route('admin.package_edit', ['id' => $row->id]) }}"><i class="icon-pencil" ></i></a>&nbsp;&nbsp;&nbsp;
                                             <a href="{{ route('admin.package_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
