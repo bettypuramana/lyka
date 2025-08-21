@@ -336,10 +336,10 @@ function validateForm() {
     }
     // images[] is multiple, check if at least 1 selected
     if (!document.querySelector('input[name="images[]"]').files.length) {
-        document.getElementById('images_error').textContent = 'At least one Image is required';
+        document.getElementById('images_error').textContent = 'At least three images are required';
         isValid = false;
-    }else if (document.querySelector('input[name="images[]"]').files.length > 3) {
-    document.getElementById('images_error').textContent = 'Maximum 3 images are allowed';
+    }else if (document.querySelector('input[name="images[]"]').files.length < 3) {
+    document.getElementById('images_error').textContent = 'At least three images are required';
     isValid = false;
     }
     if (!about) {

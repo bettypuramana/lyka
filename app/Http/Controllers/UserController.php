@@ -136,7 +136,7 @@ $countries = Country::where('status', 1)->get();
     public function packages(Request $request)
     {
         // Get distinct continent names
-        $continents = \DB::table('continents')
+        $continents = \DB::table('continents')->where('continents.status', 1)
             ->select('code', 'name')
             ->whereIn('code', Package::distinct()->pluck('continent'))
             ->get();
@@ -178,7 +178,7 @@ $countries = Country::where('status', 1)->get();
     public function visa()
     {
         $visas = Visa:: get(); // adjust based on your schema
-        $continents = DB::table('continents')
+        $continents = DB::table('continents')->where('continents.status', 1)
                     ->join('visas', 'continents.code', '=', 'visas.continent')
                     ->select('continents.code', 'continents.name')
                     ->distinct()
@@ -240,7 +240,7 @@ $countries = Country::where('status', 1)->get();
             'quantity' => 'required',
             'travel_date' => 'required',
             'name' => 'required',
-            'phone'       => ['required', 'regex:/^\+[1-9][0-9]{7,14}$/'],
+            'phone'=> ['required', 'regex:/^(?:\+|0)[0-9]{7,14}$/'],
             ],
             [
             'destination.required' => 'This field is required',

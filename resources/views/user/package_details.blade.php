@@ -177,22 +177,22 @@
                                 @csrf
                         <div class="row">
                                 <div class="col-lg-12 mb-3">
-                                    <input type="text" class="form-control user" name="name" placeholder="Name" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')">
+                                    <input type="text" class="form-control user" name="name" placeholder="Name" oninput="this.value = this.value.replace(/[^A-Za-z\s]/g, '')" value="{{old('name')}}">
                                     @error('name')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                     <input 
-                                        type="text" 
-                                        id="phone" 
-                                        name="phone" 
+                                     <input
+                                        type="text"
+                                        id="phone"
+                                        name="phone"
                                         class="form-control phone" maxlength="16"
                                         placeholder="Phone Number with Country Code"
                                         value="{{ old('phone') }}"
                                         oninput="
                                             this.value = this.value.replace(/[^0-9+]/g, '');
-                                            if (this.value.length > 0 && this.value[0] !== '+') {
+                                            if (this.value.length > 0 && this.value[0] !== '+' && this.value[0] != 0) {
                                                 this.value = '+' + this.value.replace(/^\+/, '');
                                             }
                                         "
@@ -202,7 +202,7 @@
                                         @enderror
                                 </div>
                                 <div class="col-lg-12 mb-3">
-                                    <input type="text" readonly class="form-control date" name="travel_date" id="datepicker" placeholder="Travel Date">
+                                    <input type="text" readonly class="form-control date" name="travel_date" id="datepicker" placeholder="Travel Date" value="{{old('travel_date')}}">
                                     @error('travel_date')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
@@ -211,7 +211,7 @@
                                     <select name="destination" id="destination" class="form-control destinations1">
                                         <option selected disabled value="">Destinations</option>
                                         @foreach($countries as $country)
-                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                            <option value="{{ $country->id }}" {{ old('destination') == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('destination')
@@ -227,7 +227,7 @@
                                             <i class="fa fa-minus" aria-hidden="true"></i>
                                             </button>
                                         </div>
-                                        <input class="input-group-field " type="number" name="quantity" value="1">
+                                        <input class="input-group-field " type="number" name="quantity" value="{{old('quantity',1)}}">
                                         <div class="input-group-button">
                                             <button type="button" class="button hollow circle" data-quantity="plus" data-field="quantity">
                                             <i class="fa fa-plus" aria-hidden="true"></i>

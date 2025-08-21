@@ -416,8 +416,8 @@ function validateForm() {
         document.getElementById('night_error').textContent = 'Night is required';
         isValid = false;
     }
-    if (totalImages  > 3) {
-    document.getElementById('images_error').textContent = 'Maximum 3 images are allowed';
+    if (totalImages  < 3) {
+    document.getElementById('images_error').textContent = 'At least three images are required';
     isValid = false;
     }
     if (!about) {
