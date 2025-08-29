@@ -285,15 +285,15 @@ $('#night').val(nights);
             </div>
             <div class="form-group col-2">
                 <label>Image 1</label>
-                <input type="file" class="form-control" name="image_one[]" accept=".png, .jpg, .jpeg">
+                <input type="file" class="form-control image_one" name="image_one[]" accept=".png, .jpg, .jpeg">
             </div>
             <div class="form-group col-2">
                 <label>Image 2</label>
-                <input type="file" class="form-control" name="image_two[]" accept=".png, .jpg, .jpeg">
+                <input type="file" class="form-control image_two" name="image_two[]" accept=".png, .jpg, .jpeg">
             </div>
             <div class="form-group col-2">
                 <label>Image 3</label>
-                <input type="file" class="form-control" name="image_three[]" accept=".png, .jpg, .jpeg">
+                <input type="file" class="form-control image_three" name="image_three[]" accept=".png, .jpg, .jpeg">
             </div>
             <div class="form-group col-12 ">
                 <label>Description</label>
@@ -486,8 +486,22 @@ function validateForm() {
         document.getElementById('tour_plan_error').innerHTML = 'Please add Tour Plan';
         isValid = false;
     }
+    const imageOnes = document.querySelectorAll('.image_one');
+    const imageTwos = document.querySelectorAll('.image_two');
+    const imageThrees = document.querySelectorAll('.image_three');
+    if (imageOnes.length > 0) {
+        for (let i = 0; i < titles.length; i++) {
+        const hasImageOne = imageOnes[i].files.length > 0;
+        const hasImageTwo = imageTwos[i].files.length > 0;
+        const hasImageThree = imageThrees[i].files.length > 0;
+         if (!hasImageOne || !hasImageTwo || !hasImageThree) {
+                document.getElementById('tour_plan_error').innerHTML = 'Please fill all Tour Plan or remove empty ones.';
+                isValid = false;
+                break;
+            }
 
-
+        }
+    }
     return isValid;
 }
 function getCountries() {
