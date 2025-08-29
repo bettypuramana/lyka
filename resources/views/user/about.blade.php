@@ -60,7 +60,7 @@
                                 <div class="content">
                                     <h5>{{ $testimonial->name }}</h5>
                                     <h6>{{ $testimonial->designation }}</h6>
-                                    <p>{{ Str::limit($testimonial->message, 120) }}</p>
+                                    <p>{!! Str::limit($testimonial->message, 120) !!}</p>
                                 </div>
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#testimonial-modal-{{ $testimonial->id }}" class="btn-nav">
                                     <img src="{{ asset('assets/images/link-arrow.svg') }}" alt="">

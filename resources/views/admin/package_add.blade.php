@@ -412,7 +412,7 @@ function validateForm() {
             const hasImageTwo = imageTwos[i].files.length > 0;
             const hasImageThree = imageThrees[i].files.length > 0;
 
-            if (!hasImageOne && !hasImageTwo && !hasImageThree) {
+            if (!hasImageOne || !hasImageTwo || !hasImageThree) {
                 document.getElementById('tour_plan_error').innerHTML = 'Please fill all Tour Plan or remove empty ones.';
                 isValid = false;
                 break;
