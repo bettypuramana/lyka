@@ -1,5 +1,10 @@
 @extends('layouts.user.user_layout')
 @section('title', 'Lyka | Privacy Policy')
+@section('og-tags')
+<meta property="og:title" content="Lyka | Privacy Policy" />
+  <meta property="og:url" content="{{ url()->current() }}" />
+  <meta property="og:site_name" content="LykaHolidays" />
+@endsection
 @section('content')
 <section class="inner-banner-area">
             <div class="container">

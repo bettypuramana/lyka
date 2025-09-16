@@ -1,5 +1,10 @@
 @extends('layouts.user.user_layout')
 @section('title', 'Lyka | Packages')
+@section('og-tags')
+<meta property="og:title" content="Lyka | Packages" />
+  <meta property="og:url" content="{{ url()->current() }}" />
+  <meta property="og:site_name" content="LykaHolidays" />
+@endsection
 @section('content')
 <section class="inner-banner-area">
             <div class="container">
@@ -17,7 +22,7 @@
         </section>
 </section>
 
-<section class="package-body p60"> 
+<section class="package-body p60">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -53,7 +58,7 @@
 
         {{-- Packages Loop --}}
         <div class="row"  id="packagesList">
-                
+
                 @foreach($packages as $package)
                     <div class="col-lg-4 col-md-6 mb-3">
                         <div class="box">
@@ -65,7 +70,7 @@
                             <div class="content-box">
                                 <h3>{{ $package->package_title }}</h3>
                                 <p><span>{{ $package->country_name }}</span></p>
-                                <div class="travel-count">{{ $package->duration }} Days, {{ $package->night }} Night</div>
+                                <div class="travel-count">{{ $package->duration }} {{ $package->duration > 1 ? 'Days' : 'Day' }}@if(!empty($package->night) && $package->night > 0), {{ $package->night }} {{ $package->night > 1 ? 'Nights' : 'Night' }} @endif</div>
                                 <div class="btm-box">
                                     <div class="price">
                                         <p>Start From</p>

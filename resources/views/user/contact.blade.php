@@ -1,5 +1,10 @@
 @extends('layouts.user.user_layout')
 @section('title', 'Lyka | Contact')
+@section('og-tags')
+<meta property="og:title" content="Lyka | Contact" />
+  <meta property="og:url" content="{{ url()->current() }}" />
+  <meta property="og:site_name" content="LykaHolidays" />
+@endsection
 @section('content')
  <section class="inner-banner-area">
             <div class="container">
@@ -70,7 +75,7 @@
                         </div>
                         <div class="col-lg-12 mb-3 d-flex justify-content-center">
                             <button type="submit" class="btn form-btn">
-                                SEND Enquiry 
+                                SEND Enquiry
                                 <img src="{{ asset('assets/images/button-arrow.svg') }}" alt="">
                             </button>
                         </div>

@@ -1,5 +1,12 @@
 @extends('layouts.user.user_layout')
-@section('title', 'Lyka | ' .  $package->package_title )
+@section('title', 'Lyka | ' .$package->package_title )
+@section('og-tags')
+<meta property="og:title" content="{{$package->package_title}}" />
+  <meta property="og:url" content="{{ url()->current() }}" />
+  <meta property="og:image" content="{{$displayImages[0]}}" />
+  <meta property="og:description" content="{{ Str::limit($package->about, 150) }}" />
+  <meta property="og:site_name" content="LykaHolidays" />
+@endsection
 @section('content')
 <section class="inner-banner-area">
             <div class="container">
@@ -36,13 +43,16 @@
                 </div>
             </div>
         </div>
-
+          <!-- ShareThis BEGIN -->
+            <div class="sharethis-inline-share-buttons"></div>
+            <!-- ShareThis END -->
 
         <div class="row">
             {{-- @php
                 print_r($displayImages);
                 exit;
             @endphp --}}
+
             @foreach ($displayImages as $index => $image)
                 <div class="col-lg-{{ $index == 0 ? '6' : '3' }} col-md-4 col-sm-4 mb-3 {{ $index == 0 ? 'd-none d-sm-none d-md-block' : '' }}" data-aos="fade-up" data-aos-duration="{{ 1000 + ($index * 500) }}">
                     <div class="img-box">
@@ -98,7 +108,7 @@
             <div class="col-lg-8">
                 <div class="tour-sec" data-aos="fade-up" data-aos-duration="1000">
                     <h4>About This Tour</h4>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                    <p>{{$package->about}}</p>
                     <h4>Trip Highlights</h4>
                     <ul class="heighlight">
                         @foreach($highlights as $highlight)
@@ -253,3 +263,4 @@
 
 
 @endsection
+
