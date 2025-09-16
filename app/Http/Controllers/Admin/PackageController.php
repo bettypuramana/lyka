@@ -109,6 +109,7 @@ class PackageController extends Controller
 
         if (is_array($request->input('day')) && !empty($request->input('day'))) {
             foreach ($request->input('day') as $index => $row) {
+
                     $Packageplan = new Package_day_plan();
                     $Packageplan->day= $row;
                     $Packageplan->title=$request->input('title')[$index];
@@ -117,7 +118,7 @@ class PackageController extends Controller
                     {
                         $file=$request->file('image_one')[$index];
                         $extension=$file->getClientOriginalExtension();
-                        $filename=$id.time().'1.'.$extension;
+                        $filename=$index.time().'1.'.$extension;
                         $file->move('uploads/package/images',$filename);
                         $Packageplan->image_one=$filename;
                     }
@@ -125,7 +126,7 @@ class PackageController extends Controller
                     {
                         $file=$request->file('image_two')[$index];
                         $extension=$file->getClientOriginalExtension();
-                        $filename=$id.time().'2.'.$extension;
+                        $filename=$index.time().'2.'.$extension;
                         $file->move('uploads/package/images',$filename);
                         $Packageplan->image_two=$filename;
                     }
@@ -133,7 +134,7 @@ class PackageController extends Controller
                     {
                         $file=$request->file('image_three')[$index];
                         $extension=$file->getClientOriginalExtension();
-                        $filename=$id.time().'3.'.$extension;
+                        $filename=$index.time().'3.'.$extension;
                         $file->move('uploads/package/images',$filename);
                         $Packageplan->image_three=$filename;
                     }
@@ -246,7 +247,7 @@ class PackageController extends Controller
                     }
                     $file=$request->file('image_one')[$index];
                     $extension=$file->getClientOriginalExtension();
-                    $filename=$id.time().'1.'.$extension;
+                    $filename=$index.time().'1.'.$extension;
                     $file->move('uploads/package/images',$filename);
                     $plan->image_one=$filename;
                 }
@@ -257,7 +258,7 @@ class PackageController extends Controller
                         }
                         $file=$request->file('image_two')[$index];
                         $extension=$file->getClientOriginalExtension();
-                        $filename=$id.time().'2.'.$extension;
+                        $filename=$index.time().'2.'.$extension;
                         $file->move('uploads/package/images',$filename);
                         $plan->image_two=$filename;
                     }
@@ -268,7 +269,7 @@ class PackageController extends Controller
                         }
                         $file=$request->file('image_three')[$index];
                         $extension=$file->getClientOriginalExtension();
-                        $filename=$id.time().'3.'.$extension;
+                        $filename=$index.time().'3.'.$extension;
                         $file->move('uploads/package/images',$filename);
                         $plan->image_three=$filename;
                     }

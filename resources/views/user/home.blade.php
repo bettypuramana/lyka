@@ -1,6 +1,12 @@
 @extends('layouts.user.user_layout')
 @section('title', 'Lyka | Explore The Unseen')
+@section('og-tags')
+<meta property="og:title" content="Lyka | Explore The Unseen" />
+  <meta property="og:url" content="{{ url()->current() }}" />
+  <meta property="og:site_name" content="LykaHolidays" />
+@endsection
 @section('content')
+
         <section class="banner-area">
             <div class="container">
                 <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -132,7 +138,7 @@
                             <p>
                                 <span>{{ $package->countryName->name ?? '' }}</span>
                             </p>
-                            <div class="travel-count">{{ $package->duration }} Days, {{ $package->night }} Night</div>
+                            <div class="travel-count">{{ $package->duration }} {{ $package->duration > 1 ? 'Days' : 'Day' }}@if(!empty($package->night) && $package->night > 0), {{ $package->night }} {{ $package->night > 1 ? 'Nights' : 'Night' }} @endif</div>
                             <div class="btm-box">
                                 <div class="price">
                                     <p>Start From</p>

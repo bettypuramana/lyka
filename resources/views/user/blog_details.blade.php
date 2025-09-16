@@ -1,5 +1,12 @@
 @extends('layouts.user.user_layout')
-@section('title', 'Lyka | ' . (!empty($blog->meta_title) ? $blog->meta_title : $blog->title))
+@section('title', 'Lyka | '.(!empty($blog->meta_title) ? $blog->meta_title : $blog->title))
+@section('og-tags')
+<meta property="og:title" content="{{!empty($blog->meta_title) ? $blog->meta_title : $blog->title}}" />
+  <meta property="og:url" content="{{ url()->current() }}" />
+  <meta property="og:image" content="{{ asset('uploads/blogs/' . $blog->image) }}" />
+  <meta property="og:description" content="{{ !empty($blog->meta_description) ? $blog->meta_description : $blog->description }}" />
+  <meta property="og:site_name" content="LykaHolidays" />
+@endsection
 @section('content')
  <section class="inner-banner-area">
             <div class="container">
@@ -32,6 +39,9 @@
                     </div>
                     <div class="blog-content">
                         <h3>{{ $blog->title }}</h3>
+                        <!-- ShareThis BEGIN -->
+                        <div class="sharethis-inline-share-buttons"></div>
+                        <!-- ShareThis END -->
                         <h4><span>{{ $blog->tags ?? '' }}</span></h4>
                         {!! $blog->description !!}
                     </div>

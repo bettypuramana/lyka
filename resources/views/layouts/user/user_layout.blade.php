@@ -4,12 +4,9 @@
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--<title>Lyka | Explore The Unseen</title>-->
+
     <title>@yield('title')</title>
-    <link rel="canonical" href="">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    @yield('og-tags')
     <link rel="shortcut icon" href="{{asset('assets/images/favicon/favicon.ico')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/aos.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/jquery-ui.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
+
     @yield('css')
     <style>
         .swal2-select{
@@ -228,6 +226,7 @@
 <script src="{{asset('assets/js/jquery-ui.js')}}"></script>
 <script src="{{asset('assets/js/aos.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=68c8fe8f7639aa9f80d5e1b9&product=sop' async='async'></script>
  @yield('js')
  @if(session('enquiry_success'))
         <script>
