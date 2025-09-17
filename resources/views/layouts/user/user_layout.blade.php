@@ -210,7 +210,7 @@
 			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
 		</svg>
 	</div>
-    <a href="https://wa.me/{{ preg_replace('/\D/', '', $settings->whats_app) }}" class="whatsapp" target="_blank">
+    <a href="https://wa.me/{{ preg_replace('/\D/', '', $settings->whats_app) }}" class="whatsapp" target="_blank" onclick="trackWhatsAppClick()">
         <div class="pop-view" id="pop-view1">
             Click here for more package details
         </div>
@@ -226,6 +226,17 @@
 <script src="{{asset('assets/js/jquery-ui.js')}}"></script>
 <script src="{{asset('assets/js/aos.js')}}"></script>
 <script src="{{asset('assets/js/main.js')}}"></script>
+<script>
+    function trackWhatsAppClick() {
+    fetch("{{ route('user.whatsapp_click') }}", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+        }
+    });
+}
+</script>
 <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=68c8fe8f7639aa9f80d5e1b9&product=sop' async='async'></script>
  @yield('js')
  @if(session('enquiry_success'))

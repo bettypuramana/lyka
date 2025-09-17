@@ -39,6 +39,7 @@ Visa Enquiry - Lyka
                             <th>Email</th>
                             <th>Nationality</th>
                             <th>Destination</th>
+                            <th>Enquired On</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -52,6 +53,7 @@ Visa Enquiry - Lyka
                                         <td>{{$row->email}}</td>
                                         <td>{{$row->nation_name}}</td>
                                         <td>{{$row->destination_name}}</td>
+                                        <td>{{ $row->created_at->format('d-m-Y') }}</td>
                                         <td>
                                             <a href="{{ route('admin.visa_enquiry_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
                                         </td>

@@ -3,6 +3,13 @@
     Dashboard - Lyka
 @endsection
 @section('content')
+<style>
+    #barChart {
+  width: 100% !important;
+  height: 250px !important;
+}
+
+</style>
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-8 grid-margin stretch-card">
@@ -46,7 +53,29 @@
                                     <i class="icon-globe-alt"></i>
                                 </div>
                             </div>
+                              <div class="col-md-6 col-xl report-inner-card">
+                                <div class="inner-card-text">
+                                    <span class="report-title">Whatsapp Click</span>
+                                    <h4>{{$total_clicks}}</h4>
+                                    {{-- <span class="report-count"> 5 Reports</span> --}}
+                                </div>
+                                <div class="inner-card-icon bg-success">
+                                    <i class="icon-mouse"></i>
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <div class="d-sm-flex align-items-baseline report-summary-header">
+                                    <h5 class="font-weight-semibold">Whats App Clicks</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <canvas id="barChart" style="height:200px"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -174,5 +203,36 @@
         },
       })
     }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById("barChart").getContext("2d");
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: @json($labels),
+            datasets: [{
+                label: "Clicks",
+                data: @json($data),
+                backgroundColor: "rgba(54, 162, 235, 0.7)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+                barThickness: 30,
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 50
+                    }
+                }
+            }
+        }
+    });
+});
 </script>
 @endsection

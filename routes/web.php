@@ -34,6 +34,7 @@ Route::get('/visa-details/{slug}', [App\Http\Controllers\UserController::class, 
 Route::get('/visa/filter/{continent}', [App\Http\Controllers\UserController::class, 'filterVisas'])->name('user.visa.filter');
 Route::post('/visa-enquiry', [App\Http\Controllers\UserController::class, 'store_visaEnq'])->name('visa.enquiry.store');
 Route::post('/contact-enquiry', [App\Http\Controllers\UserController::class, 'storeContEnquiry'])->name('contact.enquiry.store');
+Route::post('/whatsapp-click', [App\Http\Controllers\UserController::class, 'whatsapp_click'])->name('user.whatsapp_click');
 
 //change password
 Route::get('/change-password', [App\Http\Controllers\Admin\DashboardController::class, 'changePasswordForm'])->name('admin.changePassword');

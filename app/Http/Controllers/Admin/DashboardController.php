@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact_enquirie;
 use App\Models\Enquiry;
 use App\Models\Visa_enquirie;
+use App\Models\Whatsapp_click;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -39,7 +40,21 @@ class DashboardController extends Controller
         $contactenquirymonth = Contact_enquirie::whereMonth('created_at', $currentMonth)
             ->whereYear('created_at', $currentYear)
             ->count();
-        return view('admin.dashboard',compact('enquiries','packageenquirycount','visaenquirycount','contactenquirycount','totalenquiry','packageenquirymonth','visaenquirymonth','contactenquirymonth'));
+
+        $today = Carbon::today();
+        $startDate = $today->copy()->subDays(6);
+        $clicks = Whatsapp_click::whereBetween('click_date', [$startDate, $today])
+        ->pluck('clicks', 'click_date')
+        ->toArray();
+        $labels = [];
+        $data = [];
+        for ($i = 0; $i < 7; $i++) {
+            $date = $startDate->copy()->addDays($i)->format('Y-m-d');
+            $labels[] = $date;
+            $data[] = $clicks[$date] ?? 0;
+        }
+        $total_clicks = Whatsapp_click::sum('clicks');
+        return view('admin.dashboard',compact('enquiries','packageenquirycount','visaenquirycount','contactenquirycount','totalenquiry','packageenquirymonth','visaenquirymonth','contactenquirymonth','labels','data','total_clicks'));
     }
     public function changePasswordForm()
     {
