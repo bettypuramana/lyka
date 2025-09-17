@@ -37,6 +37,7 @@ Contact Enquiry - Lyka
                             <th>Name</th>
                             <th>Email</th>
                             <th>Subject</th>
+                            <th>Enquired On</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -48,6 +49,7 @@ Contact Enquiry - Lyka
                                         <td>{{$row->name}}</td>
                                         <td>{{$row->email}}</td>
                                         <td>{{$row->subject}}</td>
+                                        <td>{{ $row->created_at->format('d-m-Y') }}</td>
                                         <td>
                                             <a type="button" class="text-primary open-enquiry-modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-name="{{ $row->name }}" data-email="{{ $row->email }}" data-subject="{{ $row->subject }}" data-message="{{ $row->message }}"><i class="icon-eye"></i></a>&nbsp;&nbsp;&nbsp;
                                             <a href="{{ route('admin.contact_enquiry_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>

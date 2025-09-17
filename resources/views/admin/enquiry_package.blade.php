@@ -39,6 +39,7 @@ Package Enquiry - Lyka
                             <th>Travel Date</th>
                             <th>Destination</th>
                             <th>Passengers</th>
+                            <th>Enquired On</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -52,7 +53,7 @@ Package Enquiry - Lyka
                                         <td>{{$row->travel_date}}</td>
                                         <td>{{$row->country_name}}</td>
                                         <td>{{$row->passengers}}</td>
-
+                                        <td>{{ $row->created_at->format('d-m-Y') }}</td>
                                         <td>
                                             <a href="{{ route('admin.packag_enquiry_delete', ['id' => $row->id]) }}"><i class="text-danger icon-trash" onclick="return confirm('Are you sure you want to delete this data ?');"></i></a>
                                         </td>

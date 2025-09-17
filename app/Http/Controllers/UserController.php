@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
+use App\Mail\ContactEnquiryMail;
 use App\Models\Banner;
 use App\Models\Country;
 use App\Models\Subscription;
@@ -20,8 +21,12 @@ use App\Models\Package_more;
 use App\Models\Package_image;
 use App\Models\Tour_type;
 use App\Models\Setting_tbl;
+use App\Models\Whatsapp_click;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 class UserController extends Controller
 {
     public function index()
@@ -296,6 +301,13 @@ $countries = Country::where('status', 1)->get();
         $insertEnquiry->message=$request->input('message');
         $save= $insertEnquiry->save();
         if($save){
+            $data = [
+                'name'    => $request->input('name'),
+                'email'   => $request->input('email'),
+                'subject' => $request->input('subject'),
+                'message' => $request->input('message'),
+            ];
+            Mail::to('arunca.marbu@gmail.com')->send(new ContactEnquiryMail($data));
             return redirect()->route('user.contact')->with('success', 'Your enquiry has been sent successfully!');
         }
         else{
@@ -322,5 +334,22 @@ $countries = Country::where('status', 1)->get();
         } else {
             return redirect()->back()->with('fail', 'Something went wrong, please try again later!');
         }
+    }
+    public function whatsapp_click(Request $request)
+    {
+        $today = Carbon::now()->format('Y-m-d');
+
+        $click = Whatsapp_click::where('click_date', $today)->first();
+
+        if ($click) {
+            $click->increment('clicks');
+        } else {
+            Whatsapp_click::create([
+                'clicks' => 1,
+                'click_date' => $today,
+            ]);
+        }
+
+        return response()->json(['status' => true]);
     }
 }
