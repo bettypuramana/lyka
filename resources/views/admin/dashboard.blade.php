@@ -131,6 +131,7 @@
                                         <th>Travel Date</th>
                                         <th>Destination</th>
                                         <th>Passengers</th>
+                                        <th>Enquired On</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -144,6 +145,7 @@
                                                     <td>{{$row->travel_date}}</td>
                                                     <td>{{$row->country_name}}</td>
                                                     <td>{{$row->passengers}}</td>
+                                                    <td>{{ $row->created_at->format('d-m-Y') }}</td>
                                                 </tr>
                                             @endforeach
                                         @endif
