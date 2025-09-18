@@ -41,11 +41,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-          <!-- ShareThis BEGIN -->
+                <!-- ShareThis BEGIN -->
             <div class="sharethis-inline-share-buttons"></div>
             <!-- ShareThis END -->
+            </div>
+        </div>
+
 
         <div class="row">
             {{-- @php
